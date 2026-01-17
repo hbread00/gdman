@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cphby36r2gwsb"]
+
+[ext_resource type="Texture2D" uid="uid://c008wo367tn7h" path="res://icon.svg" id="1_b2bne"]
+[ext_resource type="Script" uid="uid://c6rjmq5tiptt1" path="res://src/project/project_card.gd" id="1_e88lg"]
+
+[node name="ProjectCard" type="HBoxContainer" unique_id=1528387040]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_e88lg")
+
+[node name="FavoriteButton" type="CheckButton" parent="." unique_id=708107087]
+layout_mode = 2
+
+[node name="ProjectIcon" type="TextureRect" parent="." unique_id=417996318]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_b2bne")
+expand_mode = 3
+
+[node name="InfoContainer" type="VBoxContainer" parent="." unique_id=1802145468]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarkContainer" type="HBoxContainer" parent="InfoContainer" unique_id=183117933]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NameLabel" type="Label" parent="InfoContainer/MarkContainer" unique_id=1318214389]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Name"
+
+[node name="TagContainer" type="HBoxContainer" parent="InfoContainer/MarkContainer" unique_id=236223920]
+layout_mode = 2
+alignment = 2
+
+[node name="PassTag" type="Label" parent="InfoContainer/MarkContainer/TagContainer" unique_id=553477839]
+layout_mode = 2
+text = "tag"
+
+[node name="FeatherContainer" type="HBoxContainer" parent="InfoContainer" unique_id=1314619738]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PathButton" type="TextureButton" parent="InfoContainer/FeatherContainer" unique_id=25480322]
+layout_mode = 2
+
+[node name="PathLabel" type="Label" parent="InfoContainer/FeatherContainer" unique_id=895408285]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "path/to/project"
+text_overrun_behavior = 1
+
+[node name="VersionLabel" type="Label" parent="InfoContainer/FeatherContainer" unique_id=1550183141]
+layout_mode = 2
+text = "0.0.0"
+
+[node name="TimeLabel" type="Label" parent="InfoContainer/FeatherContainer" unique_id=808391216]
+layout_mode = 2
+text = "1970/1/1-00:00:00"
+
+[node name="EditButton" type="Button" parent="." unique_id=411181954]
+layout_mode = 2
+text = "0.0.0"
+
+[node name="ExtraButton" type="MenuButton" parent="." unique_id=1257960589]
+layout_mode = 2

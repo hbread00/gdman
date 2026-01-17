@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b0uu0de2rqxss"]
+
+[node name="SideBar" type="VBoxContainer" unique_id=484334225]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 63.0
+grow_vertical = 2
+
+[node name="ProjectButton" type="Button" parent="." unique_id=1072336098]
+layout_mode = 2
+text = "Project"
+
+[node name="EngineButton" type="Button" parent="." unique_id=2080070319]
+layout_mode = 2
+text = "Engine"
+
+[node name="Pass" type="Control" parent="." unique_id=221181315]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AboutButton" type="Button" parent="." unique_id=1881566008]
+layout_mode = 2
+text = "About"
+
+[node name="SettingButton" type="Button" parent="." unique_id=1342597489]
+layout_mode = 2
+text = "Setting"
