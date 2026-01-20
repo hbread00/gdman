@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cipjvpn3l8a48"]
 
 [ext_resource type="Script" uid="uid://dr3siyyotpypu" path="res://src/project/project_page.gd" id="1_ujekw"]
+[ext_resource type="Texture2D" uid="uid://bigyx4j1euktf" path="res://asset/icon/add.svg" id="2_8oi35"]
+[ext_resource type="Texture2D" uid="uid://cn7mvs1yvvohm" path="res://asset/icon/scan.svg" id="3_s6ogv"]
 
 [node name="ProjectPage" type="VBoxContainer" unique_id=828684455]
 anchors_preset = 15
@@ -16,6 +18,7 @@ layout_mode = 2
 [node name="ImportButton" type="Button" parent="OptionContainer" unique_id=1665693487]
 layout_mode = 2
 text = "Import"
+icon = ExtResource("2_8oi35")
 
 [node name="ImportFileDialog" type="FileDialog" parent="OptionContainer/ImportButton" unique_id=584780497]
 oversampling_override = 1.0
@@ -32,6 +35,7 @@ deleting_enabled = false
 [node name="ScanButton" type="Button" parent="OptionContainer" unique_id=347899072]
 layout_mode = 2
 text = "Scan"
+icon = ExtResource("3_s6ogv")
 
 [node name="ScanFileDialog" type="FileDialog" parent="OptionContainer/ScanButton" unique_id=988073660]
 oversampling_override = 1.0
@@ -59,10 +63,6 @@ popup/item_1/text = "Ascend"
 popup/item_1/id = 1
 popup/item_2/text = "Descend"
 popup/item_2/id = 2
-
-[node name="DeleteButton" type="Button" parent="OptionContainer" unique_id=1941605909]
-layout_mode = 2
-text = "Delete"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1139310194]
 layout_mode = 2

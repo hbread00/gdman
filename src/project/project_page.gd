@@ -28,14 +28,38 @@ func _ready() -> void:
 		card_container.add_child(card)
 
 func _get_icon_path(path: String, project_root: String) -> String:
-	if path.is_absolute_path():
-		return path
-	if path.begins_with("./"):
-		return project_root.path_join(path.substr(2))
 	if path.begins_with("res://"):
-		return project_root.path_join(path.substr(6))
+		return project_root.path_join(path.replace("res://", ""))
 	if path.begins_with("uid://"):
-		pass
+		var res_path: String = _uid_path_to_res_path(path, project_root)
+		if res_path != "":
+			return project_root.path_join(res_path.replace("res://", ""))
+	return ""
+
+func _uid_path_to_res_path(uid_path: String, project_root: String) -> String:
+	var dir: DirAccess = DirAccess.open(project_root)
+	if dir == null:
+		return ""
+	var dirs_to_scan: Array[String] = [project_root]
+	while dirs_to_scan.size() > 0:
+		var current_path: String = dirs_to_scan.pop_back()
+		var current_dir: DirAccess = DirAccess.open(current_path)
+		if current_dir != null:
+			current_dir.list_dir_begin()
+			var file_name: String = current_dir.get_next()
+			while file_name != "":
+				if current_dir.current_is_dir():
+					if file_name != "." and file_name != "..":
+						dirs_to_scan.append(current_path.path_join(file_name))
+				else:
+					if file_name.ends_with(".import"):
+						var import_config: ConfigFile = ConfigFile.new()
+						if (import_config.load(current_path.path_join(file_name)) == OK
+							and import_config.get_value("remap", "uid", "") == uid_path):
+							current_dir.list_dir_end()
+							return import_config.get_value("deps", "source_file", "")
+				file_name = current_dir.get_next()
+			current_dir.list_dir_end()
 	return ""
 
 func _get_project_version(config: ConfigFile) -> String:
