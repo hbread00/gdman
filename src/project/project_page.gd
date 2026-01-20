@@ -4,7 +4,6 @@ const PROJECT_CARD: PackedScene = preload("res://src/project/project_card.tscn")
 
 @onready var import_file_dialog: FileDialog = $OptionContainer/ImportButton/ImportFileDialog
 @onready var scan_file_dialog: FileDialog = $OptionContainer/ScanButton/ScanFileDialog
-@onready var filter_button: OptionButton = $OptionContainer/FilterButton
 @onready var card_container: VBoxContainer = $ScrollContainer/CardContainer
 
 var project_cards: Dictionary[String, Node] = {}

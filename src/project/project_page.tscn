@@ -10,6 +10,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_ujekw")
 
 [node name="OptionContainer" type="HBoxContainer" parent="." unique_id=933162693]
@@ -53,7 +55,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Filter"
 
-[node name="FilterButton" type="OptionButton" parent="OptionContainer" unique_id=530222623]
+[node name="FilterOption" type="OptionButton" parent="OptionContainer" unique_id=530222623]
 layout_mode = 2
 selected = 0
 item_count = 3

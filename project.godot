@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Constant="*uid://dhcy4r3f4uqai"
 Config="*uid://b416biq16v3rx"
 
 [debug]
