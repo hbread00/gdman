@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dhppyf1y4otgk"]
+
+[node name="SourceContainer" type="VBoxContainer" unique_id=2071972493]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConnectContainer" type="VBoxContainer" parent="." unique_id=896333713]
+layout_mode = 2
+
+[node name="SourceOption" type="OptionButton" parent="." unique_id=1846271872]
+layout_mode = 2

@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://cq7qp7e00w6ol"]
 
-[ext_resource type="Texture2D" uid="uid://bmx6yvr5hohdd" path="res://asset/icon/warning.svg" id="1_2a3wf"]
-
-[node name="EnginePage" type="VBoxContainer" unique_id=1939612761]
+[node name="DownloadPage" type="VBoxContainer" unique_id=1939612761]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,56 +9,29 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="OptionContainer" type="HBoxContainer" parent="." unique_id=877426337]
+[node name="TopBarContainer" type="PanelContainer" parent="." unique_id=36949173]
 layout_mode = 2
 
-[node name="StandardButton" type="CheckButton" parent="OptionContainer" unique_id=1491752993]
+[node name="OptionContainer" type="HBoxContainer" parent="TopBarContainer" unique_id=877426337]
+layout_mode = 2
+
+[node name="StandardButton" type="CheckButton" parent="TopBarContainer/OptionContainer" unique_id=1491752993]
 layout_mode = 2
 text = "Standard"
 
-[node name="VSeparator" type="VSeparator" parent="OptionContainer" unique_id=608700604]
+[node name="VSeparator" type="VSeparator" parent="TopBarContainer/OptionContainer" unique_id=608700604]
 layout_mode = 2
 
-[node name="DotNetButton" type="CheckButton" parent="OptionContainer" unique_id=1955454785]
+[node name="DotNetButton" type="CheckButton" parent="TopBarContainer/OptionContainer" unique_id=1955454785]
 layout_mode = 2
 text = ".NET"
 
-[node name="VSeparator2" type="VSeparator" parent="OptionContainer" unique_id=1218692946]
+[node name="VSeparator2" type="VSeparator" parent="TopBarContainer/OptionContainer" unique_id=1218692946]
 layout_mode = 2
 
-[node name="StableButton" type="CheckButton" parent="OptionContainer" unique_id=866862509]
+[node name="StableButton" type="CheckButton" parent="TopBarContainer/OptionContainer" unique_id=866862509]
 layout_mode = 2
 text = "Stable"
-
-[node name="Pass" type="Control" parent="OptionContainer" unique_id=143825291]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="AlertIcon" type="TextureRect" parent="OptionContainer" unique_id=1398289387]
-visible = false
-layout_mode = 2
-texture = ExtResource("1_2a3wf")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="SourceLabel" type="Label" parent="OptionContainer" unique_id=1930897339]
-layout_mode = 2
-text = "Source"
-
-[node name="SourceOption" type="OptionButton" parent="OptionContainer" unique_id=12118650]
-layout_mode = 2
-selected = 1
-item_count = 4
-popup/item_0/text = "Official"
-popup/item_0/id = 0
-popup/item_0/separator = true
-popup/item_1/text = "Godot"
-popup/item_1/id = 1
-popup/item_2/text = "Github"
-popup/item_2/id = 2
-popup/item_3/text = "Unofficial"
-popup/item_3/id = 3
-popup/item_3/separator = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2134695551]
 layout_mode = 2

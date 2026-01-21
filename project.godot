@@ -21,8 +21,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Constant="*uid://dhcy4r3f4uqai"
 Config="*uid://b416biq16v3rx"
+DownloadSource="*uid://cga0fc7y2vyr8"
 
 [debug]
 

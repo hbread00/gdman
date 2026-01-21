@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://cvhkrjsovo0lf"]
 
-[ext_resource type="Script" uid="uid://b1y50kwd8yme3" path="res://src/engine/engine_card.gd" id="1_h676o"]
+[ext_resource type="Script" uid="uid://b1y50kwd8yme3" path="res://src/download/download_card.gd" id="1_h676o"]
 [ext_resource type="Texture2D" uid="uid://b3isry360eadq" path="res://asset/icon/dot_net.svg" id="1_voub6"]
 [ext_resource type="Texture2D" uid="uid://f3w2u4j2iw1k" path="res://asset/icon/unstable.svg" id="2_vno5b"]
-[ext_resource type="Texture2D" uid="uid://hv0qw0fm1wga" path="res://asset/icon/directory.svg" id="3_73bku"]
 [ext_resource type="Texture2D" uid="uid://ddqhbrd1han2p" path="res://asset/icon/download.svg" id="4_cieoe"]
-[ext_resource type="Texture2D" uid="uid://cq454lo24jwpx" path="res://asset/icon/delete.svg" id="5_o2t1o"]
 
-[node name="EngineCard" type="HBoxContainer" unique_id=1883642242]
+[node name="DownloadCard" type="HBoxContainer" unique_id=1883642242]
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
@@ -34,23 +32,15 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PathButton" type="Button" parent="." unique_id=24570551]
-layout_mode = 2
-icon = ExtResource("3_73bku")
-icon_alignment = 1
-
 [node name="DownloadButton" type="Button" parent="." unique_id=805701093]
 layout_mode = 2
 icon = ExtResource("4_cieoe")
 icon_alignment = 1
 
-[node name="DeleteButton" type="Button" parent="." unique_id=1460137581]
-layout_mode = 2
-icon = ExtResource("5_o2t1o")
-icon_alignment = 1
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="DownloadButton" unique_id=618643751]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(200, 101)
+visible = true
 
-[node name="DeleteDialog" type="ConfirmationDialog" parent="DeleteButton" unique_id=5124625]
-
-[connection signal="pressed" from="PathButton" to="." method="_on_path_button_pressed"]
 [connection signal="pressed" from="DownloadButton" to="." method="_on_download_button_pressed"]
-[connection signal="pressed" from="DeleteButton" to="." method="_on_delete_button_pressed"]
