@@ -17,3 +17,6 @@ mono_crash.*.json
 
 # vscode
 .vscode/
+
+# python
+*.py
