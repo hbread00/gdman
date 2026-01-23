@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+App="*uid://dtto62rc43fkr"
 DownloadSource="*uid://cga0fc7y2vyr8"
 Config="*uid://b416biq16v3rx"
 

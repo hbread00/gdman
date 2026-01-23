@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b0uu0de2rqxss" path="res://src/side_bar.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cipjvpn3l8a48" path="res://src/project/project_page.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cq7qp7e00w6ol" path="res://src/download/download_page.tscn" id="3_h2yge"]
 
 [node name="Main" type="PanelContainer" unique_id=1386148329]
 anchors_preset = 15
@@ -17,4 +18,8 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ProjectPage" parent="HBoxContainer" unique_id=828684455 instance=ExtResource("2_0xm2m")]
+visible = false
+layout_mode = 2
+
+[node name="DownloadPage" parent="HBoxContainer" unique_id=1939612761 instance=ExtResource("3_h2yge")]
 layout_mode = 2

@@ -1,16 +1,5 @@
 extends Node
 
-const ARCHITECTURE: Array[String] = [
-	"windows_x86",
-	"windows_x64",
-	"windows_arm64",
-	"linux_x86",
-	"linux_x64",
-	"linux_arm32",
-	"linux_arm64",
-	"macos",
-]
-
 # https://downloads.godotengine.org/?version=4.6&flavor=rc2&slug=linux.x86_64.zip&platform=linux.64
 # https://downloads.godotengine.org/?version=4.6&flavor=rc2&slug=mono_linux_x86_64.zip&platform=linux.64
 # https://downloads.godotengine.org/?version=4.6&flavor=rc2&slug=linux.x86_32.zip&platform=linux.32
@@ -102,8 +91,25 @@ const SOURCE_GITHUB_DOTNET_FILE: Dictionary[String, String] = {
 	"macos": "mono_macos.universal",
 }
 
+var source_data: Dictionary = {
+	"godot": {
+		"4.5": ["4.5.1-stable"],
+		"4.4": ["4.4.1-stable"],
+		"4.3": ["4.3-stable"],
+		"4.2": ["4.2.2-stable"],
+		"4.1": ["4.1.4-stable"],
+		"4.0": ["4.0.4-stable"]
+	}
+}
+
+func _ready() -> void:
+	var source_json: String = FileAccess.get_file_as_string("res://src/global/source.json")
+	var json: JSON = JSON.new()
+	if json.parse(source_json) == OK:
+		source_data = json.data
+
 func get_source_godot_url(version_name: String, is_dotnet: bool, architecture: String) -> String:
-	var version_data: Array[String] = version_name.split("-")
+	var version_data: PackedStringArray = version_name.split("-")
 	if version_data.size() != 2:
 		return ""
 	var version: String = version_data[0]
@@ -119,38 +125,3 @@ func get_source_github_url(version_name: String, is_dotnet: bool, architecture: 
 	if is_dotnet:
 		file = SOURCE_GITHUB_DOTNET_FILE.get(architecture, "")
 	return SOURCE_GITHUB_URL % [version_name, version_name, file]
-
-var source_data: Dictionary[String, Array] = {
-	"godot": [
-        {
-            "4.5": [
-                "4.5.1-stable",
-            ]
-        },
-        {
-            "4.4": [
-                "4.4.1-stable",
-            ]
-        },
-        {
-            "4.3": [
-                "4.3-stable",
-            ]
-        },
-        {
-            "4.2": [
-                "4.2.2-stable",
-            ]
-        },
-        {
-            "4.1": [
-                "4.1.4-stable",
-            ]
-        },
-        {
-            "4.0": [
-                "4.0.4-stable",
-            ]
-        },
-	]
-}

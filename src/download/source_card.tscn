@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://cvhkrjsovo0lf"]
 
-[ext_resource type="Script" uid="uid://b1y50kwd8yme3" path="res://src/download/download_card.gd" id="1_h676o"]
-[ext_resource type="Texture2D" uid="uid://b3isry360eadq" path="res://asset/icon/dot_net.svg" id="1_voub6"]
+[ext_resource type="Script" uid="uid://b1y50kwd8yme3" path="res://src/download/source_card.gd" id="1_h676o"]
 [ext_resource type="Texture2D" uid="uid://f3w2u4j2iw1k" path="res://asset/icon/unstable.svg" id="2_vno5b"]
 [ext_resource type="Texture2D" uid="uid://ddqhbrd1han2p" path="res://asset/icon/download.svg" id="4_cieoe"]
 
-[node name="DownloadCard" type="HBoxContainer" unique_id=1883642242]
+[node name="SourceCard" type="HBoxContainer" unique_id=1883642242]
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
@@ -16,16 +15,9 @@ script = ExtResource("1_h676o")
 layout_mode = 2
 text = "0.0.0"
 
-[node name="DotNetIcon" type="TextureRect" parent="." unique_id=1529262806]
-layout_mode = 2
-texture = ExtResource("1_voub6")
-expand_mode = 3
-stretch_mode = 5
-
 [node name="UnstableIcon" type="TextureRect" parent="." unique_id=2018716420]
 layout_mode = 2
 texture = ExtResource("2_vno5b")
-expand_mode = 3
 stretch_mode = 5
 
 [node name="Pass" type="Control" parent="." unique_id=2067015311]
@@ -36,11 +28,5 @@ size_flags_horizontal = 3
 layout_mode = 2
 icon = ExtResource("4_cieoe")
 icon_alignment = 1
-
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="DownloadButton" unique_id=618643751]
-oversampling_override = 1.0
-position = Vector2i(0, 36)
-size = Vector2i(200, 101)
-visible = true
 
 [connection signal="pressed" from="DownloadButton" to="." method="_on_download_button_pressed"]

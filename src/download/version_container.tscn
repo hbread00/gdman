@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://byfxbqtgp68d"]
+
+[ext_resource type="Script" uid="uid://ccpud05fmwybm" path="res://src/download/version_container.gd" id="1_w5s3m"]
+
+[node name="VersionContainer" type="FoldableContainer" unique_id=1018036535 groups=["download_version_container"]]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+folded = true
+script = ExtResource("1_w5s3m")
+
+[node name="CardContainer" type="VBoxContainer" parent="." unique_id=2054426833]
+visible = false
+layout_mode = 2

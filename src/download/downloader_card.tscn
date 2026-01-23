@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bgk1814jgblda"]
+
+[ext_resource type="Script" uid="uid://di0qwc8stt20s" path="res://src/download/downloader_card.gd" id="1_7mnk0"]
+
+[node name="DownloaderCard" type="PanelContainer" unique_id=1990204292]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 116.0
+grow_horizontal = 2
+script = ExtResource("1_7mnk0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=613592775]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1815212366]
+layout_mode = 2
+text = "version"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" unique_id=741040197]
+layout_mode = 2
+
+[node name="InfoLabel" type="Label" parent="VBoxContainer" unique_id=2118462129]
+layout_mode = 2
+text = "Downloading..."
+
+[node name="CancelButton" type="Button" parent="VBoxContainer" unique_id=1919645693]
+layout_mode = 2
+text = "Cancel"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=25683267]
+
+[node name="Timer" type="Timer" parent="." unique_id=545999979]
+wait_time = 0.1
+
+[connection signal="pressed" from="VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
