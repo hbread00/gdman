@@ -24,8 +24,9 @@ func _on_version_container_download(version_name: String, major_version: String)
 
 func _on_download_confirm_download(url: String, file_name: String) -> void:
 	var downloader_card: Control = DOWNLOADER_CARD.instantiate()
-	downloader_container.add_child(downloader_card)
+	downloader_card.url = url
 	if dotnet_button.button_pressed:
-		downloader_card.download(url, "%s-dotnet" % file_name)
+		downloader_card.file_name = "%s-dotnet" % file_name
 	else:
-		downloader_card.download(url, file_name)
+		downloader_card.file_name = file_name
+	downloader_container.add_child(downloader_card)

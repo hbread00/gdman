@@ -25,13 +25,15 @@ text = "Downloading..."
 
 [node name="CancelButton" type="Button" parent="VBoxContainer" unique_id=1919645693]
 layout_mode = 2
+disabled = true
 text = "Cancel"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=25683267]
 
 [node name="Timer" type="Timer" parent="." unique_id=545999979]
-wait_time = 0.1
+wait_time = 0.2
 
+[connection signal="uncompressed" from="." to="." method="_on_uncompressed"]
 [connection signal="pressed" from="VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

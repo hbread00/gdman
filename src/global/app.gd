@@ -1,5 +1,8 @@
 extends Node
 
+const ENGINE_DIR: String = "user://engine"
+const DOWNLOAD_DIR: String = "user://download"
+
 const ARCHITECTURE: Array[String] = [
 	"windows_x86",
 	"windows_x64",

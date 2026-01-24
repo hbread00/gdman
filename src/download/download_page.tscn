@@ -75,6 +75,7 @@ layout_mode = 2
 title = "4.0"
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="HSplitContainer" unique_id=1675369802]
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 
 [node name="DownloaderContainer" type="VBoxContainer" parent="HSplitContainer/ScrollContainer2" unique_id=686502094]

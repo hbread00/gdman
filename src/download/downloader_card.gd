@@ -1,43 +1,47 @@
 extends PanelContainer
 
-const TEMP_DIR: String = "user://temp"
-const TEMP_PATH: String = "user://temp/%s.zip"
-const ENGINE_PATH: String = "user://engine"
-const FINISH_DIR: String = "user://engine/%s"
+signal uncompressed()
 
-var temp_path: String = ""
-var finish_dir: String = ""
+var url: String = ""
+var file_name: String = ""
+
+var download_path: String = ""
+var uncompress_task_id: int = -1
 
 @onready var title_label: Label = $VBoxContainer/TitleLabel
 @onready var progress_bar: ProgressBar = $VBoxContainer/ProgressBar
 @onready var info_label: Label = $VBoxContainer/InfoLabel
+@onready var cancel_button: Button = $VBoxContainer/CancelButton
 @onready var http_request: HTTPRequest = $HTTPRequest
 @onready var timer: Timer = $Timer
 
-func download(url: String, file_name: String) -> void:
+func _ready() -> void:
 	title_label.text = file_name
-	info_label.text = "Starting download..."
-	progress_bar.value = 0
-	if DirAccess.make_dir_recursive_absolute(TEMP_DIR) != OK:
-		info_label.text = "Failed"
+	if DirAccess.make_dir_recursive_absolute(App.DOWNLOAD_DIR) != OK:
 		return
-	temp_path = TEMP_PATH % file_name
-	http_request.download_file = temp_path
+	download_path = App.DOWNLOAD_DIR.path_join("%s.zip" % file_name)
+	http_request.download_file = download_path
 	if http_request.request(url) != OK:
-		info_label.text = "Failed"
 		return
-	info_label.text = "Downloading..."
-	finish_dir = FINISH_DIR % file_name
+	cancel_button.disabled = false
 	timer.start()
 
+func _failed() -> void:
+	info_label.text = "Failed"
+	cancel_button.disabled = false
+	timer.stop()
+	if (download_path != ""
+		and FileAccess.file_exists(download_path)):
+		OS.move_to_trash(ProjectSettings.globalize_path(download_path))
+	
 func _on_timer_timeout() -> void:
 	var total: int = http_request.get_body_size()
 	if total <= 0:
 		return
 	var downloaded: int = http_request.get_downloaded_bytes()
-	progress_bar.value = float(downloaded) / float(total) * 98
+	progress_bar.set_value_no_signal(float(downloaded) / float(total) * 99)
 	
-			
+	
 func _on_cancel_button_pressed() -> void:
 	if http_request.get_http_client_status() == HTTPClient.STATUS_REQUESTING:
 		http_request.cancel_request()
@@ -45,37 +49,32 @@ func _on_cancel_button_pressed() -> void:
 
 
 func _on_http_request_request_completed(result: int, response_code: int, _headers: PackedStringArray, _body: PackedByteArray) -> void:
-	if (result == HTTPRequest.RESULT_SUCCESS
-		and response_code == 200):
-		timer.stop()
-		progress_bar.value = 99
-		if DirAccess.make_dir_recursive_absolute(finish_dir) != OK:
-			info_label.text = "Failed"
-			return
-		var task_id: int = WorkerThreadPool.add_task(_uncompress_file.bind(temp_path, finish_dir))
-		WorkerThreadPool.wait_for_task_completion(task_id)
-	else:
-		info_label.text = "Failed"
+	if (result != HTTPRequest.RESULT_SUCCESS
+		or response_code != 200):
+		_failed()
+		return
+	timer.stop()
+	progress_bar.set_value_no_signal(99)
+	var finish_dir: String = App.ENGINE_DIR.path_join(file_name)
+	if DirAccess.make_dir_recursive_absolute(finish_dir) != OK:
+		_failed()
+		return
+	info_label.text = "Uncompressing..."
+	cancel_button.disabled = true
+	uncompress_task_id = WorkerThreadPool.add_task(_uncompress_file.bind(download_path, finish_dir))
 
 func _uncompress_file(zip_path: String, output_dir: String) -> void:
-	info_label.set_deferred("text", "Uncompressing...")
 	var zip: ZIPReader = ZIPReader.new()
-	if DirAccess.make_dir_recursive_absolute(output_dir) != OK:
-		zip.close()
-		print("Failed to create output directory: %s" % output_dir)
-		info_label.set_deferred("text", "Failed")
-		return
 	if zip.open(zip_path) != OK:
-		print("Failed to open zip file: %s" % zip_path)
-		info_label.set_deferred("text", "Failed")
+		zip.close()
+		_failed.call_deferred()
 		return
 	var files: PackedStringArray = zip.get_files()
 	for file_path: String in files:
 		if file_path.ends_with("/"):
 			if DirAccess.make_dir_recursive_absolute(output_dir.path_join(file_path)) != OK:
 				zip.close()
-				print("Failed to create directory: %s" % file_path)
-				info_label.set_deferred("text", "Failed")
+				_failed.call_deferred()
 				return
 			continue
 		var buffer: PackedByteArray = zip.read_file(file_path)
@@ -83,11 +82,20 @@ func _uncompress_file(zip_path: String, output_dir: String) -> void:
 			var full_path: String = output_dir.path_join(file_path)
 			var file: FileAccess = FileAccess.open(full_path, FileAccess.WRITE)
 			if file == null:
-				print("Failed to open file: %s" % full_path)
-				info_label.set_deferred("text", "Failed")
+				zip.close()
+				_failed.call_deferred()
 				return
 			file.store_buffer(buffer)
 			file.close()
 	zip.close()
-	info_label.set_deferred("text", "Completed")
-	progress_bar.set_deferred("value", 100)
+	uncompressed.emit.call_deferred()
+
+func _on_uncompressed() -> void:
+	WorkerThreadPool.wait_for_task_completion(uncompress_task_id)
+	info_label.text = "Completed"
+	progress_bar.set_value_no_signal(100)
+	cancel_button.text = "Close"
+	cancel_button.disabled = false
+	if (download_path != ""
+		and FileAccess.file_exists(download_path)):
+		OS.move_to_trash(ProjectSettings.globalize_path(download_path))
