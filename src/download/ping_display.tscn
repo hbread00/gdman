@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://o4df7hsmn462"]
+
+[ext_resource type="Texture2D" uid="uid://drof1ton7rad7" path="res://asset/icon/ping.svg" id="1_8t5cl"]
+[ext_resource type="Script" uid="uid://bpnra5cmsli8b" path="res://src/download/ping_display.gd" id="1_x1smy"]
+
+[node name="PingDisplay" type="HBoxContainer" unique_id=780376390]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_x1smy")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=357147990]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "ping"
+
+[node name="Pass" type="Control" parent="." unique_id=1629723752]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1525628099]
+layout_mode = 2
+texture = ExtResource("1_8t5cl")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PingLabel" type="Label" parent="." unique_id=214407094]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "100"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=70816791]
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

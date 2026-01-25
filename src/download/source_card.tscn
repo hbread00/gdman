@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvhkrjsovo0lf"]
 
 [ext_resource type="Script" uid="uid://b1y50kwd8yme3" path="res://src/download/source_card.gd" id="1_h676o"]
+[ext_resource type="Texture2D" uid="uid://b4s86yj60klpo" path="res://asset/icon/godot.svg" id="2_0lsju"]
 [ext_resource type="Texture2D" uid="uid://f3w2u4j2iw1k" path="res://asset/icon/unstable.svg" id="2_vno5b"]
 [ext_resource type="Texture2D" uid="uid://ddqhbrd1han2p" path="res://asset/icon/download.svg" id="4_cieoe"]
 
@@ -14,6 +15,12 @@ script = ExtResource("1_h676o")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=322069250]
 layout_mode = 2
+
+[node name="SourceIcon" type="TextureRect" parent="HBoxContainer" unique_id=1698356943]
+layout_mode = 2
+texture = ExtResource("2_0lsju")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="NameLabel" type="Label" parent="HBoxContainer" unique_id=1143017360]
 layout_mode = 2

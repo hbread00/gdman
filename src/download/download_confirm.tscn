@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dhppyf1y4otgk"]
 
 [ext_resource type="Script" uid="uid://da5txdpgdjcu7" path="res://src/download/download_confirm.gd" id="1_2r55n"]
-[ext_resource type="PackedScene" uid="uid://dos33l6wljnqj" path="res://src/download/ping_request.tscn" id="2_t5135"]
+[ext_resource type="PackedScene" uid="uid://o4df7hsmn462" path="res://src/download/ping_display.tscn" id="2_t5135"]
 
 [node name="DownloadConfirm" type="ConfirmationDialog" unique_id=1392267383]
 oversampling_override = 1.0
@@ -11,47 +11,22 @@ visible = true
 script = ExtResource("1_2r55n")
 
 [node name="SourceContainer" type="VBoxContainer" parent="." unique_id=2071972493]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.5
 offset_top = 8.0
-offset_right = -8.0
-offset_bottom = -49.0
+offset_right = 92.5
+offset_bottom = 120.0
 grow_horizontal = 2
-grow_vertical = 2
 
-[node name="ConnectContainer" type="GridContainer" parent="SourceContainer" unique_id=1423350885]
+[node name="GodotPingDisplay" parent="SourceContainer" unique_id=780376390 instance=ExtResource("2_t5135")]
 layout_mode = 2
-columns = 2
+title = "Godot"
 
-[node name="GodotLabel" type="Label" parent="SourceContainer/ConnectContainer" unique_id=822009858]
+[node name="GithubPingDisplay" parent="SourceContainer" unique_id=856007491 instance=ExtResource("2_t5135")]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Godot"
-vertical_alignment = 1
-
-[node name="GodotPingLabel" type="Label" parent="SourceContainer/ConnectContainer" unique_id=1470310124]
-layout_mode = 2
-text = "-1"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="GodotPingRequest" parent="SourceContainer/ConnectContainer/GodotPingLabel" unique_id=2093463387 instance=ExtResource("2_t5135")]
-
-[node name="GithubLabel" type="Label" parent="SourceContainer/ConnectContainer" unique_id=1287375534]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Github"
-vertical_alignment = 1
-
-[node name="GithubPingLabel" type="Label" parent="SourceContainer/ConnectContainer" unique_id=351868676]
-layout_mode = 2
-text = "-1"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="GithubPingRequest" parent="SourceContainer/ConnectContainer/GithubPingLabel" unique_id=1224598979 instance=ExtResource("2_t5135")]
+title = "Github"
 
 [node name="SourceOption" type="OptionButton" parent="SourceContainer" unique_id=1846271872]
 layout_mode = 2
@@ -68,11 +43,4 @@ popup/item_3/text = "Unofficial"
 popup/item_3/id = 3
 popup/item_3/separator = true
 
-[node name="UnofficialLabel" type="Label" parent="SourceContainer" unique_id=1144905476]
-visible = false
-layout_mode = 2
-text = "This is unofficial source!"
-
 [connection signal="confirmed" from="." to="." method="_on_confirmed"]
-[connection signal="ping_result" from="SourceContainer/ConnectContainer/GodotPingLabel/GodotPingRequest" to="." method="_on_godot_ping_request_ping_result"]
-[connection signal="ping_result" from="SourceContainer/ConnectContainer/GithubPingLabel/GithubPingRequest" to="." method="_on_github_ping_request_ping_result"]

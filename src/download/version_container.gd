@@ -1,6 +1,6 @@
 extends FoldableContainer
 
-signal download(engine_id: String, major_version: String)
+signal download(engine_id: String)
 
 const SOURCE_CARD = preload("res://src/download/source_card.tscn")
 
@@ -16,11 +16,18 @@ func _ready() -> void:
 		card.engine_id = engine_id
 		card.download.connect(_on_download_card_download)
 		card_container.add_child(card)
+		var card_dotnet: Node = SOURCE_CARD.instantiate()
+		card_dotnet.engine_id = "%s-dotnet" % engine_id
+		card_dotnet.download.connect(_on_download_card_download)
+		card_container.add_child(card_dotnet)
 
-func switch_unstable_display(display: bool) -> void:
+func switch_display(stable: bool, dotnet: bool) -> void:
 	for card: Control in card_container.get_children():
-		if not card.is_stable:
-			card.visible = display
-
+		if card.is_dotnet and not dotnet:
+			card.hide()
+		elif not card.is_stable and stable:
+			card.hide()
+		else:
+			card.show()
 func _on_download_card_download(engine_id: String) -> void:
-	download.emit(engine_id, title)
+	download.emit(engine_id)

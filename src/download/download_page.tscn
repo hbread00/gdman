@@ -87,4 +87,5 @@ size_flags_vertical = 3
 visible = false
 
 [connection signal="toggled" from="TopBarContainer/OptionContainer/StableButton" to="." method="_on_stable_button_toggled"]
+[connection signal="toggled" from="TopBarContainer/OptionContainer/DotnetButton" to="." method="_on_dotnet_button_toggled"]
 [connection signal="download" from="DownloadConfirm" to="." method="_on_download_confirm_download"]

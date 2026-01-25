@@ -10,16 +10,21 @@ const DOWNLOADER_CARD: PackedScene = preload("res://src/download/downloader_card
 func _ready() -> void:
 	var version_container: Array[Node] = get_tree().get_nodes_in_group("download_version_container")
 	for container: Control in version_container:
-		container.switch_unstable_display(stable_button.button_pressed)
+		container.switch_display(stable_button.button_pressed, dotnet_button.button_pressed)
 		container.download.connect(_on_version_container_download)
 
 func _on_stable_button_toggled(toggled_on: bool) -> void:
 	var version_container: Array[Node] = get_tree().get_nodes_in_group("download_version_container")
 	for container: Control in version_container:
-		container.switch_unstable_display(toggled_on)
+		container.switch_display(toggled_on, dotnet_button.button_pressed)
 
-func _on_version_container_download(engine_id: String, major_version: String) -> void:
-	download_confirm.display(engine_id, major_version, dotnet_button.button_pressed)
+func _on_dotnet_button_toggled(toggled_on: bool) -> void:
+	var version_container: Array[Node] = get_tree().get_nodes_in_group("download_version_container")
+	for container: Control in version_container:
+		container.switch_display(stable_button.button_pressed, toggled_on)
+
+func _on_version_container_download(engine_id: String) -> void:
+	download_confirm.display(engine_id)
 
 
 func _on_download_confirm_download(url: String, engine_id: String) -> void:

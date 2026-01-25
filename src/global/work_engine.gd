@@ -4,9 +4,9 @@ class EngineInfo:
 	var id: String
 	var name: String
 	var version: String
-	var is_unstable: bool = false
-	var sort_number: int = 0
+	var is_stable: bool = false
 	var is_dotnet: bool = false
+	var sort_number: int = 0
 	var work_info: EngineWorkInfo
 	
 class EngineWorkInfo:
@@ -46,8 +46,7 @@ func id_to_engine_info(engine_id: String, with_work_info: bool = false) -> Engin
 	result.sort_number = _get_sort_number(result.version, info[1])
 	if info.size() == 3 and info[2] == "dotnet":
 		result.is_dotnet = true
-	if info[1] != "stable":
-		result.is_unstable = true
+	result.is_stable = info[1] == "stable"
 	if with_work_info:
 		var target_path: String = _get_executable_path(engine_id)
 		if target_path == "":
