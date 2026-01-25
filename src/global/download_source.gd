@@ -108,8 +108,8 @@ func _ready() -> void:
 	if json.parse(source_json) == OK:
 		source_data = json.data
 
-func get_source_godot_url(version_name: String, is_dotnet: bool, architecture: String) -> String:
-	var version_data: PackedStringArray = version_name.split("-")
+func get_source_godot_url(engine_id: String, is_dotnet: bool, architecture: String) -> String:
+	var version_data: PackedStringArray = engine_id.split("-")
 	if version_data.size() != 2:
 		return ""
 	var version: String = version_data[0]
@@ -120,8 +120,8 @@ func get_source_godot_url(version_name: String, is_dotnet: bool, architecture: S
 	var platform: String = SOURCE_GODOT_PLATFORM.get(architecture, "")
 	return SOURCE_GODOT_URL % [version, flavor, slug, platform]
 
-func get_source_github_url(version_name: String, is_dotnet: bool, architecture: String) -> String:
+func get_source_github_url(engine_id: String, is_dotnet: bool, architecture: String) -> String:
 	var file: String = SOURCE_GITHUB_FILE.get(architecture, "")
 	if is_dotnet:
 		file = SOURCE_GITHUB_DOTNET_FILE.get(architecture, "")
-	return SOURCE_GITHUB_URL % [version_name, version_name, file]
+	return SOURCE_GITHUB_URL % [engine_id, engine_id, file]

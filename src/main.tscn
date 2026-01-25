@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ddqhbrd1han2p" path="res://asset/icon/download.svg" id="5_srxbw"]
 [ext_resource type="Texture2D" uid="uid://mgdysp5iuh4l" path="res://asset/icon/setting.svg" id="6_d3u4l"]
 [ext_resource type="Texture2D" uid="uid://2crx7poin47h" path="res://asset/icon/about.svg" id="7_mlv6i"]
+[ext_resource type="PackedScene" uid="uid://cwn383vbptm1q" path="res://src/engine/engine_page.tscn" id="8_kf8lf"]
 [ext_resource type="PackedScene" uid="uid://cipjvpn3l8a48" path="res://src/project/project_page.tscn" id="8_tb146"]
 [ext_resource type="PackedScene" uid="uid://cq7qp7e00w6ol" path="res://src/download/download_page.tscn" id="9_e7lu8"]
 
@@ -77,7 +78,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ProjectPage" parent="HBoxContainer/PageContainer" unique_id=828684455 instance=ExtResource("8_tb146")]
+visible = false
 layout_mode = 2
 
+[node name="EnginePage" parent="HBoxContainer/PageContainer" unique_id=1313993800 instance=ExtResource("8_kf8lf")]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="DownloadPage" parent="HBoxContainer/PageContainer" unique_id=1939612761 instance=ExtResource("9_e7lu8")]
+visible = false
 layout_mode = 2

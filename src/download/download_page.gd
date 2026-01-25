@@ -18,15 +18,15 @@ func _on_stable_button_toggled(toggled_on: bool) -> void:
 	for container: Control in version_container:
 		container.switch_unstable_display(toggled_on)
 
-func _on_version_container_download(version_name: String, major_version: String) -> void:
-	download_confirm.display(version_name, major_version, dotnet_button.button_pressed)
+func _on_version_container_download(engine_id: String, major_version: String) -> void:
+	download_confirm.display(engine_id, major_version, dotnet_button.button_pressed)
 
 
-func _on_download_confirm_download(url: String, file_name: String) -> void:
+func _on_download_confirm_download(url: String, engine_id: String) -> void:
 	var downloader_card: Control = DOWNLOADER_CARD.instantiate()
 	downloader_card.url = url
 	if dotnet_button.button_pressed:
-		downloader_card.file_name = "%s-dotnet" % file_name
+		downloader_card.file_name = "%s-dotnet" % engine_id
 	else:
-		downloader_card.file_name = file_name
+		downloader_card.file_name = engine_id
 	downloader_container.add_child(downloader_card)
