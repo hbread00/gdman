@@ -14,15 +14,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_ujekw")
 
-[node name="OptionContainer" type="HBoxContainer" parent="." unique_id=933162693]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=933162693]
 layout_mode = 2
 
-[node name="ImportButton" type="Button" parent="OptionContainer" unique_id=1665693487]
+[node name="ImportButton" type="Button" parent="HBoxContainer" unique_id=1665693487]
 layout_mode = 2
 text = "Import"
 icon = ExtResource("2_8oi35")
 
-[node name="ImportFileDialog" type="FileDialog" parent="OptionContainer/ImportButton" unique_id=584780497]
+[node name="ImportFileDialog" type="FileDialog" parent="HBoxContainer/ImportButton" unique_id=584780497]
 oversampling_override = 1.0
 title = "Open a File"
 initial_position = 1
@@ -34,12 +34,12 @@ filters = PackedStringArray("*.godot")
 folder_creation_enabled = false
 deleting_enabled = false
 
-[node name="ScanButton" type="Button" parent="OptionContainer" unique_id=347899072]
+[node name="ScanButton" type="Button" parent="HBoxContainer" unique_id=347899072]
 layout_mode = 2
 text = "Scan"
 icon = ExtResource("3_s6ogv")
 
-[node name="ScanFileDialog" type="FileDialog" parent="OptionContainer/ScanButton" unique_id=988073660]
+[node name="ScanFileDialog" type="FileDialog" parent="HBoxContainer/ScanButton" unique_id=988073660]
 oversampling_override = 1.0
 title = "Open a Directory"
 position = Vector2i(0, 36)
@@ -50,32 +50,32 @@ access = 2
 folder_creation_enabled = false
 deleting_enabled = false
 
-[node name="FilterInput" type="LineEdit" parent="OptionContainer" unique_id=254899975]
+[node name="FilterInput" type="LineEdit" parent="HBoxContainer" unique_id=254899975]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Filter"
 
-[node name="FilterOption" type="OptionButton" parent="OptionContainer" unique_id=530222623]
-layout_mode = 2
-selected = 0
-item_count = 3
-popup/item_0/text = "Name"
-popup/item_0/id = 0
-popup/item_1/text = "Ascend"
-popup/item_1/id = 1
-popup/item_2/text = "Descend"
-popup/item_2/id = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1139310194]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=639309613]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CardContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1899702925]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer" unique_id=1139310194]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/ScrollContainer" unique_id=392487920]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="CardContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer/MarginContainer" unique_id=1899702925]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="pressed" from="OptionContainer/ImportButton" to="." method="_on_import_button_pressed"]
-[connection signal="file_selected" from="OptionContainer/ImportButton/ImportFileDialog" to="." method="_on_import_file_dialog_file_selected"]
-[connection signal="pressed" from="OptionContainer/ScanButton" to="." method="_on_scan_button_pressed"]
-[connection signal="dir_selected" from="OptionContainer/ScanButton/ScanFileDialog" to="." method="_on_scan_file_dialog_dir_selected"]
+[connection signal="pressed" from="HBoxContainer/ImportButton" to="." method="_on_import_button_pressed"]
+[connection signal="file_selected" from="HBoxContainer/ImportButton/ImportFileDialog" to="." method="_on_import_file_dialog_file_selected"]
+[connection signal="pressed" from="HBoxContainer/ScanButton" to="." method="_on_scan_button_pressed"]
+[connection signal="dir_selected" from="HBoxContainer/ScanButton/ScanFileDialog" to="." method="_on_scan_file_dialog_dir_selected"]

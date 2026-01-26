@@ -108,20 +108,32 @@ func _ready() -> void:
 	if json.parse(source_json) == OK:
 		source_data = json.data
 
-func get_source_godot_url(engine_id: String, is_dotnet: bool, architecture: String) -> String:
-	var version_data: PackedStringArray = engine_id.split("-")
-	if version_data.size() != 2:
+func has_source(engine_id: String, source: String) -> bool:
+	if not source_data.has(source):
+		return false
+	var engine_info: EngineManager.EngineInfo = EngineManager.id_to_engine_info(engine_id)
+	var version_data: Dictionary = source_data.get(source, {})
+	if not version_data.has(engine_info.project_version):
+		return false
+	var engine_list: PackedStringArray = version_data.get(engine_info.project_version, [])
+	return engine_info.id.replace("-dotnet", "") in engine_list
+
+func get_source_godot_url(engine_id: String, architecture: String) -> String:
+	var info: EngineManager.EngineInfo = EngineManager.id_to_engine_info(engine_id)
+	if info == null:
 		return ""
-	var version: String = version_data[0]
-	var flavor: String = version_data[1]
 	var slug: String = SOURCE_GODOT_SLUG.get(architecture, "")
-	if is_dotnet:
+	if info.is_dotnet:
 		slug = SOURCE_GODOT_DOTNET_SLUG.get(architecture, "")
 	var platform: String = SOURCE_GODOT_PLATFORM.get(architecture, "")
-	return SOURCE_GODOT_URL % [version, flavor, slug, platform]
+	return SOURCE_GODOT_URL % [info.version, info.flavor, slug, platform]
 
-func get_source_github_url(engine_id: String, is_dotnet: bool, architecture: String) -> String:
+func get_source_github_url(engine_id: String, architecture: String) -> String:
+	var info: EngineManager.EngineInfo = EngineManager.id_to_engine_info(engine_id)
+	if info == null:
+		return ""
 	var file: String = SOURCE_GITHUB_FILE.get(architecture, "")
-	if is_dotnet:
+	if info.is_dotnet:
 		file = SOURCE_GITHUB_DOTNET_FILE.get(architecture, "")
-	return SOURCE_GITHUB_URL % [engine_id, engine_id, file]
+	var handled_engine_id: String = engine_id.replace("-dotnet", "")
+	return SOURCE_GITHUB_URL % [handled_engine_id, handled_engine_id, file]

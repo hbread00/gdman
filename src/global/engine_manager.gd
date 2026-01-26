@@ -1,62 +1,59 @@
 extends Node
 
 class EngineInfo:
-	var id: String
-	var name: String
-	var version: String
-	var is_stable: bool = false
-	var is_dotnet: bool = false
+	var id: String # X.Y.Z-flavor[-dotnet]
+	var name: String # name for display
+	var version: String # X.Y[.Z]
+	var project_version: String # X.Y
+	var flavor: String
+	var is_stable: bool
+	var is_dotnet: bool
 	var sort_number: int = 0
-	var work_info: EngineWorkInfo
-	
-class EngineWorkInfo:
+
+class LocalEngine:
 	var dir_path: String
 	var executable_path: String
+	var info: EngineInfo
 
-var engines: Array[EngineInfo] = []
+var local_engines: Array[LocalEngine] = []
 
 func _ready() -> void:
 	load_engines()
 
 func load_engines() -> void:
-	engines.clear()
+	local_engines.clear()
 	var engines_dir: DirAccess = DirAccess.open(App.ENGINE_DIR)
 	if engines_dir == null:
 		return
 	for dir_name: String in engines_dir.get_directories():
-		var engine_info: EngineInfo = id_to_engine_info(dir_name, true)
-		if engine_info != null:
-			engines.append(engine_info)
-	engines.sort_custom(_compare_engine_info)
+		var engine_info: EngineInfo = id_to_engine_info(dir_name)
+		if engine_info == null:
+			continue
+		var local_engine: LocalEngine = LocalEngine.new()
+		local_engine.info = engine_info
+		local_engine.dir_path = ProjectSettings.globalize_path(App.ENGINE_DIR.path_join(dir_name))
+		local_engine.executable_path = ProjectSettings.globalize_path(_get_executable_path(dir_name))
+		local_engines.append(local_engine)
+	local_engines.sort_custom(_compare_local_engine)
 
-func id_to_engine_info(engine_id: String, with_work_info: bool = false) -> EngineInfo:
+func id_to_engine_info(engine_id: String) -> EngineInfo:
 	var info: PackedStringArray = engine_id.split("-")
-	if info.size() < 2 or info.size() > 3:
+	if info.size() != 2 and info.size() != 3:
 		return null
-	var result: EngineInfo = EngineInfo.new()
-	result.id = engine_id
-	result.name = id_to_display_name(engine_id)
-	# Version format: X.Y.Z or X.Y
-	# Project only check X.Y
-	var version_info: PackedStringArray = info[0].split(".")
+	var engine_info: EngineInfo = EngineInfo.new()
+	engine_info.id = engine_id
+	engine_info.name = id_to_display_name(engine_id)
+	engine_info.version = info[0]
+	var version_info: PackedStringArray = engine_info.version.split(".")
 	if version_info.size() >= 2:
-		result.version = "%s.%s" % [version_info[0], version_info[1]]
+		engine_info.project_version = "%s.%s" % [version_info[0], version_info[1]]
 	else:
-		result.version = info[0]
-	result.sort_number = _get_sort_number(result.version, info[1])
-	if info.size() == 3 and info[2] == "dotnet":
-		result.is_dotnet = true
-	result.is_stable = info[1] == "stable"
-	if with_work_info:
-		var target_path: String = _get_executable_path(engine_id)
-		if target_path == "":
-			result.free()
-			return null
-		var work_info: EngineWorkInfo = EngineWorkInfo.new()
-		work_info.dir_path = ProjectSettings.globalize_path(App.ENGINE_DIR.path_join(engine_id))
-		work_info.executable_path = ProjectSettings.globalize_path(target_path)
-		result.work_info = work_info
-	return result
+		engine_info.project_version = engine_info.version
+	engine_info.flavor = info[1]
+	engine_info.sort_number = _get_sort_number(engine_info.version, engine_info.flavor)
+	engine_info.is_stable = engine_info.flavor == "stable"
+	engine_info.is_dotnet = info.size() == 3 and info[2] == "dotnet"
+	return engine_info
 
 # Format: 1Major|1Minor|1Patch|1Flavor|2Build
 func _get_sort_number(version: String, flavor: String) -> int:
@@ -85,8 +82,8 @@ func _get_sort_number(version: String, flavor: String) -> int:
 	var build: int = flavor.to_int()
 	return major * 1000000 + minor * 10000 + patch * 1000 + flavor_number * 100 + build
 
-func _compare_engine_info(a: EngineInfo, b: EngineInfo) -> bool:
-	return a.sort_number > b.sort_number
+func _compare_local_engine(a: LocalEngine, b: LocalEngine) -> bool:
+	return a.info.sort_number > b.info.sort_number
 
 func _get_executable_path(dir_name: String) -> String:
 	var target_path: String = ""

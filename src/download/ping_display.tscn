@@ -20,6 +20,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1525628099]
+modulate = Color(0, 0, 1, 1)
 layout_mode = 2
 texture = ExtResource("1_8t5cl")
 expand_mode = 3
@@ -28,7 +29,7 @@ stretch_mode = 5
 [node name="PingLabel" type="Label" parent="." unique_id=214407094]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "100"
+text = "..."
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=70816791]
 

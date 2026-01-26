@@ -22,9 +22,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 App="*uid://dtto62rc43fkr"
-WorkEngine="*uid://f1fsb2d0pkkw"
-DownloadSource="*uid://cga0fc7y2vyr8"
 Config="*uid://b416biq16v3rx"
+EngineManager="*uid://f1fsb2d0pkkw"
+DownloadSource="*uid://cga0fc7y2vyr8"
 
 [debug]
 

@@ -10,14 +10,14 @@ func _ready() -> void:
 
 func _load_engine() -> void:
 	refresh_button.disabled = true
-	for engine_info: WorkEngine.EngineInfo in WorkEngine.engines:
-		var card: Node = ENGINE_CARD.instantiate()
-		card.engine_id = engine_info.id
-		card.display_name = engine_info.name
-		card.version = engine_info.version
-		card.dir_path = engine_info.work_info.dir_path
-		card.executable_path = engine_info.work_info.executable_path
-		card.is_dotnet = engine_info.is_dotnet
+	for local_engine: EngineManager.LocalEngine in EngineManager.local_engines:
+		var card: Control = ENGINE_CARD.instantiate()
+		card.engine_id = local_engine.info.id
+		card.display_name = local_engine.info.name
+		card.version = local_engine.info.project_version
+		card.dir_path = local_engine.dir_path
+		card.is_dotnet = local_engine.info.is_dotnet
+		card.executable_path = local_engine.executable_path
 		card_container.add_child(card)
 
 func _on_refresh_button_pressed() -> void:

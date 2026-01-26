@@ -1,4 +1,4 @@
-extends Panel
+extends PanelContainer
 
 @onready var project_button: Button = $HBoxContainer/SideBar/ProjectButton
 @onready var engine_button: Button = $HBoxContainer/SideBar/EngineButton

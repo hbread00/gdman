@@ -5,9 +5,9 @@ const DOTNET: CompressedTexture2D = preload("uid://b5cuh2fee8rn5")
 var engine_id: String = ""
 var display_name: String = ""
 var version: String = ""
+var is_dotnet: bool = false
 var dir_path: String = ""
 var executable_path: String = ""
-var is_dotnet: bool = false
 
 @onready var engine_icon: TextureRect = $MarginContainer/VBoxContainer/HBoxContainer/EngineIcon
 @onready var name_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/NameLabel

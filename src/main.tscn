@@ -10,21 +10,18 @@
 [ext_resource type="PackedScene" uid="uid://cipjvpn3l8a48" path="res://src/project/project_page.tscn" id="8_tb146"]
 [ext_resource type="PackedScene" uid="uid://cq7qp7e00w6ol" path="res://src/download/download_page.tscn" id="9_e7lu8"]
 
-[node name="Main" type="Panel" unique_id=974855598]
+[node name="Main" type="PanelContainer" unique_id=1415400350]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("2_mgm53")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=805635866]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="SideBar" type="VBoxContainer" parent="HBoxContainer" unique_id=1036997934]
 layout_mode = 2
@@ -78,7 +75,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ProjectPage" parent="HBoxContainer/PageContainer" unique_id=828684455 instance=ExtResource("8_tb146")]
-visible = false
 layout_mode = 2
 
 [node name="EnginePage" parent="HBoxContainer/PageContainer" unique_id=1313993800 instance=ExtResource("8_kf8lf")]
@@ -86,5 +82,4 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="DownloadPage" parent="HBoxContainer/PageContainer" unique_id=1939612761 instance=ExtResource("9_e7lu8")]
-visible = false
 layout_mode = 2

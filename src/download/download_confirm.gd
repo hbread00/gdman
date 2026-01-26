@@ -16,24 +16,25 @@ var source_github_url: String = ""
 func display(engine_id: String) -> void:
 	if last_engine_id != engine_id:
 		last_engine_id = engine_id
-		var info: WorkEngine.EngineInfo = WorkEngine.id_to_engine_info(engine_id, false)
 		title = "Download %s" % engine_id
-		var handled_engine_id: String = engine_id.replace("-dotnet", "")
-		source_option.set_item_disabled(SOURCE_GODOT_INDEX, true)
-		var godot_data: Dictionary = DownloadSource.source_data.get("godot", {})
-		if (godot_data.has(info.version)
-			and handled_engine_id in godot_data.get(info.version, [])):
-			source_option.set_item_disabled(SOURCE_GODOT_INDEX, false)
-			source_godot_url = DownloadSource.get_source_godot_url(handled_engine_id, info.is_dotnet, App.get_architecture())
-			godot_ping_display.ping(source_godot_url)
-		source_option.set_item_disabled(SOURCE_GITHUB_INDEX, true)
-		var github_data: Dictionary = DownloadSource.source_data.get("github", {})
-		if (github_data.has(info.version)
-			and handled_engine_id in github_data.get(info.version, [])):
-			source_option.set_item_disabled(SOURCE_GITHUB_INDEX, false)
-			source_github_url = DownloadSource.get_source_github_url(handled_engine_id, info.is_dotnet, App.get_architecture())
-			github_ping_display.ping(source_github_url)
+		_handle_source_godot(engine_id)
+		_handle_source_github(engine_id)
 	popup_centered()
+
+func _handle_source_godot(engine_id: String) -> void:
+	source_option.set_item_disabled(SOURCE_GODOT_INDEX, true)
+	if DownloadSource.has_source(engine_id, "godot"):
+		source_option.set_item_disabled(SOURCE_GODOT_INDEX, false)
+		source_godot_url = DownloadSource.get_source_godot_url(engine_id, App.get_architecture())
+		godot_ping_display.ping(source_godot_url)
+	source_option.set_item_disabled(SOURCE_GITHUB_INDEX, true)
+
+func _handle_source_github(engine_id: String) -> void:
+	source_option.set_item_disabled(SOURCE_GITHUB_INDEX, true)
+	if DownloadSource.has_source(engine_id, "github"):
+		source_option.set_item_disabled(SOURCE_GITHUB_INDEX, false)
+		source_github_url = DownloadSource.get_source_github_url(engine_id, App.get_architecture())
+		github_ping_display.ping(source_github_url)
 
 
 func _on_confirmed() -> void:

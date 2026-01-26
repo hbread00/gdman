@@ -1,10 +1,10 @@
 extends VBoxContainer
 
-const PROJECT_CARD: PackedScene = preload("res://src/project/project_card.tscn")
+const PROJECT_CARD: PackedScene = preload("uid://cphby36r2gwsb")
 
-@onready var import_file_dialog: FileDialog = $OptionContainer/ImportButton/ImportFileDialog
-@onready var scan_file_dialog: FileDialog = $OptionContainer/ScanButton/ScanFileDialog
-@onready var card_container: VBoxContainer = $ScrollContainer/CardContainer
+@onready var import_file_dialog: FileDialog = $HBoxContainer/ImportButton/ImportFileDialog
+@onready var scan_file_dialog: FileDialog = $HBoxContainer/ScanButton/ScanFileDialog
+@onready var card_container: VBoxContainer = $PanelContainer/ScrollContainer/MarginContainer/CardContainer
 
 var project_cards: Dictionary[String, Node] = {}
 

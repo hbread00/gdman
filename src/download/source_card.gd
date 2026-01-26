@@ -5,6 +5,7 @@ const DOTNET: CompressedTexture2D = preload("uid://b5cuh2fee8rn5")
 signal download(engine_id: String)
 
 var engine_id: String = ""
+
 var is_stable: bool = false
 var is_dotnet: bool = false
 
@@ -16,12 +17,12 @@ func _ready() -> void:
 	unstable_icon.hide()
 	if engine_id == "":
 		return
-	var info: WorkEngine.EngineInfo = WorkEngine.id_to_engine_info(engine_id, false)
+	var info: EngineManager.EngineInfo = EngineManager.id_to_engine_info(engine_id)
 	name_label.text = info.name
 	is_stable = info.is_stable
-	is_dotnet = info.is_dotnet
 	if not is_stable:
 		unstable_icon.show()
+	is_dotnet = info.is_dotnet
 	if is_dotnet:
 		source_icon.texture = DOTNET
 
