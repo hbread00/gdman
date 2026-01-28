@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cq454lo24jwpx" path="res://asset/icon/delete.svg" id="3_73bku"]
 [ext_resource type="Texture2D" uid="uid://f3w2u4j2iw1k" path="res://asset/icon/unstable.svg" id="4_cieoe"]
 [ext_resource type="Texture2D" uid="uid://hv0qw0fm1wga" path="res://asset/icon/directory.svg" id="5_h676o"]
+[ext_resource type="PackedScene" uid="uid://h1bpjk608orc" path="res://src/component/image_button.tscn" id="5_o2t1o"]
 
 [node name="EngineCard" type="PanelContainer" unique_id=1647816841]
 anchors_preset = 10
@@ -74,10 +75,11 @@ icon = ExtResource("2_vno5b")
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1204657544]
 layout_mode = 2
 
-[node name="FileButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=585116690]
+[node name="FileButton" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1327550945 instance=ExtResource("5_o2t1o")]
+custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
-icon = ExtResource("5_h676o")
-icon_alignment = 1
+fit_mode = 1
+image = ExtResource("5_h676o")
 
 [node name="PathLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1756915805]
 modulate = Color(1, 1, 1, 0.6)
@@ -88,9 +90,11 @@ vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1541887588]
+[node name="DeleteButton" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2001668733 instance=ExtResource("5_o2t1o")]
+custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
-icon = ExtResource("3_73bku")
+fit_mode = 1
+image = ExtResource("3_73bku")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RunButton" to="." method="_on_run_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/FileButton" to="." method="_on_file_button_pressed"]
