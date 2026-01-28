@@ -1,7 +1,23 @@
 extends PanelContainer
 
-@onready var project_button: Button = $HBoxContainer/SideBar/ProjectButton
-@onready var engine_button: Button = $HBoxContainer/SideBar/EngineButton
-@onready var download_button: Button = $HBoxContainer/SideBar/DownloadButton
-@onready var setting_button: Button = $HBoxContainer/SideBar/SettingButton
-@onready var about_button: Button = $HBoxContainer/SideBar/AboutButton
+@onready var page_container: TabContainer = $HBoxContainer/PageContainer
+
+
+func _on_project_button_pressed() -> void:
+	page_container.current_tab = 0
+
+
+func _on_engine_button_pressed() -> void:
+	page_container.current_tab = 1
+
+
+func _on_download_button_pressed() -> void:
+	page_container.current_tab = 2
+
+
+func _on_setting_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_about_button_pressed() -> void:
+	pass # Replace with function body.

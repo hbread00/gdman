@@ -1,46 +1,46 @@
 [gd_scene format=3 uid="uid://dhppyf1y4otgk"]
 
 [ext_resource type="Script" uid="uid://da5txdpgdjcu7" path="res://src/download/download_confirm.gd" id="1_2r55n"]
-[ext_resource type="PackedScene" uid="uid://o4df7hsmn462" path="res://src/download/ping_display.tscn" id="2_t5135"]
+[ext_resource type="PackedScene" uid="uid://dpahpij7nowfh" path="res://src/component/panel_label.tscn" id="2_t5135"]
 
 [node name="DownloadConfirm" type="ConfirmationDialog" unique_id=1392267383]
 oversampling_override = 1.0
 position = Vector2i(0, 36)
-size = Vector2i(201, 169)
+size = Vector2i(372, 100)
 visible = true
 script = ExtResource("1_2r55n")
 
-[node name="SourceContainer" type="VBoxContainer" parent="." unique_id=2071972493]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2071972493]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -92.5
+offset_left = -178.0
 offset_top = 8.0
-offset_right = 92.5
-offset_bottom = 120.0
+offset_right = 178.0
+offset_bottom = 51.0
 grow_horizontal = 2
 
-[node name="GodotPingDisplay" parent="SourceContainer" unique_id=780376390 instance=ExtResource("2_t5135")]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1139881922]
 layout_mode = 2
-title = "Godot"
 
-[node name="GithubPingDisplay" parent="SourceContainer" unique_id=856007491 instance=ExtResource("2_t5135")]
+[node name="PingContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=709997604]
 layout_mode = 2
-title = "Github"
 
-[node name="SourceOption" type="OptionButton" parent="SourceContainer" unique_id=1846271872]
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=1031333277]
 layout_mode = 2
-selected = 1
-item_count = 4
-popup/item_0/text = "Official"
-popup/item_0/id = 0
-popup/item_0/separator = true
-popup/item_1/text = "Godot"
-popup/item_1/id = 1
-popup/item_2/text = "Github"
-popup/item_2/id = 2
-popup/item_3/text = "Unofficial"
-popup/item_3/id = 3
-popup/item_3/separator = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=872519067]
+layout_mode = 2
+
+[node name="UrlLabel" parent="VBoxContainer/HBoxContainer" unique_id=1885016877 instance=ExtResource("2_t5135")]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+text = "text"
+margin_left = 2
+margin_right = 2
+
+[node name="SourceOption" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1846271872]
+layout_mode = 2
 
 [connection signal="confirmed" from="." to="." method="_on_confirmed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/SourceOption" to="." method="_on_source_option_item_selected"]

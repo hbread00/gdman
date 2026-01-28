@@ -8,7 +8,6 @@ extends HBoxContainer
 			title_label.text = title
 
 var start_time: int = 0
-
 @onready var title_label: Label = $TitleLabel
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var ping_label: Label = $PingLabel
@@ -18,7 +17,11 @@ func _ready() -> void:
 	title_label.text = title
 
 func ping(url: String) -> void:
-	if http_request.get_http_client_status() == HTTPClient.STATUS_REQUESTING:
+	tooltip_text = url
+	var status: HTTPClient.Status = http_request.get_http_client_status()
+	if (status == HTTPClient.STATUS_RESOLVING or
+		status == HTTPClient.STATUS_CONNECTING or
+		status == HTTPClient.STATUS_REQUESTING):
 		http_request.cancel_request()
 	start_time = Time.get_ticks_msec()
 	ping_label.text = "..."

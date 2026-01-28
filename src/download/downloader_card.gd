@@ -8,14 +8,15 @@ var file_name: String = ""
 var download_path: String = ""
 var uncompress_task_id: int = -1
 
-@onready var title_label: Label = $VBoxContainer/TitleLabel
-@onready var progress_bar: ProgressBar = $VBoxContainer/ProgressBar
-@onready var info_label: Label = $VBoxContainer/InfoLabel
-@onready var cancel_button: Button = $VBoxContainer/CancelButton
+@onready var title_label: Label = $MarginContainer/VBoxContainer/TitleLabel
+@onready var progress_bar: ProgressBar = $MarginContainer/VBoxContainer/ProgressBar
+@onready var info_label: Label = $MarginContainer/VBoxContainer/InfoLabel
+@onready var cancel_button: Button = $MarginContainer/VBoxContainer/CancelButton
 @onready var http_request: HTTPRequest = $HTTPRequest
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
+	tooltip_text = url
 	title_label.text = file_name
 	if DirAccess.make_dir_recursive_absolute(App.DOWNLOAD_DIR) != OK:
 		return

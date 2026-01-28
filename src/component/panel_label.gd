@@ -1,28 +1,18 @@
-@tool
-extends Button
+extends PanelContainer
 
-enum FitMode {
-	NONE,
-	FIT_WIDTH,
-	FIT_HEIGHT,
-}
-
-@export var fit_mode: FitMode = FitMode.NONE:
+@export var text: String:
 	set(v):
-		fit_mode = v
+		text = v
 		if Engine.is_editor_hint() or is_node_ready():
-			match fit_mode:
-				FitMode.FIT_WIDTH:
-					size = Vector2(size.y, 0)
-				FitMode.FIT_HEIGHT:
-					size = Vector2(0, size.x)
+			label.text = text
 
-@export var image: Texture2D:
+@export var font_size: int = 16:
 	set(v):
-		image = v
+		font_size = v
 		if Engine.is_editor_hint() or is_node_ready():
-			texture_rect.texture = image
+			label.add_theme_font_size_override("font_size", font_size)
 
+@export_group("Margin")
 @export var margin_left: int = 1:
 	set(v):
 		margin_left = v
@@ -45,35 +35,12 @@ enum FitMode {
 			margin_container.add_theme_constant_override("margin_bottom", margin_bottom)
 
 @onready var margin_container: MarginContainer = $MarginContainer
-@onready var texture_rect: TextureRect = $MarginContainer/TextureRect
+@onready var label: Label = $MarginContainer/Label
 
 func _ready() -> void:
-	match fit_mode:
-		FitMode.NONE:
-			custom_minimum_size = Vector2.ZERO
-		FitMode.FIT_WIDTH:
-			custom_minimum_size = Vector2(size.y, 0)
-		FitMode.FIT_HEIGHT:
-			custom_minimum_size = Vector2(0, size.x)
 	margin_container.add_theme_constant_override("margin_left", margin_left)
 	margin_container.add_theme_constant_override("margin_top", margin_top)
 	margin_container.add_theme_constant_override("margin_right", margin_right)
 	margin_container.add_theme_constant_override("margin_bottom", margin_bottom)
-	texture_rect.texture = image
-
-
-func _on_resized() -> void:
-	if not is_node_ready():
-		return
-	match fit_mode:
-		FitMode.NONE:
-			custom_minimum_size = Vector2.ZERO
-		FitMode.FIT_WIDTH:
-			custom_minimum_size = Vector2(size.y, 0)
-		FitMode.FIT_HEIGHT:
-			custom_minimum_size = Vector2(0, size.x)
-	margin_container.add_theme_constant_override("margin_left", margin_left)
-	margin_container.add_theme_constant_override("margin_top", margin_top)
-	margin_container.add_theme_constant_override("margin_right", margin_right)
-	margin_container.add_theme_constant_override("margin_bottom", margin_bottom)
-	texture_rect.texture = image
+	label.text = text
+	label.add_theme_font_size_override("font_size", font_size)

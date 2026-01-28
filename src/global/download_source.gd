@@ -14,14 +14,18 @@ const SOURCE_TEMPLATE: Dictionary = {
 		}
 	}
 }
+const BUILD_STANDARD: String = "standard"
+const BUILD_DOTNET: String = "dotnet"
+const OFFICIAL_SOURCE: Array[String] = ["godot", "github"]
+
+signal source_loaded()
 
 var source: Dictionary = {}
 var valid_version: Dictionary[String, Array] = {}
+var valid_source: Array[String] = []
 
 func _ready() -> void:
 	load_source()
-	print(valid_version)
-	
 
 func load_source() -> void:
 	var source_json: String = FileAccess.get_file_as_string("res://src/global/source/source.json")
@@ -42,15 +46,15 @@ func load_source() -> void:
 			var base_version: String = version_data.get("base_version", "")
 			if id == "" or base_version == "":
 				continue
-			if version_data.has("standard"):
-				var standard_url: String = version_data["standard"].get(arch, "")
+			if version_data.has(BUILD_STANDARD):
+				var standard_url: String = version_data[BUILD_STANDARD].get(arch, "")
 				if standard_url != "":
-					_add_source(base_version, id, "standard", source_name, standard_url)
-
-			if version_data.has("dotnet"):
-				var dotnet_url: String = version_data["dotnet"].get(arch, "")
+					_add_source(base_version, id, BUILD_STANDARD, source_name, standard_url)
+			if version_data.has(BUILD_DOTNET):
+				var dotnet_url: String = version_data[BUILD_DOTNET].get(arch, "")
 				if dotnet_url != "":
-					_add_source(base_version, id, "dotnet", source_name, dotnet_url)
+					_add_source(base_version, id, BUILD_DOTNET, source_name, dotnet_url)
+	source_loaded.emit()
 
 func _add_source(base_version: String, id: String, build_type: String, source_name: String, url: String) -> void:
 	if not source.has(base_version):
@@ -65,3 +69,12 @@ func _add_source(base_version: String, id: String, build_type: String, source_na
 		valid_version[base_version] = []
 	if id not in valid_version[base_version]:
 		valid_version[base_version].append(id)
+	# Record valid sources
+	if source_name not in valid_source:
+		valid_source.append(source_name)
+
+func get_source_url(version: String, id: String, is_dotnet: bool, source_name: String) -> String:
+	var build_type: String = BUILD_STANDARD
+	if is_dotnet:
+		build_type = BUILD_DOTNET
+	return source.get(version, {}).get(id, {}).get(build_type, {}).get(source_name, "")

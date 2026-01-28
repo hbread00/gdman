@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-const DOWNLOADER_CARD: PackedScene = preload("res://src/download/downloader_card.tscn")
+const DOWNLOADER_CARD: PackedScene = preload("uid://bgk1814jgblda")
 
 @onready var download_confirm: ConfirmationDialog = $DownloadConfirm
 
@@ -9,17 +9,34 @@ const DOWNLOADER_CARD: PackedScene = preload("res://src/download/downloader_card
 @onready var stable_check: CheckBox = $TopBarContainer/OptionContainer/StableCheck
 @onready var unstable_check: CheckBox = $TopBarContainer/OptionContainer/UnstableCheck
 
-@onready var downloader_container: VBoxContainer = $HSplitContainer/ScrollContainer2/DownloaderContainer
+@onready var downloader_container: VBoxContainer = $HSplitContainer/PanelContainer/ScrollContainer/MarginContainer/DownloaderContainer
 
 func _ready() -> void:
 	var version_container: Array[Node] = get_tree().get_nodes_in_group("download_version_container")
 	for container: Control in version_container:
 		container.download.connect(_on_version_container_download)
+	standard_check.toggled.connect(_switch_display)
+	dotnet_check.toggled.connect(_switch_display)
+	stable_check.toggled.connect(_switch_display)
+	unstable_check.toggled.connect(_switch_display)
+	_switch_display(false)
 
 func _on_version_container_download(engine_id: String) -> void:
 	download_confirm.display(engine_id)
 
+func _switch_display(_pass: bool) -> void:
+	var version_container: Array[Node] = get_tree().get_nodes_in_group("download_version_container")
+	for container: Control in version_container:
+		container.switch_display(
+			standard_check.button_pressed,
+			dotnet_check.button_pressed,
+			stable_check.button_pressed,
+			unstable_check.button_pressed
+		)
 
-func _on_download_confirm_download() -> void:
+
+func _on_download_confirm_download(url: String, engine_id: String) -> void:
 	var downloader_card: Control = DOWNLOADER_CARD.instantiate()
+	downloader_card.url = url
+	downloader_card.file_name = engine_id
 	downloader_container.add_child(downloader_card)

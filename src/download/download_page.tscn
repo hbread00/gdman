@@ -22,6 +22,7 @@ layout_mode = 2
 
 [node name="StandardCheck" type="CheckBox" parent="TopBarContainer/OptionContainer" unique_id=1007961907]
 layout_mode = 2
+button_pressed = true
 text = "Standard"
 
 [node name="DotnetCheck" type="CheckBox" parent="TopBarContainer/OptionContainer" unique_id=1892982159]
@@ -33,6 +34,7 @@ layout_mode = 2
 
 [node name="StableCheck" type="CheckBox" parent="TopBarContainer/OptionContainer" unique_id=86975575]
 layout_mode = 2
+button_pressed = true
 text = "Stable"
 
 [node name="UnstableCheck" type="CheckBox" parent="TopBarContainer/OptionContainer" unique_id=1761071388]
@@ -42,6 +44,8 @@ text = "Unstable"
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=888305415]
 layout_mode = 2
 size_flags_vertical = 3
+split_offsets = PackedInt32Array(-80)
+split_offset = -80
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer" unique_id=2134695551]
 layout_mode = 2
@@ -81,11 +85,25 @@ title = "4.1"
 layout_mode = 2
 title = "4.0"
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="HSplitContainer" unique_id=1675369802]
-custom_minimum_size = Vector2(128, 0)
+[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer" unique_id=1207972682]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/PanelContainer" unique_id=1675369802]
 layout_mode = 2
 
-[node name="DownloaderContainer" type="VBoxContainer" parent="HSplitContainer/ScrollContainer2" unique_id=686502094]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/PanelContainer/ScrollContainer" unique_id=878528451]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="DownloaderContainer" type="VBoxContainer" parent="HSplitContainer/PanelContainer/ScrollContainer/MarginContainer" unique_id=686502094]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

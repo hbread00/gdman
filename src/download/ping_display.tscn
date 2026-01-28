@@ -12,7 +12,6 @@ script = ExtResource("1_x1smy")
 
 [node name="TitleLabel" type="Label" parent="." unique_id=357147990]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
 text = "ping"
 
 [node name="Pass" type="Control" parent="." unique_id=1629723752]
@@ -28,7 +27,6 @@ stretch_mode = 5
 
 [node name="PingLabel" type="Label" parent="." unique_id=214407094]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
 text = "..."
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=70816791]

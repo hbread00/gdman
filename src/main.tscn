@@ -70,16 +70,29 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="PageContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1091647719]
+[node name="PageContainer" type="TabContainer" parent="HBoxContainer" unique_id=1190496297]
 layout_mode = 2
 size_flags_horizontal = 3
+current_tab = 0
+tabs_visible = false
 
 [node name="ProjectPage" parent="HBoxContainer/PageContainer" unique_id=828684455 instance=ExtResource("8_tb146")]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="EnginePage" parent="HBoxContainer/PageContainer" unique_id=1313993800 instance=ExtResource("8_kf8lf")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
+metadata/_tab_index = 1
 
 [node name="DownloadPage" parent="HBoxContainer/PageContainer" unique_id=1939612761 instance=ExtResource("9_e7lu8")]
+visible = false
 layout_mode = 2
+metadata/_tab_index = 2
+
+[connection signal="pressed" from="HBoxContainer/SideBar/ProjectButton" to="." method="_on_project_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SideBar/EngineButton" to="." method="_on_engine_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SideBar/DownloadButton" to="." method="_on_download_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SideBar/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SideBar/AboutButton" to="." method="_on_about_button_pressed"]
