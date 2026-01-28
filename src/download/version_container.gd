@@ -7,6 +7,7 @@ const SOURCE_CARD: PackedScene = preload("uid://cvhkrjsovo0lf")
 @onready var card_container: VBoxContainer = $HBoxContainer/CardContainer
 
 func _ready() -> void:
+	return
 	var version_data: Dictionary = DownloadSource.source_data.get("godot", {})
 	if not version_data.has(title):
 		return
