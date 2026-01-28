@@ -16,7 +16,7 @@ var last_edited_time: int = 0
 @onready var tag_container: HBoxContainer = $MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/HBoxContainer/TagContainer
 @onready var version_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/HBoxContainer2/VersionLabel
 @onready var time_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/HBoxContainer2/TimeLabel
-@onready var path_label: Label = $MarginContainer/VBoxContainer/HBoxContainer2/PathLabel
+@onready var path_label: Label = $MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/PathLabel
 
 
 func _ready() -> void:

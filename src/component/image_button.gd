@@ -10,14 +10,12 @@ enum FitMode {
 @export var fit_mode: FitMode = FitMode.NONE:
 	set(v):
 		fit_mode = v
-		if Engine.is_editor_hint() and is_node_ready():
+		if Engine.is_editor_hint() and is_node_ready(): 
 			match fit_mode:
-				FitMode.NONE:
-					custom_minimum_size = Vector2.ZERO
 				FitMode.FIT_WIDTH:
-					custom_minimum_size = Vector2(size.y, 0)
+					size = Vector2(size.y, 0)
 				FitMode.FIT_HEIGHT:
-					custom_minimum_size = Vector2(0, size.x)
+					size = Vector2(0, size.x)
 
 @export var image: Texture2D:
 	set(v):
@@ -50,6 +48,23 @@ enum FitMode {
 @onready var texture_rect: TextureRect = $MarginContainer/TextureRect
 
 func _ready() -> void:
+	match fit_mode:
+		FitMode.NONE:
+			custom_minimum_size = Vector2.ZERO
+		FitMode.FIT_WIDTH:
+			custom_minimum_size = Vector2(size.y, 0)
+		FitMode.FIT_HEIGHT:
+			custom_minimum_size = Vector2(0, size.x)
+	margin_container.add_theme_constant_override("margin_left", margin_left)
+	margin_container.add_theme_constant_override("margin_top", margin_top)
+	margin_container.add_theme_constant_override("margin_right", margin_right)
+	margin_container.add_theme_constant_override("margin_bottom", margin_bottom)
+	texture_rect.texture = image
+
+
+func _on_resized() -> void:
+	if not is_node_ready():
+		return
 	match fit_mode:
 		FitMode.NONE:
 			custom_minimum_size = Vector2.ZERO
