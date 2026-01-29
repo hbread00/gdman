@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 App="*uid://dtto62rc43fkr"
 Config="*uid://b416biq16v3rx"
 EngineManager="*uid://f1fsb2d0pkkw"
+ProjectManager="*uid://d25cylo0iipf2"
 DownloadSource="*uid://cga0fc7y2vyr8"
 
 [debug]

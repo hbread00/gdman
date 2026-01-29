@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dhppyf1y4otgk"]
 
 [ext_resource type="Script" uid="uid://da5txdpgdjcu7" path="res://src/download/download_confirm.gd" id="1_2r55n"]
-[ext_resource type="PackedScene" uid="uid://dpahpij7nowfh" path="res://src/component/panel_label.tscn" id="2_t5135"]
 
 [node name="DownloadConfirm" type="ConfirmationDialog" unique_id=1392267383]
 oversampling_override = 1.0
@@ -31,13 +30,6 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=872519067]
 layout_mode = 2
-
-[node name="UrlLabel" parent="VBoxContainer/HBoxContainer" unique_id=1885016877 instance=ExtResource("2_t5135")]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
-text = "text"
-margin_left = 2
-margin_right = 2
 
 [node name="SourceOption" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1846271872]
 layout_mode = 2

@@ -9,18 +9,17 @@ var project_path: String = ""
 var project_version: String = ""
 var project_tags: Array[String] = []
 var last_edited_time: int = 0
+var prefer_engine_id: String = ""
 
-@onready var favorite_button: CheckButton = $MarginContainer/VBoxContainer/HBoxContainer/FavoriteButton
 @onready var project_icon: TextureRect = $MarginContainer/VBoxContainer/HBoxContainer/ProjectIcon
-@onready var name_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/HBoxContainer/NameLabel
-@onready var tag_container: HBoxContainer = $MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/HBoxContainer/TagContainer
-@onready var version_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/HBoxContainer2/VersionLabel
-@onready var time_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/HBoxContainer2/TimeLabel
+@onready var name_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NameLabel
+@onready var version_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VersionLabel
+@onready var time_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TimeLabel
 @onready var path_label: Label = $MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/PathLabel
-
+@onready var tag_container: HBoxContainer = $MarginContainer/VBoxContainer/HBoxContainer3/ScrollContainer/TagContainer
+@onready var engine_option: OptionButton = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/EngineOption
 
 func _ready() -> void:
-	favorite_button.button_pressed = is_favorite
 	if project_icon_path != "":
 		var img: Image = Image.new()
 		if img.load(project_icon_path) == OK:
@@ -41,15 +40,11 @@ func _ready() -> void:
 		time_dict.get("minute", 0),
 		time_dict.get("second", 0),
 	]
-
-
-func _on_delete_button_pressed() -> void:
-	pass
-
-
-func _on_confirmation_dialog_confirmed() -> void:
-	pass # Replace with function body.
-
+	engine_option.select_id(prefer_engine_id)
 
 func _on_path_button_pressed() -> void:
 	OS.shell_open(project_path)
+
+
+func _on_engine_button_pressed() -> void:
+	pass # Replace with function body.

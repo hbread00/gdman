@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bde5rj4u8f5h4"]
+
+[ext_resource type="Script" uid="uid://c25h47emdltel" path="res://src/project/engine_option.gd" id="1_lua2q"]
+
+[node name="EngineOption" type="OptionButton" unique_id=1720390930]
+custom_minimum_size = Vector2(120, 0)
+offset_right = 32.0
+offset_bottom = 20.0
+script = ExtResource("1_lua2q")
