@@ -1,5 +1,7 @@
 extends Node
 
+const ENGINE_DIR: String = "user://engine"
+
 enum EngineFlavor {
 	STABLE,
 	RC,
@@ -24,7 +26,6 @@ class EngineInfo:
 	var flavor: EngineFlavor
 	var build: int
 	var is_dotnet: bool
-	var sort_number: int = 0
 
 class LocalEngine:
 	var dir_path: String
@@ -33,14 +34,14 @@ class LocalEngine:
 
 var _cache_engine_info: Dictionary[String, EngineInfo] = {}
 
-var local_engines: Array[LocalEngine] = []
+var local_engines: Dictionary[String, LocalEngine] = {}
 
 func _ready() -> void:
 	load_engines()
 
 func load_engines() -> void:
 	local_engines.clear()
-	var engines_dir: DirAccess = DirAccess.open(App.ENGINE_DIR)
+	var engines_dir: DirAccess = DirAccess.open(ENGINE_DIR)
 	if engines_dir == null:
 		return
 	for dir_name: String in engines_dir.get_directories():
@@ -49,10 +50,9 @@ func load_engines() -> void:
 			continue
 		var local_engine: LocalEngine = LocalEngine.new()
 		local_engine.info = engine_info
-		local_engine.dir_path = ProjectSettings.globalize_path(App.ENGINE_DIR.path_join(dir_name))
+		local_engine.dir_path = ProjectSettings.globalize_path(ENGINE_DIR.path_join(dir_name))
 		local_engine.executable_path = ProjectSettings.globalize_path(_get_executable_path(dir_name))
-		local_engines.append(local_engine)
-	local_engines.sort_custom(_compare_local_engine)
+		local_engines.set(engine_info.id, local_engine)
 
 func id_to_engine_info(engine_id: String) -> EngineInfo:
 	if _cache_engine_info.has(engine_id):
@@ -96,30 +96,11 @@ func id_to_engine_info(engine_id: String) -> EngineInfo:
 	engine_info.name = "".join(name_array)
 	_cache_engine_info[engine_id] = engine_info
 	return engine_info
-
-# Format: 1Major|1Minor|1Patch|1Flavor|2Build
-func _get_sort_number(major: int, minor: int, patch: int, flavor: EngineFlavor, build: int) -> int:
-	var flavor_number: int = 0
-	match flavor:
-		EngineFlavor.STABLE:
-			flavor_number = 9
-		EngineFlavor.RC:
-			flavor_number = 8
-		EngineFlavor.BETA:
-			flavor_number = 7
-		EngineFlavor.ALPHA:
-			flavor_number = 6
-		EngineFlavor.DEV:
-			flavor_number = 5
-	return major * 1000000 + minor * 10000 + patch * 1000 + flavor_number * 100 + build
-
-func _compare_local_engine(a: LocalEngine, b: LocalEngine) -> bool:
-	return a.info.sort_number > b.info.sort_number
-
+	
 func _get_executable_path(dir_name: String) -> String:
 	var target_path: String = ""
 	var target_suffix: String = App.architecture_to_executable_suffix(App.get_architecture())
-	var dirs_to_scan: Array[String] = [App.ENGINE_DIR.path_join(dir_name)]
+	var dirs_to_scan: Array[String] = [ENGINE_DIR.path_join(dir_name)]
 	while dirs_to_scan.size() > 0:
 		var current_path: String = dirs_to_scan.pop_back()
 		var current_dir: DirAccess = DirAccess.open(current_path)

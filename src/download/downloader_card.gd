@@ -18,9 +18,9 @@ var uncompress_task_id: int = -1
 func _ready() -> void:
 	tooltip_text = url
 	title_label.text = file_name
-	if DirAccess.make_dir_recursive_absolute(App.DOWNLOAD_DIR) != OK:
+	if DirAccess.make_dir_recursive_absolute(DownloadSource.DOWNLOAD_DIR) != OK:
 		return
-	download_path = App.DOWNLOAD_DIR.path_join("%s.zip" % file_name)
+	download_path = DownloadSource.DOWNLOAD_DIR.path_join("%s.zip" % file_name)
 	http_request.download_file = download_path
 	if http_request.request(url) != OK:
 		return
@@ -56,7 +56,7 @@ func _on_http_request_request_completed(result: int, response_code: int, _header
 		return
 	timer.stop()
 	progress_bar.set_value_no_signal(99)
-	var finish_dir: String = App.ENGINE_DIR.path_join(file_name)
+	var finish_dir: String = EngineManager.ENGINE_DIR.path_join(file_name)
 	if DirAccess.make_dir_recursive_absolute(finish_dir) != OK:
 		_failed()
 		return

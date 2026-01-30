@@ -11,7 +11,7 @@ var url_dict: Dictionary[String, String] = {}
 
 @onready var ping_container: VBoxContainer = $VBoxContainer/PingContainer
 @onready var source_option: OptionButton = $VBoxContainer/HBoxContainer/SourceOption
-@onready var url_label: PanelContainer = $VBoxContainer/HBoxContainer/UrlLabel
+@onready var url_label: Label = $VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/UrlLabel
 
 func _ready() -> void:
 	_load_source()

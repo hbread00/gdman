@@ -15,10 +15,7 @@ func _load_engine() -> void:
 	for local_engine: EngineManager.LocalEngine in EngineManager.local_engines:
 		var card: Control = ENGINE_CARD.instantiate()
 		card.engine_id = local_engine.info.id
-		card.display_name = local_engine.info.name
-		card.version = "%d.%d" % [local_engine.info.major_version, local_engine.info.minor_version]
 		card.dir_path = local_engine.dir_path
-		card.is_dotnet = local_engine.info.is_dotnet
 		card.executable_path = local_engine.executable_path
 		card_container.add_child(card)
 	refresh_button.disabled = false

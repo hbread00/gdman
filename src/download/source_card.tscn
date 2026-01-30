@@ -8,36 +8,71 @@
 [node name="SourceCard" type="PanelContainer" unique_id=805770578]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 32.0
+offset_bottom = 8.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 script = ExtResource("1_h676o")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=322069250]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1802397959]
 layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="SourceIcon" type="TextureRect" parent="HBoxContainer" unique_id=1698356943]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=322069250]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="SourceIcon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1698356943]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 texture = ExtResource("2_0lsju")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="NameLabel" type="Label" parent="HBoxContainer" unique_id=1143017360]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1919212850]
 layout_mode = 2
-text = "0.0.0"
+theme_override_constants/separation = 0
+alignment = 1
 
-[node name="UnstableIcon" type="TextureRect" parent="HBoxContainer" unique_id=2018716420]
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1143017360]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0.0.0"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=957932650]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="IDLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1549217442]
+modulate = Color(1, 1, 1, 0.6)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "0.0.0-stable-dotnet"
+vertical_alignment = 1
+
+[node name="UnstableIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2018716420]
 layout_mode = 2
 texture = ExtResource("2_vno5b")
+expand_mode = 3
 stretch_mode = 5
 
-[node name="Pass" type="Control" parent="HBoxContainer" unique_id=2067015311]
+[node name="Pass" type="Control" parent="MarginContainer/HBoxContainer" unique_id=2067015311]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DownloadButton" type="Button" parent="HBoxContainer" unique_id=805701093]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=422190765]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DownloadButton" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer2" unique_id=805701093]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 icon = ExtResource("4_cieoe")
 icon_alignment = 1
+expand_icon = true
 
-[connection signal="pressed" from="HBoxContainer/DownloadButton" to="." method="_on_download_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer2/DownloadButton" to="." method="_on_download_button_pressed"]

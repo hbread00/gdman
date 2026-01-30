@@ -2,13 +2,7 @@ extends PanelContainer
 
 const PROJECT_TAG: PackedScene = preload("res://src/project/project_tag.tscn")
 
-var is_favorite: bool = false
-var project_icon_path: String = ""
-var project_name: String = ""
 var project_path: String = ""
-var project_version: String = ""
-var project_tags: Array[String] = []
-var last_edited_time: int = 0
 var prefer_engine_id: String = ""
 
 @onready var project_icon: TextureRect = $MarginContainer/VBoxContainer/HBoxContainer/ProjectIcon
@@ -20,18 +14,21 @@ var prefer_engine_id: String = ""
 @onready var engine_option: OptionButton = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/EngineOption
 
 func _ready() -> void:
-	if project_icon_path != "":
+	var config: ConfigFile = ConfigFile.new()
+	if config.load(project_path.path_join("project.godot")) != OK:
+		queue_free()
+		return
+	name_label.text = config.get_value("application", "config/name", "Unnamed Project")
+	var icon_path: String = _get_icon_path(
+		config.get_value("application", "config/icon", ""),
+		project_path)
+	if icon_path != "":
 		var img: Image = Image.new()
-		if img.load(project_icon_path) == OK:
+		if img.load(icon_path) == OK:
 			project_icon.texture = ImageTexture.create_from_image(img)
-	name_label.text = project_name
-	for tag_text: String in project_tags:
-		var tag: Control = PROJECT_TAG.instantiate()
-		tag.text = tag_text
-		tag_container.add_child(tag)
-	path_label.text = project_path
-	version_label.text = project_version
-	var time_dict: Dictionary = Time.get_datetime_dict_from_unix_time(last_edited_time)
+	version_label.text = "Version: %s" % _get_project_version(config)
+	var time_dict: Dictionary = Time.get_datetime_dict_from_unix_time(
+		_get_directory_last_edited_time(project_path))
 	time_label.text = "%d/%d/%d-%0d:%0d:%0d" % [
 		time_dict.get("year", 1970),
 		time_dict.get("month", 1),
@@ -41,10 +38,108 @@ func _ready() -> void:
 		time_dict.get("second", 0),
 	]
 	engine_option.select_id(prefer_engine_id)
+	
+func _get_project_version(config: ConfigFile) -> String:
+	var feature: PackedStringArray = config.get_value("application", "config/features", ["unknown"])
+	return feature[0]
+
+func _get_icon_path(path: String, project_root: String) -> String:
+	if path.begins_with("res://"):
+		return project_root.path_join(path.replace("res://", ""))
+	if path.begins_with("uid://"):
+		var res_path: String = _uid_path_to_res_path(path, project_root)
+		if res_path != "":
+			return project_root.path_join(res_path.replace("res://", ""))
+	return ""
+
+func _uid_path_to_res_path(uid_path: String, project_root: String) -> String:
+	var dir: DirAccess = DirAccess.open(project_root)
+	if dir == null:
+		return ""
+	var dirs_to_scan: Array[String] = [project_root]
+	while dirs_to_scan.size() > 0:
+		var current_path: String = dirs_to_scan.pop_back()
+		var current_dir: DirAccess = DirAccess.open(current_path)
+		if current_dir != null:
+			current_dir.list_dir_begin()
+			var file_name: String = current_dir.get_next()
+			while file_name != "":
+				if current_dir.current_is_dir():
+					if file_name != "." and file_name != "..":
+						dirs_to_scan.append(current_path.path_join(file_name))
+				else:
+					if file_name.ends_with(".import"):
+						var import_config: ConfigFile = ConfigFile.new()
+						if (import_config.load(current_path.path_join(file_name)) == OK
+							and import_config.get_value("remap", "uid", "") == uid_path):
+							current_dir.list_dir_end()
+							return import_config.get_value("deps", "source_file", "")
+				file_name = current_dir.get_next()
+			current_dir.list_dir_end()
+	return ""
+
+
+func _get_directory_last_edited_time(dir_path: String) -> int:
+	var os_name: String = OS.get_name()
+	if os_name in ["Windows", "macOS", "Linux"]:
+		var exit_code: int = -1
+		var output: Array[String] = []
+		match os_name:
+			"Windows":
+				exit_code = OS.execute("powershell",
+				["-Command",
+				"[DateTimeOffset]::new((Get-Item '%s').LastWriteTime).ToUnixTimeSeconds()" % dir_path],
+				output)
+			"macOS":
+				exit_code = OS.execute("stat",
+				["-f", "%m", dir_path],
+				output)
+			"Linux":
+				exit_code = OS.execute("stat",
+				["-c", "%Y", dir_path],
+				output)
+		if exit_code == 0 and not output.is_empty():
+			return output[0].strip_edges().to_int()
+	else:
+		# Bad method
+		var dir: DirAccess = DirAccess.open(dir_path)
+		if dir == null:
+			return 0
+		var last_time: int = 0
+		var dirs_to_scan: Array[String] = [dir_path]
+		while dirs_to_scan.size() > 0:
+			var current_path: String = dirs_to_scan.pop_back()
+			var current_dir: DirAccess = DirAccess.open(current_path)
+			if current_dir != null:
+				current_dir.list_dir_begin()
+				var file_name: String = current_dir.get_next()
+				while file_name != "":
+					if current_dir.current_is_dir():
+						if file_name != "." and file_name != "..":
+							dirs_to_scan.append(current_path.path_join(file_name))
+					else:
+						var file_time: int = FileAccess.get_modified_time(current_path.path_join(file_name))
+						if file_time > last_time:
+							last_time = file_time
+					file_name = current_dir.get_next()
+				current_dir.list_dir_end()
+		return last_time
+	return 0
+
+func _get_config_tags(config: ConfigFile) -> Array[String]:
+	var result: Array[String] = []
+	var tags: PackedStringArray = config.get_value("application", "config/tags", [])
+	for tag: String in tags:
+		result.append(tag)
+	return result
 
 func _on_path_button_pressed() -> void:
-	OS.shell_open(project_path)
+	OS.shell_show_in_file_manager(project_path)
 
 
 func _on_engine_button_pressed() -> void:
-	pass # Replace with function body.
+	var engine: EngineManager.LocalEngine = EngineManager.local_engines.get(
+		engine_option.get_item_text(engine_option.selected), null)
+	if engine == null:
+		return
+	OS.open_with_program(engine.executable_path, [project_path])

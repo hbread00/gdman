@@ -9,9 +9,10 @@ var engine_id: String = ""
 var is_stable: bool = false
 var is_dotnet: bool = false
 
-@onready var source_icon: TextureRect = $HBoxContainer/SourceIcon
-@onready var name_label: Label = $HBoxContainer/NameLabel
-@onready var unstable_icon: TextureRect = $HBoxContainer/UnstableIcon
+@onready var source_icon: TextureRect = $MarginContainer/HBoxContainer/SourceIcon
+@onready var name_label: Label = $MarginContainer/HBoxContainer/VBoxContainer/NameLabel
+@onready var id_label: Label = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/IDLabel
+@onready var unstable_icon: TextureRect = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/UnstableIcon
 
 func _ready() -> void:
 	unstable_icon.hide()
@@ -19,6 +20,7 @@ func _ready() -> void:
 		return
 	var info: EngineManager.EngineInfo = EngineManager.id_to_engine_info(engine_id)
 	name_label.text = info.name
+	id_label.text = engine_id
 	is_stable = info.flavor == EngineManager.EngineFlavor.STABLE
 	if not is_stable:
 		unstable_icon.show()

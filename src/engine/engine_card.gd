@@ -3,9 +3,6 @@ extends PanelContainer
 const DOTNET: CompressedTexture2D = preload("uid://b5cuh2fee8rn5")
 
 var engine_id: String = ""
-var display_name: String = ""
-var version: String = ""
-var is_dotnet: bool = false
 var dir_path: String = ""
 var executable_path: String = ""
 
@@ -14,21 +11,20 @@ var executable_path: String = ""
 @onready var version_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VersionLabel
 @onready var id_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/IDLabel
 @onready var unstable_icon: TextureRect = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/UnstableIcon
-@onready var path_label: Label = $MarginContainer/VBoxContainer/HBoxContainer2/PathLabel
+@onready var path_label: Label = $MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/PathLabel
 
 func _ready() -> void:
-	unstable_icon.hide()
-	if is_dotnet:
-		engine_icon.texture = DOTNET
-	name_label.text = display_name
-	version_label.text = version
 	id_label.text = engine_id
 	path_label.text = dir_path
-
-
-func _on_file_button_pressed() -> void:
-	OS.shell_open(dir_path)
-
+	var engine_info: EngineManager.EngineInfo = EngineManager.id_to_engine_info(engine_id)
+	if engine_info == null:
+		return
+	name_label.text = engine_info.name
+	version_label.text = "%d.%d" % [engine_info.major_version, engine_info.minor_version]
+	if engine_info.is_dotnet:
+		engine_icon.texture = DOTNET
+	unstable_icon.visible = engine_info.flavor != EngineManager.EngineFlavor.STABLE
+	
 
 func _on_delete_button_pressed() -> void:
 	OS.move_to_trash(dir_path)
@@ -36,4 +32,8 @@ func _on_delete_button_pressed() -> void:
 
 
 func _on_run_button_pressed() -> void:
-	OS.shell_open(executable_path)
+	OS.create_process(executable_path, [])
+
+
+func _on_path_button_pressed() -> void:
+	OS.shell_show_in_file_manager(dir_path)

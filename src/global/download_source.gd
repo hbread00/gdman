@@ -14,6 +14,8 @@ const SOURCE_TEMPLATE: Dictionary = {
 		}
 	}
 }
+
+const DOWNLOAD_DIR: String = "user://download"
 const BUILD_STANDARD: String = "standard"
 const BUILD_DOTNET: String = "dotnet"
 const OFFICIAL_SOURCE: Array[String] = ["godot", "github"]

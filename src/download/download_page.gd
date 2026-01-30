@@ -12,8 +12,8 @@ const DOWNLOADER_CARD: PackedScene = preload("uid://bgk1814jgblda")
 @onready var downloader_container: VBoxContainer = $HSplitContainer/PanelContainer/ScrollContainer/MarginContainer/DownloaderContainer
 
 func _ready() -> void:
-	var version_container: Array[Node] = get_tree().get_nodes_in_group("download_version_container")
-	for container: Control in version_container:
+	var version_containers: Array[Node] = get_tree().get_nodes_in_group("download_version_container")
+	for container: Control in version_containers:
 		container.download.connect(_on_version_container_download)
 	standard_check.toggled.connect(_switch_display)
 	dotnet_check.toggled.connect(_switch_display)
@@ -25,8 +25,8 @@ func _on_version_container_download(engine_id: String) -> void:
 	download_confirm.display(engine_id)
 
 func _switch_display(_pass: bool) -> void:
-	var version_container: Array[Node] = get_tree().get_nodes_in_group("download_version_container")
-	for container: Control in version_container:
+	var version_containers: Array[Node] = get_tree().get_nodes_in_group("download_version_container")
+	for container: Control in version_containers:
 		container.switch_display(
 			standard_check.button_pressed,
 			dotnet_check.button_pressed,

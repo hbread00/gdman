@@ -4,28 +4,30 @@
 [ext_resource type="Texture2D" uid="uid://b4s86yj60klpo" path="res://asset/icon/godot.svg" id="2_h676o"]
 [ext_resource type="Texture2D" uid="uid://bvdq0a23od033" path="res://asset/icon/run.svg" id="2_vno5b"]
 [ext_resource type="Texture2D" uid="uid://f3w2u4j2iw1k" path="res://asset/icon/unstable.svg" id="4_cieoe"]
+[ext_resource type="Texture2D" uid="uid://cq454lo24jwpx" path="res://asset/icon/delete.svg" id="5_h676o"]
+[ext_resource type="Texture2D" uid="uid://hv0qw0fm1wga" path="res://asset/icon/directory.svg" id="6_mnpmw"]
 
 [node name="EngineCard" type="PanelContainer" unique_id=1647816841]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 95.0
-grow_horizontal = 2
+offset_right = 800.0
+offset_bottom = 104.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 script = ExtResource("1_mnpmw")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1669783751]
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1113786506]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1087895990]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="EngineIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1069299553]
 layout_mode = 2
@@ -36,6 +38,7 @@ stretch_mode = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1449549850]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=819268403]
 layout_mode = 2
@@ -47,6 +50,7 @@ text = "0.0.0 Stable"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2064721061]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="VersionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1360493292]
 layout_mode = 2
@@ -71,14 +75,42 @@ icon = ExtResource("2_vno5b")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1204657544]
 layout_mode = 2
+theme_override_constants/separation = 1
 
-[node name="PathLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1756915805]
+[node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1919614049]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+icon = ExtResource("5_h676o")
+icon_alignment = 1
+expand_icon = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=148825489]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer" unique_id=763747897]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 1
+
+[node name="PathLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer" unique_id=1756915805]
 modulate = Color(1, 1, 1, 0.6)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
 text = "path/to/engine"
 vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
+[node name="PathButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=411695749]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+icon = ExtResource("6_mnpmw")
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RunButton" to="." method="_on_run_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/PathButton" to="." method="_on_path_button_pressed"]
