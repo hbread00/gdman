@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dos33l6wljnqj"]
 
-[ext_resource type="Script" uid="uid://bo2qao5fx2xrn" path="res://src/download/ping_request.gd" id="1_5h48b"]
+[ext_resource type="Script" uid="uid://bo2qao5fx2xrn" path="res://src/page/download/ping_request.gd" id="1_5h48b"]
 
 [node name="PingRequest" type="HTTPRequest" unique_id=2093463387]
 script = ExtResource("1_5h48b")

@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://ccmwlrli63fhi" path="res://asset/icon/engine.svg" id="4_kqbth"]
 [ext_resource type="Texture2D" uid="uid://ddqhbrd1han2p" path="res://asset/icon/download.svg" id="5_srxbw"]
 [ext_resource type="Texture2D" uid="uid://mgdysp5iuh4l" path="res://asset/icon/setting.svg" id="6_d3u4l"]
-[ext_resource type="PackedScene" uid="uid://cwn383vbptm1q" path="res://src/engine/engine_page.tscn" id="8_kf8lf"]
-[ext_resource type="PackedScene" uid="uid://cipjvpn3l8a48" path="res://src/project/project_page.tscn" id="8_tb146"]
-[ext_resource type="PackedScene" uid="uid://cq7qp7e00w6ol" path="res://src/download/download_page.tscn" id="9_e7lu8"]
-[ext_resource type="PackedScene" uid="uid://dt41w75686fay" path="res://src/setting/setting_page.tscn" id="9_kf8lf"]
+[ext_resource type="PackedScene" uid="uid://cwn383vbptm1q" path="res://src/page/engine/engine_page.tscn" id="8_kf8lf"]
+[ext_resource type="PackedScene" uid="uid://cipjvpn3l8a48" path="res://src/page/project/project_page.tscn" id="8_tb146"]
+[ext_resource type="PackedScene" uid="uid://cq7qp7e00w6ol" path="res://src/page/download/download_page.tscn" id="9_e7lu8"]
+[ext_resource type="PackedScene" uid="uid://dt41w75686fay" path="res://src/page/setting/setting_page.tscn" id="9_kf8lf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kf8lf"]
 
@@ -30,24 +30,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=805635866]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="SideBar" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1036997934]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_override_constants/separation = 5
 
 [node name="ProjectNav" type="Button" parent="MarginContainer/HBoxContainer/SideBar" unique_id=311530294]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 15
 text = "TITLE_PROJECT"
 icon = ExtResource("3_uewes")
 icon_alignment = 1
@@ -57,7 +55,6 @@ expand_icon = true
 [node name="EngineNav" type="Button" parent="MarginContainer/HBoxContainer/SideBar" unique_id=364069615]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 15
 text = "TITLE_ENGINE"
 icon = ExtResource("4_kqbth")
 icon_alignment = 1
@@ -67,7 +64,6 @@ expand_icon = true
 [node name="DownloadNav" type="Button" parent="MarginContainer/HBoxContainer/SideBar" unique_id=482896009]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 15
 text = "TITLE_DOWNLOAD"
 icon = ExtResource("5_srxbw")
 icon_alignment = 1
@@ -101,7 +97,6 @@ size_flags_vertical = 3
 [node name="SettingNav" type="Button" parent="MarginContainer/HBoxContainer/SideBar" unique_id=795076466]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 15
 text = "TITLE_SETTING"
 icon = ExtResource("6_d3u4l")
 icon_alignment = 1

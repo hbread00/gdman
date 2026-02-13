@@ -5,7 +5,6 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 63.0
 grow_horizontal = 2
-theme_override_constants/separation = 5
 
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=1096036186]
 layout_mode = 2
@@ -16,14 +15,14 @@ title = "GDMan"
 [node name="MarginContainer" type="MarginContainer" parent="FoldableContainer" unique_id=76472284]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="FoldableContainer/MarginContainer" unique_id=715287506]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 12
 text = "Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -235,10 +234,10 @@ title = "Godot"
 [node name="MarginContainer" type="MarginContainer" parent="FoldableContainer2" unique_id=1072147305]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="FoldableContainer2/MarginContainer" unique_id=1954420658]
 layout_mode = 2
@@ -273,10 +272,10 @@ title = "Godot Logo"
 [node name="MarginContainer" type="MarginContainer" parent="FoldableContainer3" unique_id=1546625407]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="FoldableContainer3/MarginContainer" unique_id=428304722]
 layout_mode = 2
@@ -296,10 +295,10 @@ title = "Google Material Design Icons"
 [node name="MarginContainer" type="MarginContainer" parent="FoldableContainer4" unique_id=642122744]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="FoldableContainer4/MarginContainer" unique_id=609134933]
 layout_mode = 2
@@ -515,10 +514,10 @@ title = "Pictogrammers Material Design Icons"
 [node name="MarginContainer" type="MarginContainer" parent="FoldableContainer6" unique_id=96732188]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="FoldableContainer6/MarginContainer" unique_id=1721047617]
 layout_mode = 2
@@ -555,10 +554,10 @@ title = ".NET Logo"
 [node name="MarginContainer" type="MarginContainer" parent="FoldableContainer5" unique_id=55132981]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="FoldableContainer5/MarginContainer" unique_id=759705405]
 layout_mode = 2

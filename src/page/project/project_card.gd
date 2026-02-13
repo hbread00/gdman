@@ -1,6 +1,6 @@
 extends PanelContainer
 
-const PROJECT_TAG: PackedScene = preload("res://src/project/project_tag.tscn")
+const PROJECT_TAG: PackedScene = preload("uid://46nlwtxtu0rn")
 
 var project_path: String = ""
 var prefer_engine_id: String = ""

@@ -2,6 +2,7 @@ extends VBoxContainer
 
 const PROJECT_CARD: PackedScene = preload("uid://cphby36r2gwsb")
 
+@onready var import_button: Button = $HBoxContainer/ImportButton
 @onready var import_file_dialog: FileDialog = $HBoxContainer/ImportButton/ImportFileDialog
 @onready var card_container: GridContainer = $PanelContainer/ScrollContainer/MarginContainer/CardContainer
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 		card.project_path = project.path
 		card.prefer_engine_id = project.prefer_engine_id
 		card_container.add_child(card)
+	import_button.custom_minimum_size.x = import_button.size.x + import_button.size.y
 
 
 func _on_import_button_pressed() -> void:

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cphby36r2gwsb"]
 
-[ext_resource type="Script" uid="uid://c6rjmq5tiptt1" path="res://src/project/project_card.gd" id="1_e88lg"]
+[ext_resource type="Script" uid="uid://c6rjmq5tiptt1" path="res://src/page/project/project_card.gd" id="1_e88lg"]
 [ext_resource type="Texture2D" uid="uid://b4s86yj60klpo" path="res://asset/icon/godot_big.svg" id="2_e88lg"]
 [ext_resource type="Texture2D" uid="uid://bu2rk28e26nqp" path="res://asset/icon/dotnet.svg" id="3_2b60s"]
-[ext_resource type="PackedScene" uid="uid://bde5rj4u8f5h4" path="res://src/project/engine_option.tscn" id="5_62uvt"]
+[ext_resource type="PackedScene" uid="uid://bde5rj4u8f5h4" path="res://src/page/project/engine_option.tscn" id="5_62uvt"]
 [ext_resource type="Texture2D" uid="uid://hv0qw0fm1wga" path="res://asset/icon/directory.svg" id="7_2b60s"]
 [ext_resource type="Texture2D" uid="uid://bvdq0a23od033" path="res://asset/icon/run.svg" id="7_62uvt"]
 [ext_resource type="Texture2D" uid="uid://bq8vp5ajsd7pe" path="res://asset/icon/code.svg" id="8_2b60s"]
@@ -18,18 +18,16 @@ script = ExtResource("1_e88lg")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=587044447]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1488955388]
 layout_mode = 2
-theme_override_constants/separation = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=902603703]
 layout_mode = 2
-theme_override_constants/separation = 5
 
 [node name="ProjectIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1490471370]
 layout_mode = 2
@@ -40,13 +38,13 @@ stretch_mode = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=54351935]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 1
+theme_override_constants/separation = 2
 
 [node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1109446791]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 24
 text = "Name"
 text_overrun_behavior = 3
 
@@ -55,14 +53,13 @@ layout_mode = 2
 
 [node name="VersionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1745847180]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
 text = "0.0"
 
 [node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1544632113]
 modulate = Color(1, 1, 1, 0.53333336)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "1970/1/1-0:0:0"
 
 [node name="DotnetIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1135958525]
@@ -74,12 +71,10 @@ stretch_mode = 5
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1105241886]
 layout_mode = 2
-theme_override_constants/separation = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2130474205]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 5
 
 [node name="EditorButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1047668864]
 layout_mode = 2
@@ -102,18 +97,17 @@ layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1704252676]
 layout_mode = 2
-theme_override_constants/separation = 5
 
 [node name="PathLine" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2142027203]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 text = "path/to/project"
 placeholder_text = "path/to/project"
 editable = false
 
 [node name="PathButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=310988315]
-custom_minimum_size = Vector2(30, 15)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 tooltip_text = "PROJECT_CARD_PATH_HINT"
 icon = ExtResource("7_2b60s")
@@ -122,10 +116,10 @@ expand_icon = true
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=191042407]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 16
 
 [node name="RemoveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=449926311]
-custom_minimum_size = Vector2(22, 22)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "PROJECT_CARD_REMOVE_HINT"
 icon = ExtResource("8_sr25u")
@@ -140,7 +134,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 5
 alignment = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/EditorButton" to="." method="_on_editor_button_pressed"]

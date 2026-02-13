@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dt41w75686fay"]
 
 [ext_resource type="Texture2D" uid="uid://mgdysp5iuh4l" path="res://asset/icon/setting.svg" id="1_afo07"]
-[ext_resource type="Script" uid="uid://cbp0uixo4og42" path="res://src/setting/setting_page.gd" id="1_q1ett"]
+[ext_resource type="Script" uid="uid://cbp0uixo4og42" path="res://src/page/setting/setting_page.gd" id="1_q1ett"]
 [ext_resource type="Texture2D" uid="uid://cn7mvs1yvvohm" path="res://asset/icon/scan.svg" id="2_pvusw"]
 [ext_resource type="Texture2D" uid="uid://hv0qw0fm1wga" path="res://asset/icon/directory.svg" id="4_xuaq7"]
-[ext_resource type="PackedScene" uid="uid://885qdmu56i1l" path="res://src/setting/license.tscn" id="5_cjous"]
+[ext_resource type="PackedScene" uid="uid://885qdmu56i1l" path="res://src/page/setting/license.tscn" id="5_cjous"]
 
 [node name="SettingPage" type="VBoxContainer" unique_id=458143825]
 anchors_preset = 15
@@ -12,12 +12,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 script = ExtResource("1_q1ett")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1191291194]
 layout_mode = 2
-theme_override_constants/separation = 1
+theme_override_constants/separation = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1557801069]
 layout_mode = 2
@@ -27,7 +27,7 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=533075563]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 text = "TITLE_SETTING"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1910175746]
@@ -48,7 +48,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 12
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer" unique_id=1791939916]
 layout_mode = 2
@@ -56,15 +56,15 @@ size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer" unique_id=1152187245]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1249218190]
 layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
 columns = 2
 
 [node name="Label5" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1536794194]
@@ -72,13 +72,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "SETTING_VERSION_HINT"
 mouse_filter = 1
-theme_override_font_sizes/font_size = 15
 text = "SETTING_VERSION"
 
 [node name="VersionLabel" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1811253271]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 15
 text = "0.0.0"
 horizontal_alignment = 2
 
@@ -86,12 +84,10 @@ horizontal_alignment = 2
 layout_mode = 2
 tooltip_text = "SETTING_LANGUAGE_HINT"
 mouse_filter = 1
-theme_override_font_sizes/font_size = 15
 text = "SETTING_LANGUAGE"
 
 [node name="LanguageOption" type="OptionButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=28907257]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
 alignment = 1
 selected = 0
 item_count = 4
@@ -108,12 +104,10 @@ popup/item_3/id = 3
 layout_mode = 2
 tooltip_text = "SETTING_ARCHITECTURE_HINT"
 mouse_filter = 1
-theme_override_font_sizes/font_size = 15
 text = "SETTING_ARCHITECTURE"
 
 [node name="ArchitectureOption" type="OptionButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=500190583]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
 alignment = 1
 selected = 0
 item_count = 1
@@ -133,33 +127,28 @@ layout_mode = 2
 layout_mode = 2
 tooltip_text = "SETTING_DELETE_DOWNLOAD_HINT"
 mouse_filter = 1
-theme_override_font_sizes/font_size = 15
 text = "SETTING_DELETE_DOWNLOAD"
 
 [node name="DeleteCheck" type="CheckButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=40003426]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
 
 [node name="Label4" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=2000010349]
 layout_mode = 2
 tooltip_text = "SETTING_EDITOR_HINT"
 mouse_filter = 1
-theme_override_font_sizes/font_size = 15
 text = "SETTING_EDITOR"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1034744901]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 5
 
 [node name="EditorPathLine" type="LineEdit" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer" unique_id=1980407609]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 15
 caret_blink = true
 
 [node name="EditorSelectButton" type="Button" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer" unique_id=1675579252]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 icon = ExtResource("2_pvusw")
@@ -180,18 +169,15 @@ use_native_dialog = true
 layout_mode = 2
 tooltip_text = "SETTING_HIDE_PATH_HINT"
 mouse_filter = 1
-theme_override_font_sizes/font_size = 15
 text = "SETTING_HIDE_PATH"
 
 [node name="HidePathCheck" type="CheckButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1437175857]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
 
 [node name="Label6" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1551275695]
 layout_mode = 2
 tooltip_text = "SETTING_USER_PATH_HINT"
 mouse_filter = 1
-theme_override_font_sizes/font_size = 15
 text = "SETTING_USER_PATH"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=119828098]
@@ -200,12 +186,11 @@ layout_mode = 2
 [node name="UserPathLine" type="LineEdit" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer2" unique_id=1554066396]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 15
 text = "user://"
 editable = false
 
 [node name="UserPathButton" type="Button" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer2" unique_id=1658310235]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 icon = ExtResource("4_xuaq7")
@@ -217,24 +202,22 @@ size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2" unique_id=792575991]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2/MarginContainer" unique_id=1549463926]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="LinkButton" type="LinkButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=734777400]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
 text = "https://github.com/hbread00/gdman"
 uri = "https://github.com/hbread00/gdman"
 
 [node name="FoldableContainer" type="FoldableContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=197256468]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
 folded = true
 title = "SETTING_LICENSE"
 

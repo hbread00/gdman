@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cvhkrjsovo0lf"]
 
-[ext_resource type="Script" uid="uid://b1y50kwd8yme3" path="res://src/download/source_card.gd" id="1_h676o"]
+[ext_resource type="Script" uid="uid://b1y50kwd8yme3" path="res://src/page/download/source_card.gd" id="1_h676o"]
 [ext_resource type="Texture2D" uid="uid://b4s86yj60klpo" path="res://asset/icon/godot_big.svg" id="2_0lsju"]
 [ext_resource type="Texture2D" uid="uid://f3w2u4j2iw1k" path="res://asset/icon/unstable.svg" id="2_vno5b"]
 [ext_resource type="Texture2D" uid="uid://ddqhbrd1han2p" path="res://asset/icon/download.svg" id="4_cieoe"]
@@ -15,14 +15,13 @@ script = ExtResource("1_h676o")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1802397959]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=322069250]
 layout_mode = 2
-theme_override_constants/separation = 5
 
 [node name="SourceIcon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1698356943]
 layout_mode = 2
@@ -32,14 +31,13 @@ stretch_mode = 5
 
 [node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1143017360]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 text = "0.0.0"
 vertical_alignment = 1
 
 [node name="IDLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1549217442]
 modulate = Color(1, 1, 1, 0.6)
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
 text = "0.0.0-stable-dotnet"
 vertical_alignment = 1
 
@@ -60,7 +58,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="DownloadButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=805701093]
-custom_minimum_size = Vector2(28, 0)
+custom_minimum_size = Vector2(34, 0)
 layout_mode = 2
 tooltip_text = "SOURCE_CARD_DOWNLOAD_HINT"
 icon = ExtResource("4_cieoe")
