@@ -58,3 +58,9 @@ SETTING_USER_PATH_HINT,Local data directory,GDMan在本机用户使用的目录,
 SETTING_LICENSE,License,开源协议,開源協議
 SETTING_REMOTE_SOURCE,Remote Update Source,在线更新源,在線更新源
 SETTING_REMOTE_SOURCE_HINT,Fetch latest engine download URL from online repository at startup,启动时从在线仓库获取最新的引擎下载地址,啟動時從在線倉庫獲取最新的引擎下載地址
+SETTING_TYPE_COMPILE,Compile,编译,
+SETTING_TYPE_ABOUT,About,关于,
+SETTING_COMPILE_TOOL,Tool,工具,
+SETTING_COMPILE_VERSION,Version,版本,
+SETTING_COMPILE_CUSTOM,Custom,自定义,
+SETTING_COMPILE_REFRESH,Refresh,刷新,

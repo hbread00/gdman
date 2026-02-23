@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://dt41w75686fay"]
 
 [ext_resource type="Texture2D" uid="uid://mgdysp5iuh4l" path="res://asset/icon/setting.svg" id="1_afo07"]
-[ext_resource type="Script" uid="uid://cbp0uixo4og42" path="res://src/page/setting/setting_page.gd" id="1_q1ett"]
-[ext_resource type="Texture2D" uid="uid://cn7mvs1yvvohm" path="res://asset/icon/scan.svg" id="2_pvusw"]
-[ext_resource type="Texture2D" uid="uid://hv0qw0fm1wga" path="res://asset/icon/directory.svg" id="4_xuaq7"]
-[ext_resource type="PackedScene" uid="uid://885qdmu56i1l" path="res://src/page/setting/license.tscn" id="5_cjous"]
+[ext_resource type="PackedScene" uid="uid://c8n57o2oio2qi" path="res://src/page/setting/normal_container.tscn" id="3_31xfx"]
+[ext_resource type="PackedScene" uid="uid://0f770t4bh788" path="res://src/page/setting/compile_container.tscn" id="3_sdvru"]
+[ext_resource type="PackedScene" uid="uid://cf6h8pgs5mbfn" path="res://src/page/setting/license_container.tscn" id="4_31xfx"]
 
 [node name="SettingPage" type="VBoxContainer" unique_id=458143825]
 anchors_preset = 15
@@ -13,229 +12,91 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
-script = ExtResource("1_q1ett")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1191291194]
+[node name="TitleContainer" type="HBoxContainer" parent="." unique_id=1191291194]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1557801069]
+[node name="TitleIcon" type="TextureRect" parent="TitleContainer" unique_id=1557801069]
 layout_mode = 2
 texture = ExtResource("1_afo07")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HBoxContainer" unique_id=533075563]
+[node name="TitleLabel" type="Label" parent="TitleContainer" unique_id=533075563]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "TITLE_SETTING"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1910175746]
+[node name="MainContainer" type="HBoxContainer" parent="." unique_id=1910175746]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Control" type="Control" parent="HBoxContainer2" unique_id=1116334138]
+[node name="Pass" type="Control" parent="MainContainer" unique_id=1116334138]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer2" unique_id=100671604]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer" unique_id=100671604]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/ScrollContainer" unique_id=1301815618]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/ScrollContainer" unique_id=1301815618]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 12
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer" unique_id=1791939916]
+[node name="NormalPanel" type="PanelContainer" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=1682270879]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer" unique_id=1152187245]
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer/ScrollContainer/VBoxContainer/NormalPanel" unique_id=2083335441]
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 12
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1249218190]
-layout_mode = 2
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 8
-columns = 2
-
-[node name="Label5" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1536794194]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "SETTING_VERSION_HINT"
-mouse_filter = 1
-text = "SETTING_VERSION"
-
-[node name="VersionLabel" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1811253271]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0.0.0"
-horizontal_alignment = 2
-
-[node name="Label" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=445090489]
-layout_mode = 2
-tooltip_text = "SETTING_LANGUAGE_HINT"
-mouse_filter = 1
-text = "SETTING_LANGUAGE"
-
-[node name="LanguageOption" type="OptionButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=28907257]
-layout_mode = 2
-alignment = 1
-selected = 0
-item_count = 4
-popup/item_0/text = "auto"
-popup/item_0/id = 0
-popup/item_1/text = "English"
-popup/item_1/id = 1
-popup/item_2/text = "简体中文"
-popup/item_2/id = 2
-popup/item_3/text = "繁體中文"
-popup/item_3/id = 3
-
-[node name="Label2" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1886676435]
-layout_mode = 2
-tooltip_text = "SETTING_ARCHITECTURE_HINT"
-mouse_filter = 1
-text = "SETTING_ARCHITECTURE"
-
-[node name="ArchitectureOption" type="OptionButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=500190583]
-layout_mode = 2
-alignment = 1
-selected = 0
-item_count = 1
-popup/item_0/text = "auto"
-popup/item_0/id = 0
-
-[node name="Label8" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=171366908]
-layout_mode = 2
-tooltip_text = "SETTING_REMOTE_SOURCE_HINT"
-mouse_filter = 1
-text = "SETTING_REMOTE_SOURCE"
-
-[node name="RemoteSourceCheck" type="CheckButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1383476523]
+[node name="NormalContainer" parent="MainContainer/ScrollContainer/VBoxContainer/NormalPanel/MarginContainer" unique_id=990227793 instance=ExtResource("3_31xfx")]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1524774143]
+[node name="CompileLabel" type="Label" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=1299482309]
 layout_mode = 2
-tooltip_text = "SETTING_DELETE_DOWNLOAD_HINT"
-mouse_filter = 1
-text = "SETTING_DELETE_DOWNLOAD"
+text = "SETTING_TYPE_COMPILE"
 
-[node name="DeleteCheck" type="CheckButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=40003426]
-layout_mode = 2
-
-[node name="Label4" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=2000010349]
-layout_mode = 2
-tooltip_text = "SETTING_EDITOR_HINT"
-mouse_filter = 1
-text = "SETTING_EDITOR"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1034744901]
+[node name="CompilePanel" type="PanelContainer" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=2126652150]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EditorPathLine" type="LineEdit" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer" unique_id=1980407609]
-layout_mode = 2
-size_flags_horizontal = 3
-caret_blink = true
-
-[node name="EditorSelectButton" type="Button" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer" unique_id=1675579252]
-custom_minimum_size = Vector2(31, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-icon = ExtResource("2_pvusw")
-expand_icon = true
-
-[node name="EditorFileDialog" type="FileDialog" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer/EditorSelectButton" unique_id=1879102863]
-oversampling_override = 1.0
-title = "Open a File"
-initial_position = 1
-ok_button_text = "DIALOG_CONFIRM"
-dialog_hide_on_ok = true
-cancel_button_text = "DIALOG_CANCEL"
-file_mode = 0
-access = 2
-use_native_dialog = true
-
-[node name="Label7" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1714940174]
-layout_mode = 2
-tooltip_text = "SETTING_HIDE_PATH_HINT"
-mouse_filter = 1
-text = "SETTING_HIDE_PATH"
-
-[node name="HidePathCheck" type="CheckButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1437175857]
-layout_mode = 2
-
-[node name="Label6" type="Label" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1551275695]
-layout_mode = 2
-tooltip_text = "SETTING_USER_PATH_HINT"
-mouse_filter = 1
-text = "SETTING_USER_PATH"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer" unique_id=119828098]
-layout_mode = 2
-
-[node name="UserPathLine" type="LineEdit" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer2" unique_id=1554066396]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "user://"
-editable = false
-
-[node name="UserPathButton" type="Button" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer2" unique_id=1658310235]
-custom_minimum_size = Vector2(31, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 15
-icon = ExtResource("4_xuaq7")
-expand_icon = true
-
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer" unique_id=2131377467]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2" unique_id=792575991]
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer/ScrollContainer/VBoxContainer/CompilePanel" unique_id=789007418]
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2/MarginContainer" unique_id=1549463926]
+[node name="CompileContainer" parent="MainContainer/ScrollContainer/VBoxContainer/CompilePanel/MarginContainer" unique_id=143289572 instance=ExtResource("3_sdvru")]
 layout_mode = 2
-theme_override_constants/separation = 8
 
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=734777400]
+[node name="AboutLabel" type="Label" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=777107451]
 layout_mode = 2
-text = "https://github.com/hbread00/gdman"
-uri = "https://github.com/hbread00/gdman"
+text = "SETTING_TYPE_ABOUT"
 
-[node name="FoldableContainer" type="FoldableContainer" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=197256468]
-layout_mode = 2
-folded = true
-title = "SETTING_LICENSE"
-
-[node name="License" parent="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/FoldableContainer" unique_id=1875125344 instance=ExtResource("5_cjous")]
-visible = false
+[node name="AboutPanel" type="PanelContainer" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=2131377467]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control2" type="Control" parent="HBoxContainer2" unique_id=1179570988]
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer/ScrollContainer/VBoxContainer/AboutPanel" unique_id=792575991]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 12
+
+[node name="LicenseContainer" parent="MainContainer/ScrollContainer/VBoxContainer/AboutPanel/MarginContainer" unique_id=1277865361 instance=ExtResource("4_31xfx")]
+layout_mode = 2
+
+[node name="Pass2" type="Control" parent="MainContainer" unique_id=1179570988]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[connection signal="item_selected" from="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/LanguageOption" to="." method="_on_language_option_item_selected"]
-[connection signal="item_selected" from="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/ArchitectureOption" to="." method="_on_architecture_option_item_selected"]
-[connection signal="toggled" from="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/RemoteSourceCheck" to="." method="_on_remote_source_check_toggled"]
-[connection signal="toggled" from="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/DeleteCheck" to="." method="_on_delete_check_toggled"]
-[connection signal="text_submitted" from="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer/EditorPathLine" to="." method="_on_editor_path_line_text_submitted"]
-[connection signal="pressed" from="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer/EditorSelectButton" to="." method="_on_editor_select_button_pressed"]
-[connection signal="file_selected" from="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer/EditorSelectButton/EditorFileDialog" to="." method="_on_editor_file_dialog_file_selected"]
-[connection signal="toggled" from="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HidePathCheck" to="." method="_on_hide_path_check_toggled"]
-[connection signal="pressed" from="HBoxContainer2/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/GridContainer/HBoxContainer2/UserPathButton" to="." method="_on_user_path_button_pressed"]

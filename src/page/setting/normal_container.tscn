@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://c8n57o2oio2qi"]
+
+[ext_resource type="Texture2D" uid="uid://cn7mvs1yvvohm" path="res://asset/icon/scan.svg" id="1_ed4n3"]
+[ext_resource type="Script" uid="uid://cx2o2bvjqymoq" path="res://src/page/setting/normal_container.gd" id="1_eh4q8"]
+[ext_resource type="Texture2D" uid="uid://hv0qw0fm1wga" path="res://asset/icon/directory.svg" id="2_822wv"]
+
+[node name="NormalContainer" type="GridContainer" unique_id=1939230946]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+script = ExtResource("1_eh4q8")
+
+[node name="VersionLabel" type="Label" parent="." unique_id=302302661]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "SETTING_VERSION_HINT"
+mouse_filter = 1
+text = "SETTING_VERSION"
+
+[node name="VersionNameLabel" type="Label" parent="." unique_id=124127932]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0.0.0"
+horizontal_alignment = 2
+
+[node name="LanguageLabel" type="Label" parent="." unique_id=221019788]
+layout_mode = 2
+tooltip_text = "SETTING_LANGUAGE_HINT"
+mouse_filter = 1
+text = "SETTING_LANGUAGE"
+
+[node name="LanguageOption" type="OptionButton" parent="." unique_id=1891251804]
+layout_mode = 2
+alignment = 1
+selected = 0
+item_count = 4
+popup/item_0/text = "auto"
+popup/item_0/id = 0
+popup/item_1/text = "English"
+popup/item_1/id = 1
+popup/item_2/text = "简体中文"
+popup/item_2/id = 2
+popup/item_3/text = "繁體中文"
+popup/item_3/id = 3
+
+[node name="ArchitectureLabel" type="Label" parent="." unique_id=1139824140]
+layout_mode = 2
+tooltip_text = "SETTING_ARCHITECTURE_HINT"
+mouse_filter = 1
+text = "SETTING_ARCHITECTURE"
+
+[node name="ArchitectureOption" type="OptionButton" parent="." unique_id=484715168]
+layout_mode = 2
+alignment = 1
+selected = 0
+item_count = 1
+popup/item_0/text = "auto"
+popup/item_0/id = 0
+
+[node name="RemoteSourceLabel" type="Label" parent="." unique_id=224411427]
+layout_mode = 2
+tooltip_text = "SETTING_REMOTE_SOURCE_HINT"
+mouse_filter = 1
+text = "SETTING_REMOTE_SOURCE"
+
+[node name="RemoteSourceCheck" type="CheckButton" parent="." unique_id=315496632]
+layout_mode = 2
+
+[node name="DeleteDownloadLabel" type="Label" parent="." unique_id=966936371]
+layout_mode = 2
+tooltip_text = "SETTING_DELETE_DOWNLOAD_HINT"
+mouse_filter = 1
+text = "SETTING_DELETE_DOWNLOAD"
+
+[node name="DeleteDownloadCheck" type="CheckButton" parent="." unique_id=935212676]
+layout_mode = 2
+
+[node name="EditorLabel" type="Label" parent="." unique_id=1582959606]
+layout_mode = 2
+tooltip_text = "SETTING_EDITOR_HINT"
+mouse_filter = 1
+text = "SETTING_EDITOR"
+
+[node name="EditorContainer" type="HBoxContainer" parent="." unique_id=768500663]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditorPathLine" type="LineEdit" parent="EditorContainer" unique_id=11410497]
+layout_mode = 2
+size_flags_horizontal = 3
+caret_blink = true
+
+[node name="EditorSelectButton" type="Button" parent="EditorContainer" unique_id=1907847299]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+icon = ExtResource("1_ed4n3")
+expand_icon = true
+
+[node name="EditorFileDialog" type="FileDialog" parent="EditorContainer/EditorSelectButton" unique_id=912803333]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+ok_button_text = "DIALOG_CONFIRM"
+dialog_hide_on_ok = true
+cancel_button_text = "DIALOG_CANCEL"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="HidePathLabel" type="Label" parent="." unique_id=816615670]
+layout_mode = 2
+tooltip_text = "SETTING_HIDE_PATH_HINT"
+mouse_filter = 1
+text = "SETTING_HIDE_PATH"
+
+[node name="HidePathCheck" type="CheckButton" parent="." unique_id=1897241196]
+layout_mode = 2
+
+[node name="UserPathLabel" type="Label" parent="." unique_id=577475001]
+layout_mode = 2
+tooltip_text = "SETTING_USER_PATH_HINT"
+mouse_filter = 1
+text = "SETTING_USER_PATH"
+
+[node name="UserPathContainer" type="HBoxContainer" parent="." unique_id=1429292049]
+layout_mode = 2
+
+[node name="UserPathLine" type="LineEdit" parent="UserPathContainer" unique_id=195265189]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "user://"
+editable = false
+
+[node name="UserPathButton" type="Button" parent="UserPathContainer" unique_id=1675907148]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+icon = ExtResource("2_822wv")
+expand_icon = true
+
+[connection signal="item_selected" from="LanguageOption" to="." method="_on_language_option_item_selected"]
+[connection signal="item_selected" from="ArchitectureOption" to="." method="_on_architecture_option_item_selected"]
+[connection signal="toggled" from="RemoteSourceCheck" to="." method="_on_remote_source_check_toggled"]
+[connection signal="toggled" from="DeleteDownloadCheck" to="." method="_on_delete_download_check_toggled"]
+[connection signal="text_submitted" from="EditorContainer/EditorPathLine" to="." method="_on_editor_path_line_text_submitted"]
+[connection signal="pressed" from="EditorContainer/EditorSelectButton" to="." method="_on_editor_select_button_pressed"]
+[connection signal="toggled" from="HidePathCheck" to="." method="_on_hide_path_check_toggled"]
+[connection signal="pressed" from="UserPathContainer/UserPathButton" to="." method="_on_user_path_button_pressed"]

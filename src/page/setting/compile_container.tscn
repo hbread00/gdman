@@ -1,0 +1,288 @@
+[gd_scene format=3 uid="uid://0f770t4bh788"]
+
+[ext_resource type="Texture2D" uid="uid://hv0qw0fm1wga" path="res://asset/icon/directory.svg" id="1_36afp"]
+[ext_resource type="Script" uid="uid://dvw8vp020gt4u" path="res://src/page/setting/compile_container.gd" id="1_y4nsr"]
+[ext_resource type="Texture2D" uid="uid://bacfa0xs2su2p" path="res://asset/icon/refresh.svg" id="2_y4nsr"]
+[ext_resource type="Texture2D" uid="uid://kma3p4cm8w3o" path="res://asset/icon/godot.svg" id="3_l7ble"]
+[ext_resource type="Texture2D" uid="uid://bu2rk28e26nqp" path="res://asset/icon/dotnet.svg" id="3_pnxjj"]
+[ext_resource type="Texture2D" uid="uid://d1vmufog6bk75" path="res://asset/icon/windows.svg" id="4_l7ble"]
+[ext_resource type="Texture2D" uid="uid://cc26nw5lgktse" path="res://asset/icon/macos.svg" id="6_xar62"]
+[ext_resource type="Texture2D" uid="uid://ekg8dk2bwkxd" path="res://asset/icon/android.svg" id="7_821rm"]
+[ext_resource type="Texture2D" uid="uid://bv1fd6m6p2lke" path="res://asset/icon/browser.svg" id="9_1jmai"]
+
+[node name="CompileContainer" type="VBoxContainer" unique_id=143289572]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y4nsr")
+
+[node name="CompileContainer" type="GridContainer" parent="." unique_id=797116436]
+layout_mode = 2
+columns = 4
+
+[node name="RefreshButton" type="Button" parent="CompileContainer" unique_id=920946059]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+icon = ExtResource("2_y4nsr")
+expand_icon = true
+
+[node name="ToolLabel" type="Label" parent="CompileContainer" unique_id=829274605]
+layout_mode = 2
+text = "SETTING_COMPILE_TOOL"
+
+[node name="VersionLabel" type="Label" parent="CompileContainer" unique_id=684222573]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SETTING_COMPILE_VERSION"
+horizontal_alignment = 1
+
+[node name="CustomLabel" type="Label" parent="CompileContainer" unique_id=739735775]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SETTING_COMPILE_CUSTOM"
+horizontal_alignment = 1
+
+[node name="GodotIcon" type="TextureRect" parent="CompileContainer" unique_id=780558000]
+layout_mode = 2
+texture = ExtResource("3_l7ble")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="PythonLabel" type="Label" parent="CompileContainer" unique_id=441899216]
+layout_mode = 2
+text = "Python"
+
+[node name="PythonVersionLabel" type="Label" parent="CompileContainer" unique_id=1017160357]
+layout_mode = 2
+text = "?"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Pass" type="Control" parent="CompileContainer" unique_id=1888894049]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GodotIcon2" type="TextureRect" parent="CompileContainer" unique_id=1498399801]
+layout_mode = 2
+texture = ExtResource("3_l7ble")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="SconsLabel" type="Label" parent="CompileContainer" unique_id=540089350]
+layout_mode = 2
+text = "SCons"
+
+[node name="SconsVersionLabel" type="Label" parent="CompileContainer" unique_id=1374065054]
+layout_mode = 2
+text = "?"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="SconsOption" type="OptionButton" parent="CompileContainer" unique_id=1521906011]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "scons"
+popup/item_0/id = 0
+popup/item_1/text = "uvx scons"
+popup/item_1/id = 1
+
+[node name="DotnetIcon" type="TextureRect" parent="CompileContainer" unique_id=2059717698]
+layout_mode = 2
+tooltip_text = ".NET"
+texture = ExtResource("3_pnxjj")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="DotnetLabel" type="Label" parent="CompileContainer" unique_id=329213973]
+layout_mode = 2
+text = ".NET SDK"
+
+[node name="DotnetVersionLabel" type="Label" parent="CompileContainer" unique_id=1990690975]
+layout_mode = 2
+text = "?"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Pass4" type="Control" parent="CompileContainer" unique_id=23041982]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WindowsIcon" type="TextureRect" parent="CompileContainer" unique_id=1556957342]
+layout_mode = 2
+tooltip_text = "Windows"
+texture = ExtResource("4_l7ble")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="MinGWLabel" type="Label" parent="CompileContainer" unique_id=444379122]
+layout_mode = 2
+text = "MinGW"
+
+[node name="MinGWVersionLabel" type="Label" parent="CompileContainer" unique_id=861418359]
+layout_mode = 2
+text = "?"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="MinGWContainer" type="HBoxContainer" parent="CompileContainer" unique_id=356463487]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MinGWPathLine" type="LineEdit" parent="CompileContainer/MinGWContainer" unique_id=1873314412]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "MINGW_PREFIX"
+
+[node name="MinGWPathButton" type="Button" parent="CompileContainer/MinGWContainer" unique_id=1797513464]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+icon = ExtResource("1_36afp")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MinGWFileDialog" type="FileDialog" parent="CompileContainer/MinGWContainer/MinGWPathButton" unique_id=179394767]
+title = "Open a Directory"
+file_mode = 2
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="MacOSIcon" type="TextureRect" parent="CompileContainer" unique_id=1005382184]
+layout_mode = 2
+tooltip_text = "MacOS"
+texture = ExtResource("6_xar62")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="VulkanSDKLabel" type="Label" parent="CompileContainer" unique_id=1094239302]
+layout_mode = 2
+text = "Vulkan SDK"
+
+[node name="VulkanSDKVersionLabel" type="Label" parent="CompileContainer" unique_id=1173527793]
+layout_mode = 2
+text = "?"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Pass2" type="Control" parent="CompileContainer" unique_id=663667498]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AndroidIcon" type="TextureRect" parent="CompileContainer" unique_id=1856146039]
+layout_mode = 2
+tooltip_text = "Android"
+texture = ExtResource("7_821rm")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="JDKLabel" type="Label" parent="CompileContainer" unique_id=1997615952]
+layout_mode = 2
+text = "JDK"
+
+[node name="JDKVersionLabel" type="Label" parent="CompileContainer" unique_id=701584776]
+layout_mode = 2
+text = "?"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="JDKContainer" type="HBoxContainer" parent="CompileContainer" unique_id=1777893526]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JDKPathLine" type="LineEdit" parent="CompileContainer/JDKContainer" unique_id=138154316]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "JAVA_HOME"
+
+[node name="JDKPathButton" type="Button" parent="CompileContainer/JDKContainer" unique_id=1511294036]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+icon = ExtResource("1_36afp")
+icon_alignment = 1
+expand_icon = true
+
+[node name="JDKFileDialog" type="FileDialog" parent="CompileContainer/JDKContainer/JDKPathButton" unique_id=1303295638]
+title = "Open a Directory"
+file_mode = 2
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="AndroidIcon2" type="TextureRect" parent="CompileContainer" unique_id=1541901361]
+layout_mode = 2
+tooltip_text = "Android"
+texture = ExtResource("7_821rm")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="AndroidSDKLabel" type="Label" parent="CompileContainer" unique_id=220894173]
+layout_mode = 2
+text = "Android SDK"
+
+[node name="AndroidSDKVersionLabel" type="Label" parent="CompileContainer" unique_id=526838197]
+layout_mode = 2
+text = "?"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="AndroidSDKContainer" type="HBoxContainer" parent="CompileContainer" unique_id=322774448]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AndroidSDKPathLine" type="LineEdit" parent="CompileContainer/AndroidSDKContainer" unique_id=1276642007]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "ANDROID_HOME"
+
+[node name="AndroidSDKPathButton" type="Button" parent="CompileContainer/AndroidSDKContainer" unique_id=1986548852]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+icon = ExtResource("1_36afp")
+icon_alignment = 1
+expand_icon = true
+
+[node name="AndroidSDKFileDialog" type="FileDialog" parent="CompileContainer/AndroidSDKContainer/AndroidSDKPathButton" unique_id=1356462611]
+title = "Open a Directory"
+file_mode = 2
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="BrowserIcon" type="TextureRect" parent="CompileContainer" unique_id=661827793]
+layout_mode = 2
+tooltip_text = "Web"
+texture = ExtResource("9_1jmai")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="EmscriptenLabel" type="Label" parent="CompileContainer" unique_id=1172239026]
+layout_mode = 2
+text = "Emscripten"
+
+[node name="EmscriptenVersionLabel" type="Label" parent="CompileContainer" unique_id=1328750861]
+layout_mode = 2
+text = "?"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Pass3" type="Control" parent="CompileContainer" unique_id=1388095188]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="version_refreshed" from="." to="." method="_on_version_refreshed"]
+[connection signal="pressed" from="CompileContainer/RefreshButton" to="." method="_on_refresh_button_pressed"]
+[connection signal="pressed" from="CompileContainer/MinGWContainer/MinGWPathButton" to="." method="_on_min_gw_path_button_pressed"]
+[connection signal="dir_selected" from="CompileContainer/MinGWContainer/MinGWPathButton/MinGWFileDialog" to="." method="_on_min_gw_file_dialog_dir_selected"]
+[connection signal="pressed" from="CompileContainer/JDKContainer/JDKPathButton" to="." method="_on_jdk_path_button_pressed"]
+[connection signal="dir_selected" from="CompileContainer/JDKContainer/JDKPathButton/JDKFileDialog" to="." method="_on_jdk_file_dialog_dir_selected"]
+[connection signal="pressed" from="CompileContainer/AndroidSDKContainer/AndroidSDKPathButton" to="." method="_on_android_sdk_path_button_pressed"]
+[connection signal="dir_selected" from="CompileContainer/AndroidSDKContainer/AndroidSDKPathButton/AndroidSDKFileDialog" to="." method="_on_android_sdk_file_dialog_dir_selected"]

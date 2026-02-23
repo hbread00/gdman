@@ -1,18 +1,35 @@
-[gd_scene format=3 uid="uid://885qdmu56i1l"]
+[gd_scene format=3 uid="uid://cf6h8pgs5mbfn"]
 
-[node name="License" type="VBoxContainer" unique_id=1875125344]
-anchors_preset = 10
+[node name="AboutContainer" type="VBoxContainer" unique_id=1277865361]
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 63.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
 
-[node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=1096036186]
+[node name="ProjectLinkButton" type="LinkButton" parent="." unique_id=2059924326]
+layout_mode = 2
+text = "https://github.com/hbread00/gdman"
+uri = "https://github.com/hbread00/gdman"
+
+[node name="LicenseContainer" type="FoldableContainer" parent="." unique_id=448383479]
+layout_mode = 2
+folded = true
+title = "SETTING_LICENSE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LicenseContainer" unique_id=1317028812]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="GDMan" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=2046562922]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 folded = true
 title = "GDMan"
 
-[node name="MarginContainer" type="MarginContainer" parent="FoldableContainer" unique_id=76472284]
+[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/GDMan" unique_id=20301081]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -20,7 +37,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="FoldableContainer/MarginContainer" unique_id=715287506]
+[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/GDMan/MarginContainer" unique_id=248138831]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Apache License
@@ -225,13 +242,13 @@ text = "Apache License
    See the License for the specific language governing permissions and
    limitations under the License."
 
-[node name="FoldableContainer2" type="FoldableContainer" parent="." unique_id=1618298543]
+[node name="Godot" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=394247180]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 folded = true
 title = "Godot"
 
-[node name="MarginContainer" type="MarginContainer" parent="FoldableContainer2" unique_id=1072147305]
+[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/Godot" unique_id=399728050]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -239,7 +256,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="FoldableContainer2/MarginContainer" unique_id=1954420658]
+[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/Godot/MarginContainer" unique_id=1725479935]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).
@@ -263,13 +280,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
 
-[node name="FoldableContainer3" type="FoldableContainer" parent="." unique_id=689088579]
+[node name="GodotLogo" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=1879562387]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 folded = true
 title = "Godot Logo"
 
-[node name="MarginContainer" type="MarginContainer" parent="FoldableContainer3" unique_id=1546625407]
+[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/GodotLogo" unique_id=799647263]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -277,7 +294,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="FoldableContainer3/MarginContainer" unique_id=428304722]
+[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/GodotLogo/MarginContainer" unique_id=1462347081]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Godot Engine Logo
@@ -286,13 +303,13 @@ Copyright (c) 2017 Andrea Calabró
 This work is licensed under the Creative Commons Attribution 4.0 International
 license (CC BY 4.0 International): https://creativecommons.org/licenses/by/4.0/"
 
-[node name="FoldableContainer4" type="FoldableContainer" parent="." unique_id=334758475]
+[node name="GoogleMDIcon" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=1661123560]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 folded = true
 title = "Google Material Design Icons"
 
-[node name="MarginContainer" type="MarginContainer" parent="FoldableContainer4" unique_id=642122744]
+[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/GoogleMDIcon" unique_id=462676721]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -300,7 +317,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="FoldableContainer4/MarginContainer" unique_id=609134933]
+[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/GoogleMDIcon/MarginContainer" unique_id=1759358307]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "                                 Apache License
@@ -505,13 +522,13 @@ text = "                                 Apache License
    See the License for the specific language governing permissions and
    limitations under the License."
 
-[node name="FoldableContainer6" type="FoldableContainer" parent="." unique_id=473693893]
+[node name="PictogrammersMDIcon" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=1219603350]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 folded = true
 title = "Pictogrammers Material Design Icons"
 
-[node name="MarginContainer" type="MarginContainer" parent="FoldableContainer6" unique_id=96732188]
+[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/PictogrammersMDIcon" unique_id=1727462995]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -519,7 +536,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="FoldableContainer6/MarginContainer" unique_id=1721047617]
+[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/PictogrammersMDIcon/MarginContainer" unique_id=1266851942]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Pictogrammers Free License
@@ -545,13 +562,13 @@ licenses or are distributed under the Apache 2.0 license.
 # Code: MIT (https://opensource.org/licenses/MIT)
 The MIT license applies to all non-font and non-icon files."
 
-[node name="FoldableContainer5" type="FoldableContainer" parent="." unique_id=1178650955]
+[node name="DotNETLogo" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=2076052863]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 folded = true
 title = ".NET Logo"
 
-[node name="MarginContainer" type="MarginContainer" parent="FoldableContainer5" unique_id=55132981]
+[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/DotNETLogo" unique_id=1452445937]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -559,7 +576,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="FoldableContainer5/MarginContainer" unique_id=759705405]
+[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/DotNETLogo/MarginContainer" unique_id=1610170716]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "CC0 1.0 Universal
