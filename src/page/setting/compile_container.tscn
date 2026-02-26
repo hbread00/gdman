@@ -3,9 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://hv0qw0fm1wga" path="res://asset/icon/directory.svg" id="1_36afp"]
 [ext_resource type="Script" uid="uid://dvw8vp020gt4u" path="res://src/page/setting/compile_container.gd" id="1_y4nsr"]
 [ext_resource type="Texture2D" uid="uid://bacfa0xs2su2p" path="res://asset/icon/refresh.svg" id="2_y4nsr"]
-[ext_resource type="Texture2D" uid="uid://kma3p4cm8w3o" path="res://asset/icon/godot.svg" id="3_l7ble"]
 [ext_resource type="Texture2D" uid="uid://bu2rk28e26nqp" path="res://asset/icon/dotnet.svg" id="3_pnxjj"]
-[ext_resource type="Texture2D" uid="uid://2crx7poin47h" path="res://asset/icon/about.svg" id="3_sjon8"]
 [ext_resource type="Texture2D" uid="uid://d1vmufog6bk75" path="res://asset/icon/windows.svg" id="4_l7ble"]
 [ext_resource type="Texture2D" uid="uid://cc26nw5lgktse" path="res://asset/icon/macos.svg" id="6_xar62"]
 [ext_resource type="Texture2D" uid="uid://ekg8dk2bwkxd" path="res://asset/icon/android.svg" id="7_821rm"]
@@ -31,15 +29,12 @@ layout_mode = 2
 theme_override_constants/h_separation = 8
 columns = 4
 
-[node name="InfoIcon" type="TextureRect" parent="GridContainer" unique_id=371539339]
-layout_mode = 2
-texture = ExtResource("3_sjon8")
-expand_mode = 3
-stretch_mode = 5
-
 [node name="ToolLabel" type="Label" parent="GridContainer" unique_id=2027728482]
 layout_mode = 2
 text = "SETTING_COMPILE_TOOL"
+
+[node name="Pass13" type="Control" parent="GridContainer" unique_id=1537552730]
+layout_mode = 2
 
 [node name="VersionLabel" type="Label" parent="GridContainer" unique_id=788521506]
 layout_mode = 2
@@ -50,17 +45,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "SETTING_COMPILE_CUSTOM"
 
-[node name="GodotIcon" type="TextureRect" parent="GridContainer" unique_id=1548238000]
-layout_mode = 2
-texture = ExtResource("3_l7ble")
-expand_mode = 3
-stretch_mode = 5
-
 [node name="PythonLabel" type="Label" parent="GridContainer" unique_id=441899216]
 layout_mode = 2
 tooltip_text = "python3"
 mouse_filter = 1
 text = "Python"
+
+[node name="Pass14" type="Control" parent="GridContainer" unique_id=1356935798]
+layout_mode = 2
 
 [node name="PythonVersionLabel" type="Label" parent="GridContainer" unique_id=1017160357]
 layout_mode = 2
@@ -71,17 +63,14 @@ text_overrun_behavior = 3
 [node name="Pass" type="Control" parent="GridContainer" unique_id=136971868]
 layout_mode = 2
 
-[node name="GodotIcon2" type="TextureRect" parent="GridContainer" unique_id=852644027]
-layout_mode = 2
-texture = ExtResource("3_l7ble")
-expand_mode = 3
-stretch_mode = 5
-
 [node name="SconsLabel" type="Label" parent="GridContainer" unique_id=540089350]
 layout_mode = 2
 tooltip_text = "scons"
 mouse_filter = 1
 text = "SCons"
+
+[node name="Pass15" type="Control" parent="GridContainer" unique_id=1944698625]
+layout_mode = 2
 
 [node name="SconsVersionLabel" type="Label" parent="GridContainer" unique_id=1374065054]
 layout_mode = 2
@@ -92,17 +81,17 @@ text_overrun_behavior = 3
 [node name="Pass2" type="Control" parent="GridContainer" unique_id=1497895755]
 layout_mode = 2
 
-[node name="DotnetIcon" type="TextureRect" parent="GridContainer" unique_id=236740275]
-layout_mode = 2
-texture = ExtResource("3_pnxjj")
-expand_mode = 5
-stretch_mode = 5
-
 [node name="DotnetLabel" type="Label" parent="GridContainer" unique_id=329213973]
 layout_mode = 2
 tooltip_text = "dotnet"
 mouse_filter = 1
 text = ".NET SDK"
+
+[node name="DotnetIcon" type="TextureRect" parent="GridContainer" unique_id=236740275]
+layout_mode = 2
+texture = ExtResource("3_pnxjj")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="DotnetVersionLabel" type="Label" parent="GridContainer" unique_id=1990690975]
 layout_mode = 2
@@ -113,55 +102,57 @@ text_overrun_behavior = 3
 [node name="Pass3" type="Control" parent="GridContainer" unique_id=113928471]
 layout_mode = 2
 
+[node name="MingwLabel" type="Label" parent="GridContainer" unique_id=444379122]
+layout_mode = 2
+tooltip_text = "g++ | $MINGW_PREFIX/bin/g++"
+mouse_filter = 1
+text = "MinGW"
+
 [node name="WindowsIcon" type="TextureRect" parent="GridContainer" unique_id=451883891]
 layout_mode = 2
+tooltip_text = "Windows"
 texture = ExtResource("4_l7ble")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="MinGWLabel" type="Label" parent="GridContainer" unique_id=444379122]
-layout_mode = 2
-tooltip_text = "g++"
-mouse_filter = 1
-text = "MinGW"
-
-[node name="MinGWVersionLabel" type="Label" parent="GridContainer" unique_id=861418359]
+[node name="MingwVersionLabel" type="Label" parent="GridContainer" unique_id=861418359]
 layout_mode = 2
 text = "?"
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="MinGWContainer" type="HBoxContainer" parent="GridContainer" unique_id=18445207]
+[node name="MingwContainer" type="HBoxContainer" parent="GridContainer" unique_id=18445207]
 layout_mode = 2
 
-[node name="MinGWPathLine" type="LineEdit" parent="GridContainer/MinGWContainer" unique_id=1873314412]
+[node name="MingwPathLine" type="LineEdit" parent="GridContainer/MingwContainer" unique_id=1873314412]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "MINGW_PREFIX"
 
-[node name="MinGWPathButton" type="Button" parent="GridContainer/MinGWContainer" unique_id=1797513464]
+[node name="MingwPathButton" type="Button" parent="GridContainer/MingwContainer" unique_id=1797513464]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 icon = ExtResource("1_36afp")
 icon_alignment = 1
 expand_icon = true
 
-[node name="MinGWFileDialog" type="FileDialog" parent="GridContainer/MinGWContainer/MinGWPathButton" unique_id=179394767]
+[node name="MingwFileDialog" type="FileDialog" parent="GridContainer/MingwContainer/MingwPathButton" unique_id=179394767]
 title = "Open a Directory"
 file_mode = 2
 access = 2
 show_hidden_files = true
 use_native_dialog = true
 
-[node name="MacOSIcon" type="TextureRect" parent="GridContainer" unique_id=1223969404]
-layout_mode = 2
-texture = ExtResource("6_xar62")
-expand_mode = 5
-stretch_mode = 5
-
 [node name="VulkanSDKLabel" type="Label" parent="GridContainer" unique_id=1094239302]
 layout_mode = 2
 text = "Vulkan SDK"
+
+[node name="MacOSIcon" type="TextureRect" parent="GridContainer" unique_id=1223969404]
+layout_mode = 2
+tooltip_text = "MacOS"
+texture = ExtResource("6_xar62")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="VulkanSDKVersionLabel" type="Label" parent="GridContainer" unique_id=1173527793]
 layout_mode = 2
@@ -172,17 +163,18 @@ text_overrun_behavior = 3
 [node name="Pass4" type="Control" parent="GridContainer" unique_id=886355569]
 layout_mode = 2
 
-[node name="WebIcon" type="TextureRect" parent="GridContainer" unique_id=1230495133]
-layout_mode = 2
-texture = ExtResource("9_1jmai")
-expand_mode = 5
-stretch_mode = 5
-
 [node name="EmscriptenLabel" type="Label" parent="GridContainer" unique_id=1847266485]
 layout_mode = 2
 tooltip_text = "emcc"
 mouse_filter = 1
 text = "Emscripten"
+
+[node name="WebIcon" type="TextureRect" parent="GridContainer" unique_id=1230495133]
+layout_mode = 2
+tooltip_text = "Web"
+texture = ExtResource("9_1jmai")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="EmscriptenVersionLabel" type="Label" parent="GridContainer" unique_id=860109968]
 layout_mode = 2
@@ -193,17 +185,18 @@ text_overrun_behavior = 3
 [node name="Pass5" type="Control" parent="GridContainer" unique_id=1709152385]
 layout_mode = 2
 
+[node name="JDKLabel" type="Label" parent="GridContainer" unique_id=1997615952]
+layout_mode = 2
+tooltip_text = "javac | $JAVA_HOME/bin/javac"
+mouse_filter = 1
+text = "JDK"
+
 [node name="AndroidIcon" type="TextureRect" parent="GridContainer" unique_id=1554288731]
 layout_mode = 2
+tooltip_text = "Android"
 texture = ExtResource("7_821rm")
 expand_mode = 5
 stretch_mode = 5
-
-[node name="JDKLabel" type="Label" parent="GridContainer" unique_id=1997615952]
-layout_mode = 2
-tooltip_text = "javac"
-mouse_filter = 1
-text = "JDK"
 
 [node name="JDKVersionLabel" type="Label" parent="GridContainer" unique_id=701584776]
 layout_mode = 2
@@ -233,15 +226,18 @@ access = 2
 show_hidden_files = true
 use_native_dialog = true
 
+[node name="AndroidSDKLabel" type="Label" parent="GridContainer" unique_id=220894173]
+layout_mode = 2
+tooltip_text = "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+mouse_filter = 1
+text = "Android SDK"
+
 [node name="AndroidIcon2" type="TextureRect" parent="GridContainer" unique_id=1368644385]
 layout_mode = 2
+tooltip_text = "Android"
 texture = ExtResource("7_821rm")
 expand_mode = 5
 stretch_mode = 5
-
-[node name="AndroidSDKLabel" type="Label" parent="GridContainer" unique_id=220894173]
-layout_mode = 2
-text = "Android SDK"
 
 [node name="Pass6" type="Control" parent="GridContainer" unique_id=502473008]
 layout_mode = 2
@@ -269,15 +265,16 @@ access = 2
 show_hidden_files = true
 use_native_dialog = true
 
-[node name="AndroidIcon3" type="TextureRect" parent="GridContainer" unique_id=1796166124]
-layout_mode = 2
-texture = ExtResource("7_821rm")
-expand_mode = 5
-stretch_mode = 5
-
 [node name="AndroidPlatformToolsLabel" type="Label" parent="GridContainer" unique_id=627034594]
 layout_mode = 2
 text = "Platform-Tools"
+
+[node name="AndroidIcon3" type="TextureRect" parent="GridContainer" unique_id=1796166124]
+layout_mode = 2
+tooltip_text = "Android"
+texture = ExtResource("7_821rm")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="AndroidPlatformToolsVersionLabel" type="Label" parent="GridContainer" unique_id=78627296]
 layout_mode = 2
@@ -286,15 +283,16 @@ text = "?"
 [node name="Pass7" type="Control" parent="GridContainer" unique_id=2091105573]
 layout_mode = 2
 
-[node name="AndroidIcon4" type="TextureRect" parent="GridContainer" unique_id=885110841]
-layout_mode = 2
-texture = ExtResource("7_821rm")
-expand_mode = 5
-stretch_mode = 5
-
 [node name="AndroidBuildToolsLabel" type="Label" parent="GridContainer" unique_id=1666719058]
 layout_mode = 2
 text = "Build-Tools"
+
+[node name="AndroidIcon4" type="TextureRect" parent="GridContainer" unique_id=885110841]
+layout_mode = 2
+tooltip_text = "Android"
+texture = ExtResource("7_821rm")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="AndroidBuildToolsVersionLabel" type="Label" parent="GridContainer" unique_id=161980082]
 layout_mode = 2
@@ -303,15 +301,16 @@ text = "?"
 [node name="Pass8" type="Control" parent="GridContainer" unique_id=1650394338]
 layout_mode = 2
 
-[node name="AndroidIcon5" type="TextureRect" parent="GridContainer" unique_id=166844674]
-layout_mode = 2
-texture = ExtResource("7_821rm")
-expand_mode = 5
-stretch_mode = 5
-
 [node name="AndroidPlatformLabel" type="Label" parent="GridContainer" unique_id=617301108]
 layout_mode = 2
 text = "SDK Platform"
+
+[node name="AndroidIcon5" type="TextureRect" parent="GridContainer" unique_id=166844674]
+layout_mode = 2
+tooltip_text = "Android"
+texture = ExtResource("7_821rm")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="AndroidPlatformVersionLabel" type="Label" parent="GridContainer" unique_id=122419992]
 layout_mode = 2
@@ -320,51 +319,54 @@ text = "?"
 [node name="Pass9" type="Control" parent="GridContainer" unique_id=1515881919]
 layout_mode = 2
 
+[node name="AndroidCommandLineToolsLabel" type="Label" parent="GridContainer" unique_id=1199239492]
+layout_mode = 2
+text = "Command-line Tools"
+
 [node name="AndroidIcon6" type="TextureRect" parent="GridContainer" unique_id=111107524]
 layout_mode = 2
+tooltip_text = "Android"
 texture = ExtResource("7_821rm")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="AndroidCommandLineLabel" type="Label" parent="GridContainer" unique_id=1199239492]
-layout_mode = 2
-text = "Command-line Tools"
-
-[node name="AndroidCommandLineVersionLabel" type="Label" parent="GridContainer" unique_id=796895056]
+[node name="AndroidCommandLineToolsVersionLabel" type="Label" parent="GridContainer" unique_id=796895056]
 layout_mode = 2
 text = "?"
 
 [node name="Pass10" type="Control" parent="GridContainer" unique_id=1559748097]
 layout_mode = 2
 
+[node name="AndroidCmakeLabel" type="Label" parent="GridContainer" unique_id=1392790605]
+layout_mode = 2
+text = "CMake"
+
 [node name="AndroidIcon7" type="TextureRect" parent="GridContainer" unique_id=1869275043]
 layout_mode = 2
+tooltip_text = "Android"
 texture = ExtResource("7_821rm")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="CMakeLabel" type="Label" parent="GridContainer" unique_id=1392790605]
-layout_mode = 2
-text = "CMake"
-
-[node name="CMakeVersionLabel" type="Label" parent="GridContainer" unique_id=2081880708]
+[node name="AndroidCmakeVersionLabel" type="Label" parent="GridContainer" unique_id=2081880708]
 layout_mode = 2
 text = "?"
 
 [node name="Pass11" type="Control" parent="GridContainer" unique_id=394115724]
 layout_mode = 2
 
+[node name="AndroidNDKLabel" type="Label" parent="GridContainer" unique_id=688556842]
+layout_mode = 2
+text = "NDK"
+
 [node name="AndroidIcon8" type="TextureRect" parent="GridContainer" unique_id=1717342168]
 layout_mode = 2
+tooltip_text = "Android"
 texture = ExtResource("7_821rm")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="NDKLabel" type="Label" parent="GridContainer" unique_id=688556842]
-layout_mode = 2
-text = "NDK"
-
-[node name="NDKVersionLabel" type="Label" parent="GridContainer" unique_id=576313355]
+[node name="AndroidNDKVersionLabel" type="Label" parent="GridContainer" unique_id=576313355]
 layout_mode = 2
 text = "?"
 
@@ -373,12 +375,12 @@ layout_mode = 2
 
 [connection signal="version_refreshed" from="." to="." method="_on_version_refreshed"]
 [connection signal="pressed" from="RefreshButton" to="." method="_on_refresh_button_pressed"]
-[connection signal="text_submitted" from="GridContainer/MinGWContainer/MinGWPathLine" to="." method="_on_min_gw_path_line_text_submitted"]
-[connection signal="pressed" from="GridContainer/MinGWContainer/MinGWPathButton" to="." method="_on_min_gw_path_button_pressed"]
-[connection signal="dir_selected" from="GridContainer/MinGWContainer/MinGWPathButton/MinGWFileDialog" to="." method="_on_min_gw_file_dialog_dir_selected"]
-[connection signal="text_submitted" from="GridContainer/JDKContainer/JDKPathLine" to="." method="_on_jdk_path_line_text_submitted"]
+[connection signal="text_changed" from="GridContainer/MingwContainer/MingwPathLine" to="." method="_on_min_gw_path_line_text_changed"]
+[connection signal="pressed" from="GridContainer/MingwContainer/MingwPathButton" to="." method="_on_mingw_path_button_pressed"]
+[connection signal="dir_selected" from="GridContainer/MingwContainer/MingwPathButton/MingwFileDialog" to="." method="_on_mingw_file_dialog_dir_selected"]
+[connection signal="text_changed" from="GridContainer/JDKContainer/JDKPathLine" to="." method="_on_jdk_path_line_text_changed"]
 [connection signal="pressed" from="GridContainer/JDKContainer/JDKPathButton" to="." method="_on_jdk_path_button_pressed"]
 [connection signal="dir_selected" from="GridContainer/JDKContainer/JDKPathButton/JDKFileDialog" to="." method="_on_jdk_file_dialog_dir_selected"]
-[connection signal="text_submitted" from="GridContainer/AndroidSDKContainer/AndroidSDKPathLine" to="." method="_on_android_sdk_path_line_text_submitted"]
+[connection signal="text_changed" from="GridContainer/AndroidSDKContainer/AndroidSDKPathLine" to="." method="_on_android_sdk_path_line_text_changed"]
 [connection signal="pressed" from="GridContainer/AndroidSDKContainer/AndroidSDKPathButton" to="." method="_on_android_sdk_path_button_pressed"]
 [connection signal="dir_selected" from="GridContainer/AndroidSDKContainer/AndroidSDKPathButton/AndroidSDKFileDialog" to="." method="_on_android_sdk_file_dialog_dir_selected"]

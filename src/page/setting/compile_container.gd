@@ -18,8 +18,8 @@ var version_regex: Dictionary[String, String] = {
 }
 
 @onready var refresh_button: Button = $RefreshButton
-@onready var min_gw_path_line: LineEdit = $GridContainer/MinGWContainer/MinGWPathLine
-@onready var min_gw_file_dialog: FileDialog = $GridContainer/MinGWContainer/MinGWPathButton/MinGWFileDialog
+@onready var mingw_path_line: LineEdit = $GridContainer/MingwContainer/MingwPathLine
+@onready var mingw_file_dialog: FileDialog = $GridContainer/MingwContainer/MingwPathButton/MingwFileDialog
 @onready var jdk_path_line: LineEdit = $GridContainer/JDKContainer/JDKPathLine
 @onready var jdk_file_dialog: FileDialog = $GridContainer/JDKContainer/JDKPathButton/JDKFileDialog
 @onready var android_sdk_path_line: LineEdit = $GridContainer/AndroidSDKContainer/AndroidSDKPathLine
@@ -28,7 +28,7 @@ var version_regex: Dictionary[String, String] = {
 @onready var python_version_label: Label = $GridContainer/PythonVersionLabel
 @onready var scons_version_label: Label = $GridContainer/SconsVersionLabel
 @onready var dotnet_version_label: Label = $GridContainer/DotnetVersionLabel
-@onready var min_gw_version_label: Label = $GridContainer/MinGWVersionLabel
+@onready var mingw_version_label: Label = $GridContainer/MingwVersionLabel
 @onready var vulkan_sdk_version_label: Label = $GridContainer/VulkanSDKVersionLabel
 @onready var emscripten_version_label: Label = $GridContainer/EmscriptenVersionLabel
 @onready var jdk_version_label: Label = $GridContainer/JDKVersionLabel
@@ -36,9 +36,9 @@ var version_regex: Dictionary[String, String] = {
 @onready var android_platform_tools_version_label: Label = $GridContainer/AndroidPlatformToolsVersionLabel
 @onready var android_build_tools_version_label: Label = $GridContainer/AndroidBuildToolsVersionLabel
 @onready var android_platform_version_label: Label = $GridContainer/AndroidPlatformVersionLabel
-@onready var android_command_line_version_label: Label = $GridContainer/AndroidCommandLineVersionLabel
-@onready var c_make_version_label: Label = $GridContainer/CMakeVersionLabel
-@onready var ndk_version_label: Label = $GridContainer/NDKVersionLabel
+@onready var android_command_line_tools_version_label: Label = $GridContainer/AndroidCommandLineToolsVersionLabel
+@onready var android_cmake_version_label: Label = $GridContainer/AndroidCmakeVersionLabel
+@onready var android_ndk_version_label: Label = $GridContainer/AndroidNDKVersionLabel
 
 func _ready() -> void:
 	for key: String in version_regex.keys():
@@ -49,104 +49,33 @@ func _ready() -> void:
 	check_version_task_id = WorkerThreadPool.add_task(_check_version_task)
 	
 func _check_version_task() -> void:
-	# Python：python3 --version
 	python_version_label.set_deferred("text",
-		_extract_version("python", ["--version"], "python"))
-	# Scons：scons --version
+		CompileManager.get_python_version())
 	scons_version_label.set_deferred("text",
-		_extract_version("scons", ["--version"], "scons"))
-	# Dotnet：dotnet --version
+		CompileManager.get_scons_version())
 	dotnet_version_label.set_deferred("text",
-		_extract_version("dotnet", ["--version"], "dotnet"))
-	# MinGW：g++ --version
-	if min_gw_path_line.text == "":
-		min_gw_version_label.set_deferred("text",
-			_extract_version("g++", ["--version"], "mingw"))
-	else:
-		min_gw_version_label.set_deferred("text",
-			_extract_version(min_gw_path_line.text.path_join("bin/g++.exe"), ["--version"], "mingw"))
-	# Vulkan SDK：pass
-	# Emscripten：emcc --version
+		CompileManager.get_dotnet_version())
+	mingw_version_label.set_deferred("text",
+		CompileManager.get_mingw_version(mingw_path_line.text))
+	vulkan_sdk_version_label.set_deferred("text",
+		CompileManager.get_vulkan_sdk_version())
 	emscripten_version_label.set_deferred("text",
-		_extract_version("emcc", ["--version"], "emscripten"))
-	version_refreshed.emit.call_deferred()
-	# JDK：javac --version
-	if jdk_path_line.text == "":
-		jdk_version_label.set_deferred("text",
-		_extract_version("javac", ["--version"], "jdk"))
-	else:
-		jdk_version_label.set_deferred("text",
-			_extract_version(jdk_path_line.text.path_join("bin/javac"), ["--version"], "jdk"))
-	# Android SDK
-	_check_android_sdk_version()
-
-func _check_android_sdk_version() -> void:
-	var sdk_path: String = android_sdk_path_line.text
-	if sdk_path == "":
-		sdk_path = OS.get_environment("ANDROID_HOME")
-	if sdk_path == "":
-		android_platform_tools_version_label.set_deferred("text", "?")
-		android_build_tools_version_label.set_deferred("text", "?")
-		android_platform_version_label.set_deferred("text", "?")
-		android_command_line_version_label.set_deferred("text", "?")
-		return
-	if OS.get_name() == "Windows":
-		sdk_path = sdk_path.path_join("cmdline-tools/latest/bin/sdkmanager.bat")
-	else:
-		sdk_path = sdk_path.path_join("cmdline-tools/latest/bin/sdkmanager")
-	var output: Array[String] = []
-	if (OS.execute(sdk_path, ["--list_installed"], output) != OK
-		or output.size() == 0):
-		android_platform_tools_version_label.set_deferred("text", "?")
-		android_build_tools_version_label.set_deferred("text", "?")
-		android_platform_version_label.set_deferred("text", "?")
-		android_command_line_version_label.set_deferred("text", "?")
-		return
-	var tools_version: Dictionary[String, String] = {}
-	for line: String in output[0].split("\n"):
-		line = line.strip_edges()
-		if (line.is_empty()
-			or line.begins_with("Installed packages")
-			or line.begins_with("Path")
-			or line.begins_with("--")):
-			continue
-		var parts: PackedStringArray = line.split("|")
-		if parts.size() < 2:
-			continue
-		var tool_name: String = parts[0].strip_edges().split(";")[0]
-		var tool_version: String = parts[1].strip_edges()
-		if tool_name == "platforms":
-			tool_version = parts[0].strip_edges().split(";")[-1]
-		tools_version[tool_name] = tool_version
-		
-		
+		CompileManager.get_emscripten_version())
+	jdk_version_label.set_deferred("text",
+		CompileManager.get_jdk_version(jdk_path_line.text))
 	android_platform_tools_version_label.set_deferred("text",
-		tools_version.get("platform-tools", "?"))
+		CompileManager.get_android_sdk_platform_tools_version(android_sdk_path_line.text))
 	android_build_tools_version_label.set_deferred("text",
-		tools_version.get("build-tools", "?"))
+		CompileManager.get_android_sdk_build_tools_version(android_sdk_path_line.text))
 	android_platform_version_label.set_deferred("text",
-		tools_version.get("platforms", "?"))
-	android_command_line_version_label.set_deferred("text",
-		tools_version.get("cmdline-tools", "?"))
-	if tools_version.has("cmake"):
-		c_make_version_label.set_deferred("text", tools_version.get("cmake", "?"))
-	else:
-		c_make_version_label.set_deferred("text",
-		_extract_version("cmake", ["--version"], "cmake"))
-	ndk_version_label.set_deferred("text", tools_version.get("ndk", "?"))
-
-func _extract_version(path: String, args: PackedStringArray, regex_key: String) -> String:
-	if not regex.has(regex_key):
-		return "?"
-	var output: Array[String] = []
-	if (OS.execute(path, args, output) != OK
-		or output.size() == 0):
-		return "?"
-	var result: RegExMatch = regex[regex_key].search(output[0])
-	if result == null:
-		return "?"
-	return result.get_string(1)
-
+		CompileManager.get_android_sdk_platform_version(android_sdk_path_line.text))
+	android_command_line_tools_version_label.set_deferred("text",
+		CompileManager.get_android_sdk_command_line_tools_version(android_sdk_path_line.text))
+	android_cmake_version_label.set_deferred("text",
+		CompileManager.get_android_cmake_version(android_sdk_path_line.text))
+	android_ndk_version_label.set_deferred("text",
+		CompileManager.get_android_ndk_version(android_sdk_path_line.text))
+	version_refreshed.emit.call_deferred()
 
 func _on_refresh_button_pressed() -> void:
 	refresh_button.disabled = true
@@ -156,8 +85,8 @@ func _on_version_refreshed() -> void:
 	WorkerThreadPool.wait_for_task_completion(check_version_task_id)
 	refresh_button.set_deferred("disabled", false)
 
-func _on_min_gw_path_button_pressed() -> void:
-	min_gw_file_dialog.popup_centered()
+func _on_mingw_path_button_pressed() -> void:
+	mingw_file_dialog.popup_centered()
 
 func _on_jdk_path_button_pressed() -> void:
 	jdk_file_dialog.popup_centered()
@@ -165,9 +94,8 @@ func _on_jdk_path_button_pressed() -> void:
 func _on_android_sdk_path_button_pressed() -> void:
 	android_sdk_file_dialog.popup_centered()
 
-
-func _on_min_gw_file_dialog_dir_selected(dir: String) -> void:
-	min_gw_path_line.text = dir
+func _on_mingw_file_dialog_dir_selected(dir: String) -> void:
+	mingw_path_line.text = dir
 
 func _on_jdk_file_dialog_dir_selected(dir: String) -> void:
 	jdk_path_line.text = dir
@@ -175,14 +103,11 @@ func _on_jdk_file_dialog_dir_selected(dir: String) -> void:
 func _on_android_sdk_file_dialog_dir_selected(dir: String) -> void:
 	android_sdk_path_line.text = dir
 
-
-func _on_min_gw_path_line_text_submitted(new_text: String) -> void:
+func _on_min_gw_path_line_text_changed(new_text: String) -> void:
 	Config.mingw_prefix = new_text
 
-
-func _on_jdk_path_line_text_submitted(new_text: String) -> void:
+func _on_jdk_path_line_text_changed(new_text: String) -> void:
 	Config.java_home = new_text
 
-
-func _on_android_sdk_path_line_text_submitted(new_text: String) -> void:
+func _on_android_sdk_path_line_text_changed(new_text: String) -> void:
 	Config.android_home = new_text

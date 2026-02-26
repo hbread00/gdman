@@ -26,6 +26,7 @@ Config="*uid://b416biq16v3rx"
 EngineManager="*uid://f1fsb2d0pkkw"
 DownloadManager="*uid://cga0fc7y2vyr8"
 ProjectManager="*uid://d25cylo0iipf2"
+CompileManager="*uid://cfk4tu6yve4if"
 
 [debug]
 

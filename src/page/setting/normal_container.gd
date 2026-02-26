@@ -75,14 +75,12 @@ func _on_remote_source_check_toggled(toggled_on: bool) -> void:
 func _on_delete_download_check_toggled(toggled_on: bool) -> void:
 	Config.delete_download_file = toggled_on
 
-
 func _on_editor_path_line_text_submitted(new_text: String) -> void:
 	Config.external_editor_path = new_text
-	
+
 func _on_editor_select_button_pressed() -> void:
 	editor_file_dialog.current_dir = editor_path_line.text.get_base_dir()
 	editor_file_dialog.popup_file_dialog()
-
 
 func _on_hide_path_check_toggled(toggled_on: bool) -> void:
 	Config.hide_path = toggled_on
