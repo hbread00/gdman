@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dfiwhf1wgf7ij"]
+
+[ext_resource type="Texture2D" uid="uid://cdxig436m2j1x" path="res://asset/icon/compile.svg" id="1_c86o4"]
+[ext_resource type="Texture2D" uid="uid://bigyx4j1euktf" path="res://asset/icon/add.svg" id="2_kxg1l"]
+[ext_resource type="PackedScene" uid="uid://dnwx7tc3bvgu1" path="res://src/page/compile/source_code_card.tscn" id="3_kxg1l"]
+
+[node name="CompilePage" type="VBoxContainer" unique_id=68255320]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=530466565]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2" unique_id=1723540925]
+layout_mode = 2
+texture = ExtResource("1_c86o4")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer2" unique_id=1709205458]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "TITLE_COMPILE"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=906186494]
+layout_mode = 2
+
+[node name="DownloadButton" type="Button" parent="HBoxContainer" unique_id=1110224684]
+layout_mode = 2
+tooltip_text = "PROJECT_IMPORT_HINT"
+text = "COMPILE_DOWNLOAD"
+icon = ExtResource("2_kxg1l")
+expand_icon = true
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1024651549]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer" unique_id=740300699]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/PanelContainer" unique_id=1511057090]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/PanelContainer/MarginContainer" unique_id=229009961]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CardContainer" type="GridContainer" parent="HSplitContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=1647225547]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+columns = 2
+
+[node name="SourceCodeCard" parent="HSplitContainer/PanelContainer/MarginContainer/ScrollContainer/CardContainer" unique_id=123831859 instance=ExtResource("3_kxg1l")]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="HSplitContainer" unique_id=1784988447]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/PanelContainer2" unique_id=368505442]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/PanelContainer2/MarginContainer" unique_id=1947435770]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DownloaderContainer" type="VBoxContainer" parent="HSplitContainer/PanelContainer2/MarginContainer/ScrollContainer" unique_id=1885043704]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

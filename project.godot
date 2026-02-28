@@ -39,6 +39,13 @@ window/size/viewport_height=600
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[file_customization]
+
+folder_colors={
+"res://asset/": "red",
+"res://src/page/": "green"
+}
+
 [internationalization]
 
 locale/translations=PackedStringArray("res://asset/localization/locolization.en.translation", "res://asset/localization/locolization.zh_CN.translation", "res://asset/localization/locolization.zh_HK.translation")

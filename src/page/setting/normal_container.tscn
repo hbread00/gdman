@@ -36,6 +36,7 @@ text = "SETTING_LANGUAGE"
 
 [node name="LanguageOption" type="OptionButton" parent="." unique_id=1891251804]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 alignment = 1
 selected = 0
 item_count = 4
@@ -56,6 +57,7 @@ text = "SETTING_ARCHITECTURE"
 
 [node name="ArchitectureOption" type="OptionButton" parent="." unique_id=484715168]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 alignment = 1
 selected = 0
 item_count = 1
@@ -93,10 +95,11 @@ size_flags_horizontal = 3
 [node name="EditorPathLine" type="LineEdit" parent="EditorContainer" unique_id=11410497]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 caret_blink = true
 
 [node name="EditorSelectButton" type="Button" parent="EditorContainer" unique_id=1907847299]
-custom_minimum_size = Vector2(31, 0)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 icon = ExtResource("1_ed4n3")
@@ -134,11 +137,12 @@ layout_mode = 2
 [node name="UserPathLine" type="LineEdit" parent="UserPathContainer" unique_id=195265189]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 text = "user://"
 editable = false
 
 [node name="UserPathButton" type="Button" parent="UserPathContainer" unique_id=1675907148]
-custom_minimum_size = Vector2(31, 0)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
 icon = ExtResource("2_822wv")

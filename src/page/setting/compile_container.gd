@@ -96,18 +96,23 @@ func _on_android_sdk_path_button_pressed() -> void:
 
 func _on_mingw_file_dialog_dir_selected(dir: String) -> void:
 	mingw_path_line.text = dir
+	Config.mingw_prefix = dir
 
 func _on_jdk_file_dialog_dir_selected(dir: String) -> void:
 	jdk_path_line.text = dir
+	Config.java_home = dir
 
 func _on_android_sdk_file_dialog_dir_selected(dir: String) -> void:
 	android_sdk_path_line.text = dir
+	Config.android_home = dir
 
-func _on_min_gw_path_line_text_changed(new_text: String) -> void:
+func _on_mingw_path_line_text_submitted(new_text: String) -> void:
 	Config.mingw_prefix = new_text
 
-func _on_jdk_path_line_text_changed(new_text: String) -> void:
+
+func _on_jdk_path_line_text_submitted(new_text: String) -> void:
 	Config.java_home = new_text
 
-func _on_android_sdk_path_line_text_changed(new_text: String) -> void:
+
+func _on_android_sdk_path_line_text_submitted(new_text: String) -> void:
 	Config.android_home = new_text

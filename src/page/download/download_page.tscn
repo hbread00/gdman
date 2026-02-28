@@ -83,7 +83,7 @@ split_offsets = PackedInt32Array(-4)
 split_offset = -4
 
 [node name="PanelContainer" type="PanelContainer" parent="HSplitContainer" unique_id=1445823982]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -139,7 +139,7 @@ layout_mode = 2
 title = "4.0"
 
 [node name="PanelContainer2" type="PanelContainer" parent="HSplitContainer" unique_id=1207972682]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/PanelContainer2" unique_id=878528451]

@@ -127,10 +127,11 @@ layout_mode = 2
 [node name="MingwPathLine" type="LineEdit" parent="GridContainer/MingwContainer" unique_id=1873314412]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 placeholder_text = "MINGW_PREFIX"
 
 [node name="MingwPathButton" type="Button" parent="GridContainer/MingwContainer" unique_id=1797513464]
-custom_minimum_size = Vector2(31, 0)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 icon = ExtResource("1_36afp")
 icon_alignment = 1
@@ -210,10 +211,11 @@ layout_mode = 2
 [node name="JDKPathLine" type="LineEdit" parent="GridContainer/JDKContainer" unique_id=138154316]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 placeholder_text = "JAVA_HOME"
 
 [node name="JDKPathButton" type="Button" parent="GridContainer/JDKContainer" unique_id=1511294036]
-custom_minimum_size = Vector2(31, 0)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 icon = ExtResource("1_36afp")
 icon_alignment = 1
@@ -249,10 +251,11 @@ size_flags_horizontal = 3
 [node name="AndroidSDKPathLine" type="LineEdit" parent="GridContainer/AndroidSDKContainer" unique_id=1276642007]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 placeholder_text = "ANDROID_HOME"
 
 [node name="AndroidSDKPathButton" type="Button" parent="GridContainer/AndroidSDKContainer" unique_id=1986548852]
-custom_minimum_size = Vector2(31, 0)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 icon = ExtResource("1_36afp")
 icon_alignment = 1
@@ -375,12 +378,12 @@ layout_mode = 2
 
 [connection signal="version_refreshed" from="." to="." method="_on_version_refreshed"]
 [connection signal="pressed" from="RefreshButton" to="." method="_on_refresh_button_pressed"]
-[connection signal="text_changed" from="GridContainer/MingwContainer/MingwPathLine" to="." method="_on_min_gw_path_line_text_changed"]
+[connection signal="text_submitted" from="GridContainer/MingwContainer/MingwPathLine" to="." method="_on_mingw_path_line_text_submitted"]
 [connection signal="pressed" from="GridContainer/MingwContainer/MingwPathButton" to="." method="_on_mingw_path_button_pressed"]
 [connection signal="dir_selected" from="GridContainer/MingwContainer/MingwPathButton/MingwFileDialog" to="." method="_on_mingw_file_dialog_dir_selected"]
-[connection signal="text_changed" from="GridContainer/JDKContainer/JDKPathLine" to="." method="_on_jdk_path_line_text_changed"]
+[connection signal="text_submitted" from="GridContainer/JDKContainer/JDKPathLine" to="." method="_on_jdk_path_line_text_submitted"]
 [connection signal="pressed" from="GridContainer/JDKContainer/JDKPathButton" to="." method="_on_jdk_path_button_pressed"]
 [connection signal="dir_selected" from="GridContainer/JDKContainer/JDKPathButton/JDKFileDialog" to="." method="_on_jdk_file_dialog_dir_selected"]
-[connection signal="text_changed" from="GridContainer/AndroidSDKContainer/AndroidSDKPathLine" to="." method="_on_android_sdk_path_line_text_changed"]
+[connection signal="text_submitted" from="GridContainer/AndroidSDKContainer/AndroidSDKPathLine" to="." method="_on_android_sdk_path_line_text_submitted"]
 [connection signal="pressed" from="GridContainer/AndroidSDKContainer/AndroidSDKPathButton" to="." method="_on_android_sdk_path_button_pressed"]
 [connection signal="dir_selected" from="GridContainer/AndroidSDKContainer/AndroidSDKPathButton/AndroidSDKFileDialog" to="." method="_on_android_sdk_file_dialog_dir_selected"]
