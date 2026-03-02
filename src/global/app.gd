@@ -119,3 +119,6 @@ func fix_button_width(button: Button) -> void:
 
 func is_valid_url(url: String) -> bool:
 	return url_regex.search(url) != null
+
+func is_unix_platform() -> bool:
+	return OS.get_name() in ["macOS", "Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD", ]

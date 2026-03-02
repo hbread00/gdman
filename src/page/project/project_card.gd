@@ -156,6 +156,8 @@ func _on_engine_button_pressed() -> void:
 		engine_option.get_item_text(engine_option.selected), null)
 	if engine == null:
 		return
+	if App.is_unix_platform():
+		OS.execute("chmod", ["-R", "+x", engine.executable_path])
 	OS.open_with_program(engine.executable_path, [project_path.path_join("project.godot")])
 	print(engine.info.id)
 	ProjectManager.project_info[project_path].prefer_engine_id = engine.info.id

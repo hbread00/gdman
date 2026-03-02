@@ -43,6 +43,8 @@ const WINDOWS_RESERVED_FILE_NAMES: PackedStringArray = [
 	"LPT0"
 ]
 
+signal download(url: String, file_name: String)
+
 @onready var file_name_line: LineEdit = $VBoxContainer/FileNameLine
 @onready var url_line: LineEdit = $VBoxContainer/HBoxContainer/URLLine
 @onready var version_option: OptionButton = $VBoxContainer/HBoxContainer/VersionOption
@@ -57,12 +59,6 @@ func display() -> void:
 	version_option.select(0)
 	_handle_ok()
 	popup_centered()
-
-func get_file_name() -> String:
-	return file_name_line.text.strip_edges()
-
-func get_url() -> String:
-	return url_line.text.strip_edges()
 
 func _is_valid_file_name(file_name: String) -> bool:
 	if file_name.is_empty():
@@ -107,3 +103,7 @@ func _on_url_line_text_changed(_new_text: String) -> void:
 
 func _on_file_name_line_text_changed(_new_text: String) -> void:
 	_handle_ok()
+
+
+func _on_confirmed() -> void:
+	download.emit(url_line.text.strip_edges(), file_name_line.text.strip_edges())

@@ -52,9 +52,8 @@ func _on_delete_button_pressed() -> void:
 
 
 func _on_run_button_pressed() -> void:
-	match OS.get_name():
-		"Linux", "macOS":
-			OS.execute("chmod", ["-R", "+x", executable_path])
+	if App.is_unix_platform():
+		OS.execute("chmod", ["-R", "+x", executable_path])
 	OS.create_process(executable_path, [])
 
 

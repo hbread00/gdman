@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b1r3sbx2r7xll" path="res://src/page/compile/compile_page.gd" id="1_1cu7o"]
 [ext_resource type="Texture2D" uid="uid://cdxig436m2j1x" path="res://asset/icon/compile.svg" id="1_c86o4"]
 [ext_resource type="Texture2D" uid="uid://ddqhbrd1han2p" path="res://asset/icon/download.svg" id="3_1cu7o"]
-[ext_resource type="PackedScene" uid="uid://bge5qk8gnq2or" path="res://src/page/compile/download_source_code_dialog.tscn" id="4_h3c32"]
+[ext_resource type="PackedScene" uid="uid://bge5qk8gnq2or" path="res://src/page/download/download_source_code_dialog.tscn" id="4_h3c32"]
 
 [node name="CompilePage" type="VBoxContainer" unique_id=68255320]
 anchors_preset = 15
