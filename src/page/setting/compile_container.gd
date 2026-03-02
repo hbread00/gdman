@@ -40,59 +40,37 @@ func _ready() -> void:
 		mingw_path_button.disabled = true
 	
 func _check_version_task() -> void:
-	var python_version: String = CompileManager.get_python_version()
-	python_check.set_deferred("button_pressed",
-		python_version != "")
-	python_check.set_deferred("tooltip_text", python_version)
-	var scons_version: String = CompileManager.get_scons_version()
-	scons_check.set_deferred("button_pressed",
-		scons_version != "")
-	scons_check.set_deferred("tooltip_text", scons_version)
-	var dotnet_version: String = CompileManager.get_dotnet_version()
-	dotnet_check.set_deferred("button_pressed",
-		dotnet_version != "")
-	dotnet_check.set_deferred("tooltip_text", dotnet_version)
-	var mingw_version: String = CompileManager.get_mingw_version(mingw_path_line.text)
-	mingw_check.set_deferred("button_pressed",
-		mingw_version != "")
-	mingw_check.set_deferred("tooltip_text", mingw_version)
-	var vulkan_sdk_version: String = CompileManager.get_vulkan_sdk_version()
-	vulkan_sdk_check.set_deferred("button_pressed",
-		vulkan_sdk_version != "")
-	vulkan_sdk_check.set_deferred("tooltip_text", vulkan_sdk_version)
-	var emscripten_version: String = CompileManager.get_emscripten_version()
-	emscripten_check.set_deferred("button_pressed",
-		emscripten_version != "")
-	emscripten_check.set_deferred("tooltip_text", emscripten_version)
-	var jdk_version: String = CompileManager.get_jdk_version(jdk_path_line.text)
-	jdk_check.set_deferred("button_pressed",
-		jdk_version != "")
-	jdk_check.set_deferred("tooltip_text", jdk_version)
-	var android_platform_tools_version: String = CompileManager.get_android_sdk_platform_tools_version(android_sdk_path_line.text)
-	android_platform_tools_check.set_deferred("button_pressed",
-		android_platform_tools_version != "")
-	android_platform_tools_check.set_deferred("tooltip_text", android_platform_tools_version)
-	var android_build_tools_version: String = CompileManager.get_android_sdk_build_tools_version(android_sdk_path_line.text)
-	android_build_tools_check.set_deferred("button_pressed",
-		android_build_tools_version != "")
-	android_build_tools_check.set_deferred("tooltip_text", android_build_tools_version)
-	var android_platform_version: String = CompileManager.get_android_sdk_platform_version(android_sdk_path_line.text)
-	android_platform_check.set_deferred("button_pressed",
-		android_platform_version != "")
-	android_platform_check.set_deferred("tooltip_text", android_platform_version)
-	var android_command_line_tools_version: String = CompileManager.get_android_sdk_command_line_tools_version(android_sdk_path_line.text)
-	android_command_line_tools_check.set_deferred("button_pressed",
-		android_command_line_tools_version != "")
-	android_command_line_tools_check.set_deferred("tooltip_text", android_command_line_tools_version)
-	var android_cmake_version: String = CompileManager.get_android_cmake_version(android_sdk_path_line.text)
-	android_cmake_check.set_deferred("button_pressed",
-		android_cmake_version != "")
-	android_cmake_check.set_deferred("tooltip_text", android_cmake_version)
-	var android_ndk_version: String = CompileManager.get_android_ndk_version(android_sdk_path_line.text)
-	android_ndk_check.set_deferred("button_pressed",
-		android_ndk_version != "")
-	android_ndk_check.set_deferred("tooltip_text", android_ndk_version)
+	_set_version_check(python_check,
+		CompileManager.get_python_version())
+	_set_version_check(scons_check,
+		CompileManager.get_scons_version())
+	_set_version_check(dotnet_check,
+		CompileManager.get_dotnet_version())
+	_set_version_check(mingw_check,
+		CompileManager.get_mingw_version(Config.mingw_prefix))
+	_set_version_check(vulkan_sdk_check,
+		CompileManager.get_vulkan_sdk_version())
+	_set_version_check(emscripten_check,
+		CompileManager.get_emscripten_version())
+	_set_version_check(jdk_check,
+		CompileManager.get_jdk_version(Config.java_home))
+	_set_version_check(android_platform_tools_check,
+		CompileManager.get_android_sdk_platform_tools_version(Config.android_home))
+	_set_version_check(android_build_tools_check,
+		CompileManager.get_android_sdk_build_tools_version(Config.android_home))
+	_set_version_check(android_platform_check,
+		CompileManager.get_android_sdk_platform_version(Config.android_home))
+	_set_version_check(android_command_line_tools_check,
+		CompileManager.get_android_sdk_command_line_tools_version(Config.android_home))
+	_set_version_check(android_cmake_check,
+		CompileManager.get_android_cmake_version(Config.android_home))
+	_set_version_check(android_ndk_check,
+		CompileManager.get_android_ndk_version(Config.android_home))
 	version_refreshed.emit.call_deferred()
+
+func _set_version_check(checkbox: CheckBox, version: String) -> void:
+	checkbox.set_deferred("button_pressed", version != "")
+	checkbox.set_deferred("tooltip_text", version)
 
 func _on_refresh_button_pressed() -> void:
 	refresh_button.disabled = true

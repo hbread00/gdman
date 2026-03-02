@@ -47,7 +47,17 @@ func get_mingw_version(custom_path: String) -> String:
 func get_vulkan_sdk_version() -> String:
 	if OS.get_name() != "macOS":
 		return ""
-	return ""
+	var output: Array[String] = []
+	if (OS.execute("vulkaninfo", ["--summary"], output) != OK
+		or output.size() == 0):
+		return ""
+	var version_info: Array[String] = []
+	for line: String in output:
+		if line.containsn("version"):
+			version_info.append(line.strip_edges())
+	if version_info.size() == 0:
+		return ""
+	return "\n".join(version_info)
 
 func get_emscripten_version() -> String:
 	var output: Array[String] = []
