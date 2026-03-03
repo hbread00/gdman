@@ -26,3 +26,11 @@ export_presets.cfg
 
 # macOS
 .DS_Store
+
+# Download File
+*.zip
+*.tar.xz
+*.exe
+*.app
+*.x86_64
+*.x86_32

@@ -2,7 +2,7 @@ extends VBoxContainer
 
 const DOWNLOADER_CARD: PackedScene = preload("uid://bgk1814jgblda")
 
-@onready var download_confirm: ConfirmationDialog = $DownloadConfirm
+@onready var download_dialog: ConfirmationDialog = $DownloadDialog
 
 @onready var standard_check: CheckBox = $OptionContainer/StandardCheck
 @onready var dotnet_check: CheckBox = $OptionContainer/DotnetCheck
@@ -37,8 +37,8 @@ func _handle_component() -> void:
 	App.fix_button_width(download_source_code_button)
 
 func _on_version_container_download(engine_id: String) -> void:
-	download_confirm.title = tr("DOWNLOAD_CONFIRM_TITLE") % engine_id
-	download_confirm.display(engine_id)
+	download_dialog.title = tr("DOWNLOAD_DIALOG_TITLE") % engine_id
+	download_dialog.display(engine_id)
 
 func _switch_display(_pass: bool) -> void:
 	var version_containers: Array[Node] = get_tree().get_nodes_in_group("download_version_container")
@@ -51,12 +51,21 @@ func _switch_display(_pass: bool) -> void:
 		)
 
 
-func _on_download_confirm_download(url: String, engine_id: String) -> void:
+func _on_download_dialog_download(url: String, engine_id: String) -> void:
 	var downloader_card: Control = DOWNLOADER_CARD.instantiate()
 	downloader_card.url = url
 	downloader_card.file_name = engine_id
+	downloader_card.file_type = DownloadManager.FileType.ENGINE
 	downloader_container.add_child(downloader_card)
 
 
 func _on_download_source_code_button_pressed() -> void:
 	download_source_code_dialog.display()
+
+
+func _on_download_source_code_dialog_download(url: String, file_name: String) -> void:
+	var downloader_card: Control = DOWNLOADER_CARD.instantiate()
+	downloader_card.url = url
+	downloader_card.file_name = file_name
+	downloader_card.file_type = DownloadManager.FileType.SOURCE_CODE
+	downloader_container.add_child(downloader_card)

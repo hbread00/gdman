@@ -1,5 +1,7 @@
 extends Node
 
+const SOURCE_CODE_DIR: String = "user://source_code"
+
 func get_python_version() -> String:
 	# python3 --version
 	var output: Array[String] = []

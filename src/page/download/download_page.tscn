@@ -17,7 +17,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 8
 script = ExtResource("1_0gws8")
 
-[node name="DownloadConfirm" parent="." unique_id=1392267383 instance=ExtResource("3_ajk1a")]
+[node name="DownloadDialog" parent="." unique_id=1392267383 instance=ExtResource("3_ajk1a")]
 title = "DOWNLOAD_CONFIRM_TITLE"
 initial_position = 2
 visible = false
@@ -173,5 +173,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="download" from="DownloadConfirm" to="." method="_on_download_confirm_download"]
+[connection signal="download" from="DownloadDialog" to="." method="_on_download_dialog_download"]
 [connection signal="pressed" from="OptionContainer/DownloadSourceCodeButton" to="." method="_on_download_source_code_button_pressed"]
+[connection signal="download" from="OptionContainer/DownloadSourceCodeButton/DownloadSourceCodeDialog" to="." method="_on_download_source_code_dialog_download"]
