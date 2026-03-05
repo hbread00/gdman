@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dhppyf1y4otgk"]
 
-[ext_resource type="Script" uid="uid://da5txdpgdjcu7" path="res://src/page/download/download_dialog.gd" id="1_ieq72"]
+[ext_resource type="Script" uid="uid://da5txdpgdjcu7" path="res://src/page/download/engine_download_dialog.gd" id="1_ieq72"]
 [ext_resource type="PackedScene" uid="uid://o4df7hsmn462" path="res://src/page/download/ping_display.tscn" id="2_8786j"]
 
-[node name="DownloadDialog" type="ConfirmationDialog" unique_id=1392267383]
+[node name="EngineDownloadDialog" type="ConfirmationDialog" unique_id=1392267383]
 oversampling_override = 1.0
 title = "DOWNLOAD_DIALOG_TITLE"
 position = Vector2i(0, 36)

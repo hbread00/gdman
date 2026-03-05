@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dqqd7c1vpwb5y"]
+
+[ext_resource type="PackedScene" uid="uid://bgk1814jgblda" path="res://src/page/download/downloader/downloader_card.tscn" id="1_7bvic"]
+[ext_resource type="Script" uid="uid://bevcfv8ou2pv2" path="res://src/page/download/downloader/engine_downloader_card.gd" id="2_oquvq"]
+
+[node name="EngineDownloaderCard" unique_id=1990204292 instance=ExtResource("1_7bvic")]
+script = ExtResource("2_oquvq")

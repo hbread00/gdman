@@ -30,6 +30,7 @@ func display(engine_id: String) -> void:
 	url_dict[GITHUB_SOURCE_INDEX] = DownloadManager.get_source_url_by_id(engine_id, "github")
 	source_option.set_item_disabled(GODOT_SOURCE_INDEX, url_dict[GODOT_SOURCE_INDEX] == "")
 	source_option.set_item_disabled(GITHUB_SOURCE_INDEX, url_dict[GITHUB_SOURCE_INDEX] == "")
+	source_option.select(-1)
 	godot_ping_display.ping(url_dict[GODOT_SOURCE_INDEX])
 	git_hub_ping_display.ping(url_dict[GITHUB_SOURCE_INDEX])
 	popup_centered()

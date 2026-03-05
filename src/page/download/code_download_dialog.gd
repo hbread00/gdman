@@ -2,20 +2,9 @@ extends ConfirmationDialog
 
 const SOURCE_CODE_URL: String = "https://github.com/godotengine/godot-builds/releases/download/%s/godot-%s.tar.xz"
 
+var valid_name_regex: RegEx = RegEx.new()
+
 # https://help.interfaceware.com/v6/windows-reserved-file-names
-const INVALID_FILE_NAME_CHARS: PackedStringArray = [
-	"/", # 路径
-	# Windows限制
-	"<",
-	">",
-	":",
-	'\"',
-	"/",
-	"\\",
-	"|",
-	"?",
-	"*",
-	]
 const WINDOWS_RESERVED_FILE_NAMES: PackedStringArray = [
 	"CON",
 	"PRN",
@@ -50,13 +39,14 @@ signal download(url: String, file_name: String)
 @onready var version_option: OptionButton = $VBoxContainer/HBoxContainer/VersionOption
 
 func _ready() -> void:
+	valid_name_regex.compile("^[\\p{L}\\p{N} ]+$")
 	for id: String in DownloadManager.valid_id:
 		version_option.add_item(id)
 
 func display() -> void:
 	file_name_line.text = ""
 	url_line.text = ""
-	version_option.select(0)
+	version_option.select(-1)
 	_handle_ok()
 	popup_centered()
 
@@ -65,20 +55,10 @@ func _is_valid_file_name(file_name: String) -> bool:
 		return false
 	if file_name.length() > 200:
 		return false
-	# 无效字符
-	for c: String in INVALID_FILE_NAME_CHARS:
-		if file_name.find(c) != -1:
-			return false
-	# 控制字符
-	for i: int in file_name.length():
-		if file_name.unicode_at(i) < 32:
-			return false
-	# Windows禁止
-	if (file_name.ends_with(" ")
-		or file_name.ends_with(".")):
-		return false
 	# Windows保留名
 	if WINDOWS_RESERVED_FILE_NAMES.has(file_name.to_upper()):
+		return false
+	if valid_name_regex.search(file_name) == null:
 		return false
 	return true
 

@@ -27,12 +27,6 @@ const LOCAL_SOURCE_PATH: String = "user://.source/%s.json"
 const REMOTE_SOURCE_VERSION_URL: String = "https://api.github.com/repos/hbread00/gdman-source/git/ref/heads/main"
 const REMOTE_SOURCE_URL: String = "https://raw.githubusercontent.com/hbread00/gdman-source/main/%s.json"
 
-enum FileType {
-	UNKNOWN,
-	ENGINE,
-	SOURCE_CODE,
-}
-
 signal source_loaded()
 signal source_updated()
 

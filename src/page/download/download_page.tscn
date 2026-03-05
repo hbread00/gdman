@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://wst25oki1eps" path="res://src/page/download/download_page.gd" id="1_0gws8"]
 [ext_resource type="PackedScene" uid="uid://byfxbqtgp68d" path="res://src/page/download/version_container.tscn" id="2_gw8yc"]
-[ext_resource type="PackedScene" uid="uid://dhppyf1y4otgk" path="res://src/page/download/download_dialog.tscn" id="3_ajk1a"]
+[ext_resource type="PackedScene" uid="uid://dhppyf1y4otgk" path="res://src/page/download/engine_download_dialog.tscn" id="3_ajk1a"]
 [ext_resource type="Texture2D" uid="uid://ddqhbrd1han2p" path="res://asset/icon/download.svg" id="3_qrc2e"]
-[ext_resource type="PackedScene" uid="uid://bge5qk8gnq2or" path="res://src/page/download/download_source_code_dialog.tscn" id="4_lv5il"]
+[ext_resource type="PackedScene" uid="uid://bge5qk8gnq2or" path="res://src/page/download/code_download_dialog.tscn" id="4_lv5il"]
 
 [node name="DownloadPage" type="VBoxContainer" unique_id=589209203]
 anchors_preset = 15
@@ -17,7 +17,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 8
 script = ExtResource("1_0gws8")
 
-[node name="DownloadDialog" parent="." unique_id=1392267383 instance=ExtResource("3_ajk1a")]
+[node name="EngineDownloadDialog" parent="." unique_id=1392267383 instance=ExtResource("3_ajk1a")]
 title = "DOWNLOAD_CONFIRM_TITLE"
 initial_position = 2
 visible = false
@@ -69,14 +69,14 @@ flat = true
 [node name="VSeparator2" type="VSeparator" parent="OptionContainer" unique_id=1970730716]
 layout_mode = 2
 
-[node name="DownloadSourceCodeButton" type="Button" parent="OptionContainer" unique_id=467632939]
+[node name="CodeDownloadButton" type="Button" parent="OptionContainer" unique_id=467632939]
 layout_mode = 2
 tooltip_text = "PROJECT_IMPORT_HINT"
 text = "COMPILE_DOWNLOAD"
 icon = ExtResource("3_qrc2e")
 expand_icon = true
 
-[node name="DownloadSourceCodeDialog" parent="OptionContainer/DownloadSourceCodeButton" unique_id=2087969455 instance=ExtResource("4_lv5il")]
+[node name="CodeDownloadDialog" parent="OptionContainer/CodeDownloadButton" unique_id=2087969455 instance=ExtResource("4_lv5il")]
 visible = false
 
 [node name="Pass" type="Control" parent="OptionContainer" unique_id=1539109190]
@@ -173,6 +173,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="download" from="DownloadDialog" to="." method="_on_download_dialog_download"]
-[connection signal="pressed" from="OptionContainer/DownloadSourceCodeButton" to="." method="_on_download_source_code_button_pressed"]
-[connection signal="download" from="OptionContainer/DownloadSourceCodeButton/DownloadSourceCodeDialog" to="." method="_on_download_source_code_dialog_download"]
+[connection signal="download" from="EngineDownloadDialog" to="." method="_on_engine_download_dialog_download"]
+[connection signal="pressed" from="OptionContainer/CodeDownloadButton" to="." method="_on_code_download_button_pressed"]
+[connection signal="download" from="OptionContainer/CodeDownloadButton/CodeDownloadDialog" to="." method="_on_code_download_dialog_download"]
