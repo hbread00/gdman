@@ -3,8 +3,8 @@ extends "res://src/page/download/downloader/downloader_card.gd"
 var file_name: String = ""
 
 func _handle_data() -> bool:
-	if (file_name.is_empty()
-		or url.is_empty()):
+	if (file_name == ""
+		or url == ""):
 		return false
 	var handled_file_name: String = file_name.strip_edges()
 	download_task_id = "code-%s-%d" % [handled_file_name.replace(" ", "_"), Time.get_unix_time_from_system()]

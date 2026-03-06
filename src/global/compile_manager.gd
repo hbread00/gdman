@@ -1,6 +1,6 @@
 extends Node
 
-const SOURCE_CODE_DIR: String = "user://source-code"
+const SOURCE_CODE_DIR: String = "user://code"
 
 func get_python_version() -> String:
 	# python3 --version

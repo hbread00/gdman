@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://dnwx7tc3bvgu1"]
 
-[ext_resource type="Texture2D" uid="uid://ck4lqudvr3t3t" path="res://asset/icon/edit.svg" id="1_6lkmo"]
 [ext_resource type="Texture2D" uid="uid://hv0qw0fm1wga" path="res://asset/icon/directory.svg" id="1_456xb"]
 [ext_resource type="Script" uid="uid://ccyhvfb5npcnp" path="res://src/page/compile/source_code_card.gd" id="1_nm3am"]
 [ext_resource type="Texture2D" uid="uid://cq454lo24jwpx" path="res://asset/icon/delete.svg" id="2_1um6n"]
 [ext_resource type="Texture2D" uid="uid://cdxig436m2j1x" path="res://asset/icon/compile.svg" id="4_mf43m"]
+[ext_resource type="Texture2D" uid="uid://bqqed47xdx1ug" path="res://asset/icon/package.svg" id="4_pbu25"]
+[ext_resource type="Texture2D" uid="uid://ccpsfsuoe8axa" path="res://asset/icon/custom.svg" id="6_pbu25"]
 
 [node name="SourceCodeCard" type="PanelContainer" unique_id=123831859]
 anchors_preset = 10
@@ -31,12 +32,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "name"
 
-[node name="NameEditButton" type="Button" parent="MarginContainer/VBoxContainer/InfoContainer" unique_id=619733672]
-custom_minimum_size = Vector2(23, 0)
-layout_mode = 2
-icon = ExtResource("1_6lkmo")
-expand_icon = true
-
 [node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/InfoContainer" unique_id=1544970812]
 custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
@@ -55,25 +50,25 @@ layout_mode = 2
 [node name="PathButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1110798999]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "COMPILE_CARD_PATH"
-icon = ExtResource("1_456xb")
-expand_icon = true
-
-[node name="BinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1537402566]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "COMPILE_CARD_BIN"
+text = "BUTTON_PATH"
 icon = ExtResource("1_456xb")
 expand_icon = true
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2129292477]
 layout_mode = 2
 
+[node name="BinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1537402566]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "COMPILE_CARD_BIN"
+icon = ExtResource("4_pbu25")
+expand_icon = true
+
 [node name="CustomButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1626716193]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "COMPILE_CARD_CUSTOM"
-icon = ExtResource("1_456xb")
+icon = ExtResource("6_pbu25")
 expand_icon = true
 
 [node name="Pass" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1090424291]
@@ -87,3 +82,9 @@ theme_override_font_sizes/font_size = 12
 text = "COMPILE_CARD_COMPILE"
 icon = ExtResource("4_mf43m")
 expand_icon = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/InfoContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PathButton" to="." method="_on_path_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BinButton" to="." method="_on_bin_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CustomButton" to="." method="_on_custom_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CompileButton" to="." method="_on_compile_button_pressed"]

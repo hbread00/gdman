@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bux5xaj866iqs"]
+
+[ext_resource type="Script" uid="uid://btphyx7v3ml3r" path="res://src/page/compile/compile_dialog.gd" id="1_kko8o"]
+[ext_resource type="Texture2D" uid="uid://d1vmufog6bk75" path="res://asset/icon/windows.svg" id="2_lp5xi"]
+[ext_resource type="Texture2D" uid="uid://dprtge8m6xt5c" path="res://asset/icon/linux.svg" id="3_dc084"]
+[ext_resource type="Texture2D" uid="uid://cc26nw5lgktse" path="res://asset/icon/macos.svg" id="4_ak8cc"]
+[ext_resource type="Texture2D" uid="uid://ekg8dk2bwkxd" path="res://asset/icon/android.svg" id="5_gspd4"]
+[ext_resource type="Texture2D" uid="uid://bv1fd6m6p2lke" path="res://asset/icon/browser.svg" id="6_f0kqr"]
+[ext_resource type="Texture2D" uid="uid://plrt3pfpp3fu" path="res://asset/icon/copy.svg" id="7_sptwo"]
+
+[node name="CompileDialog" type="ConfirmationDialog" unique_id=1749735415]
+oversampling_override = 1.0
+title = "COMPILE_TARGET"
+position = Vector2i(0, 36)
+size = Vector2i(212, 158)
+visible = true
+ok_button_text = "DIALOG_CONFIRM"
+cancel_button_text = "DIALOG_CANCEL"
+script = ExtResource("1_kko8o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=967369905]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 204.0
+offset_bottom = 109.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=1433465889]
+layout_mode = 2
+columns = 2
+
+[node name="PlatformLabel" type="Label" parent="VBoxContainer/GridContainer" unique_id=1191671224]
+layout_mode = 2
+text = "COMPILE_PLATFORM"
+
+[node name="PlatformOption" type="OptionButton" parent="VBoxContainer/GridContainer" unique_id=1476247950]
+layout_mode = 2
+expand_icon = true
+selected = 0
+allow_reselect = true
+item_count = 8
+popup/item_0/text = "COMPILE_AUTO"
+popup/item_0/id = 0
+popup/item_1/text = "Windows"
+popup/item_1/icon = ExtResource("2_lp5xi")
+popup/item_1/id = 1
+popup/item_2/text = "Linux & BSD"
+popup/item_2/icon = ExtResource("3_dc084")
+popup/item_2/id = 2
+popup/item_3/text = "MacOS"
+popup/item_3/icon = ExtResource("4_ak8cc")
+popup/item_3/id = 3
+popup/item_4/text = "Android"
+popup/item_4/icon = ExtResource("5_gspd4")
+popup/item_4/id = 4
+popup/item_5/text = "IOS"
+popup/item_5/icon = ExtResource("4_ak8cc")
+popup/item_5/id = 5
+popup/item_6/text = "VisionOS"
+popup/item_6/icon = ExtResource("4_ak8cc")
+popup/item_6/id = 6
+popup/item_7/text = "Web"
+popup/item_7/icon = ExtResource("6_f0kqr")
+popup/item_7/id = 7
+
+[node name="ArchitectureLabel" type="Label" parent="VBoxContainer/GridContainer" unique_id=2012542655]
+layout_mode = 2
+text = "COMPILE_ARCHITECTURE"
+
+[node name="ArchitectureOption" type="OptionButton" parent="VBoxContainer/GridContainer" unique_id=1880943589]
+layout_mode = 2
+selected = 0
+item_count = 10
+popup/item_0/text = "COMPILE_AUTO"
+popup/item_0/id = 0
+popup/item_1/text = "x86_32"
+popup/item_1/id = 1
+popup/item_2/text = "x86_64"
+popup/item_2/id = 2
+popup/item_3/text = "arm32"
+popup/item_3/id = 3
+popup/item_4/text = "arm64"
+popup/item_4/id = 4
+popup/item_5/text = "rv64"
+popup/item_5/id = 5
+popup/item_6/text = "ppc64"
+popup/item_6/id = 6
+popup/item_7/text = "wasm32"
+popup/item_7/id = 7
+popup/item_8/text = "wasm64"
+popup/item_8/id = 8
+popup/item_9/text = "loongarch64"
+popup/item_9/id = 9
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=467790784]
+layout_mode = 2
+
+[node name="CommandLine" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=85932487]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "scons"
+editable = false
+
+[node name="CopyButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=2037970594]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+icon = ExtResource("7_sptwo")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="confirmed" from="." to="." method="_on_confirmed"]
+[connection signal="item_selected" from="VBoxContainer/GridContainer/PlatformOption" to="." method="_on_platform_option_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/GridContainer/ArchitectureOption" to="." method="_on_architecture_option_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CopyButton" to="." method="_on_copy_button_pressed"]

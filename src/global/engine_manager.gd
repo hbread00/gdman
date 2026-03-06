@@ -17,7 +17,7 @@ const FLAVOR_NAME: Dictionary[EngineFlavor, String] = {
 	EngineFlavor.DEV: "Dev",
 }
 
-signal engines_loaded
+signal engines_loaded()
 
 class EngineInfo:
 	var id: String # x.y[.z]-flavor[a][-dotnet]

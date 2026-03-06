@@ -51,7 +51,7 @@ func display() -> void:
 	popup_centered()
 
 func _is_valid_file_name(file_name: String) -> bool:
-	if file_name.is_empty():
+	if file_name == "":
 		return false
 	if file_name.length() > 200:
 		return false

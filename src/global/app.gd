@@ -1,6 +1,6 @@
 extends Node
 
-signal small_update
+signal small_update()
 
 const ARCHITECTURE: Array[String] = [
 	"windows_x86",

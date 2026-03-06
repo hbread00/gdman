@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1r3sbx2r7xll" path="res://src/page/compile/compile_page.gd" id="1_1cu7o"]
 [ext_resource type="Texture2D" uid="uid://cdxig436m2j1x" path="res://asset/icon/compile.svg" id="1_c86o4"]
+[ext_resource type="PackedScene" uid="uid://bux5xaj866iqs" path="res://src/page/compile/compile_dialog.tscn" id="2_kxg1l"]
 
 [node name="CompilePage" type="VBoxContainer" unique_id=68255320]
 anchors_preset = 15
@@ -10,6 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1cu7o")
+
+[node name="CompileDialog" parent="." unique_id=1749735415 instance=ExtResource("2_kxg1l")]
+visible = false
 
 [node name="TitleContainer" type="HBoxContainer" parent="." unique_id=530466565]
 layout_mode = 2
@@ -50,4 +54,4 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
-columns = 2
+columns = 3

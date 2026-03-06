@@ -3,8 +3,8 @@ extends "res://src/page/download/downloader/downloader_card.gd"
 var engine_id: String = ""
 
 func _handle_data() -> bool:
-	if (engine_id.is_empty()
-		or url.is_empty()):
+	if (engine_id == ""
+		or url == ""):
 		return false
 	download_task_id = "engine-%s" % engine_id
 	var download_dir: String = ProjectSettings.globalize_path(DownloadManager.DOWNLOAD_DIR)

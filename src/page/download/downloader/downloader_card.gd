@@ -22,7 +22,7 @@ var extract_task_id: int = -1
 
 func _ready() -> void:
 	_handle_component()
-	Config.config_updated.connect(_config_updated)
+	Config.config_updated.connect(_config_update)
 	if DirAccess.make_dir_recursive_absolute(DownloadManager.DOWNLOAD_DIR) != OK:
 		_failed()
 		return
@@ -48,7 +48,7 @@ func _ready() -> void:
 	timer.start()
 	info_label.text = tr("DOWNLOADER_DOWNLOAD")
 
-func _config_updated(config_name: String) -> void:
+func _config_update(config_name: String) -> void:
 	match config_name:
 		"language":
 			_handle_component()
@@ -133,3 +133,6 @@ func _on_cancel_button_pressed() -> void:
 
 func _on_close_button_pressed() -> void:
 	queue_free()
+
+func _pass() -> void:
+	extracted.emit()

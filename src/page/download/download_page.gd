@@ -27,9 +27,9 @@ func _ready() -> void:
 	unstable_check.toggled.connect(_switch_display)
 	_switch_display(false)
 	_handle_component()
-	Config.config_updated.connect(_config_updated)
+	Config.config_updated.connect(_config_update)
 
-func _config_updated(config_name: String) -> void:
+func _config_update(config_name: String) -> void:
 	match config_name:
 		"language":
 			_handle_component()

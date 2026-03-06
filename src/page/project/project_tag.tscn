@@ -3,6 +3,7 @@
 [node name="ProjectTag" type="Button" unique_id=1206258868]
 offset_right = 10.0
 offset_bottom = 11.0
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 disabled = true
 text = "tag
