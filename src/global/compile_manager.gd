@@ -2,6 +2,8 @@ extends Node
 
 const SOURCE_CODE_DIR: String = "user://code"
 
+signal source_code_added(file_name: String)
+
 func get_python_version() -> String:
 	# python3 --version
 	var output: Array[String] = []
@@ -188,3 +190,6 @@ func get_android_ndk_version(custom_path: String) -> String:
 	if valid_versions.size() == 0:
 		return ""
 	return "\n".join(valid_versions)
+
+func _pass() -> void:
+	source_code_added.emit("")

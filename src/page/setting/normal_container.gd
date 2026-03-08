@@ -87,3 +87,6 @@ func _on_hide_path_check_toggled(toggled_on: bool) -> void:
 
 func _on_user_path_button_pressed() -> void:
 	OS.shell_show_in_file_manager(ProjectSettings.globalize_path("user://"))
+
+func _on_editor_file_dialog_files_selected(paths: PackedStringArray) -> void:
+	pass # Replace with function body.

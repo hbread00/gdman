@@ -117,7 +117,10 @@ func _on_extracted() -> void:
 		and FileAccess.file_exists(download_path)):
 		OS.move_to_trash(download_path)
 	close_button.disabled = false
-	EngineManager.load_engines.call_deferred()
+	_succeeded()
+
+func _succeeded() -> void:
+	pass
 	
 
 func _on_cancel_button_pressed() -> void:

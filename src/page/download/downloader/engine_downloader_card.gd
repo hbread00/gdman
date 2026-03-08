@@ -51,3 +51,6 @@ func _extract_task() -> void:
 			file.close()
 	zip.close()
 	extracted.emit.call_deferred()
+
+func _succeeded() -> void:
+	EngineManager.load_engines.call_deferred()

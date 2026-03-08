@@ -60,12 +60,14 @@ SETTING_ARCHITECTURE,Architecture,系统架构,系統架構
 SETTING_ARCHITECTURE_HINT,Auto-detects architecture\n*Do not change unless you know what you are doing,为自动时，会自动判断系统架构\n*请勿修改此项，除非你知道自己在做什么,為自動時，會自動判斷系統架構\n*請勿修改此項，除非你知道自己在做什麼
 SETTING_DELETE_DOWNLOAD,Clean Download Archieve,删除下载文件,刪除下載文件
 SETTING_DELETE_DOWNLOAD_HINT,Delete temporary files after extraction,下载并提取引擎后，删除产生的临时文件,下載並提取引擎後，刪除產生的臨時文件
-SETTING_EDITOR,External Editor,外部编辑器,外部編輯器
-SETTING_EDITOR_HINT,"Project editor executable\n*Typically .exe on Windows, .app on MacOS",选定后，可在项目页面使用该编辑器打开项目目录\n*在Windows通常是.exe，在MacOS通常是.app,選定後，可在項目頁面使用該編輯器打開項目目錄\n*在Windows通常是.exe，在MacOS通常是.app
+SETTING_EDITOR,External Editor,编辑器,外部編輯器
+SETTING_EDITOR_HINT,"Project editor executable\n*Typically .exe on Windows, .app on MacOS",相关文件会用指定的编辑器打开\n*在Windows通常是.exe，在MacOS通常是.app,選定後，可在項目頁面使用該編輯器打開項目目錄\n*在Windows通常是.exe，在MacOS通常是.app
 SETTING_HIDE_PATH,Hide Path,隐藏路径,隱藏路徑
 SETTING_HIDE_PATH_HINT,Hide path in cards\n*Full path shown on hover,隐藏卡片中的路径显示\n*在悬浮时仍会显示完整路径,隱藏卡片中的路徑顯示\n*在懸浮時仍會顯示完整路徑
 SETTING_USER_PATH,User Directory,用户目录,用戶目錄
 SETTING_USER_PATH_HINT,Local data directory,GDMan在本机用户使用的目录,GDMan在本機用戶使用的目錄
+SETTING_SHELL,,命令行解释器,
+SETTING_SHELL_HINT,,,
 SETTING_LICENSE,License,开源协议,開源協議
 SETTING_REMOTE_SOURCE,Remote Update Source,在线更新源,在線更新源
 SETTING_REMOTE_SOURCE_HINT,Fetch latest engine download URL from online repository at startup,启动时从在线仓库获取最新的引擎下载地址,啟動時從在線倉庫獲取最新的引擎下載地址

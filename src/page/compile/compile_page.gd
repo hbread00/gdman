@@ -7,6 +7,7 @@ const SOURCE_CODE_CARD: PackedScene = preload("uid://dnwx7tc3bvgu1")
 
 func _ready() -> void:
 	_load_source_code()
+	CompileManager.source_code_added.connect(_add_source_code)
 
 func _load_source_code() -> void:
 	for card: Control in card_container.get_children():
@@ -15,7 +16,10 @@ func _load_source_code() -> void:
 	if source_code_dir == null:
 		return
 	for dir_name: String in source_code_dir.get_directories():
-		var card: Control = SOURCE_CODE_CARD.instantiate()
-		card.file_name = dir_name
-		card.compile.connect(compile_dialog.display)
-		card_container.add_child(card)
+		_add_source_code(dir_name)
+
+func _add_source_code(file_name: String) -> void:
+	var card: Control = SOURCE_CODE_CARD.instantiate()
+	card.file_name = file_name
+	card.compile.connect(compile_dialog.display)
+	card_container.add_child(card)
