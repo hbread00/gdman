@@ -2,7 +2,7 @@ extends PanelContainer
 
 const BASIC_CUSTOM_CONTENT: String = "production=\"yes\"\ntarget=\"template_release\"\ndebug_symbols=\"no\"\noptimize=\"size\"\nlto=\"full\"\n"
 
-signal compile(file_name: String, source_code_path: String)
+signal compile()
 
 var file_name: String = ""
 
@@ -87,4 +87,9 @@ func _on_custom_button_pressed() -> void:
 
 
 func _on_compile_button_pressed() -> void:
-	compile.emit(file_name, source_code_path)
+	compile.emit()
+	match OS.get_name():
+		"Windows":
+			OS.create_process("powershell", ["-NoExit", "Set-Location -LiteralPath '%s'" % source_code_path], true)
+		"MacOS":
+			OS.create_process("zsh", ["-c", "cd \"%s\"; exec bash" % source_code_path], true)

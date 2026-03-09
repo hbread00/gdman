@@ -1,4 +1,4 @@
-extends ConfirmationDialog
+extends AcceptDialog
 
 @onready var platform_option: OptionButton = $VBoxContainer/GridContainer/PlatformOption
 @onready var architecture_option: OptionButton = $VBoxContainer/GridContainer/ArchitectureOption
@@ -9,9 +9,7 @@ var file_path: String = ""
 var platform_param: String = ""
 var architecture_param: String = ""
 
-func display(code_file_name: String, code_file_path: String) -> void:
-	title = tr("COMPILE_TARGET") % code_file_name
-	file_path = code_file_path
+func display() -> void:
 	platform_option.select(0)
 	architecture_option.select(0)
 	_update_command()
@@ -97,14 +95,3 @@ func _on_architecture_option_item_selected(index: int) -> void:
 
 func _on_copy_button_pressed() -> void:
 	DisplayServer.clipboard_set(command_line.text)
-
-
-func _on_confirmed() -> void:
-	DisplayServer.clipboard_set(command_line.text)
-	match OS.get_name():
-		"Windows":
-			OS.create_process("powershell", ["-NoExit", "Set-Location -LiteralPath '%s'" % file_path], true)
-		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
-			OS.create_process("bash", ["-c", "cd \"%s\"; exec bash" % file_path], true)
-		"MacOS":
-			OS.create_process("zsh", ["-c", "cd \"%s\"; exec bash" % file_path], true)

@@ -3,7 +3,7 @@ extends VBoxContainer
 const SOURCE_CODE_CARD: PackedScene = preload("uid://dnwx7tc3bvgu1")
 
 @onready var card_container: GridContainer = $PanelContainer/ScrollContainer/MarginContainer/CardContainer
-@onready var compile_dialog: ConfirmationDialog = $CompileDialog
+@onready var compile_dialog: AcceptDialog = $CompileDialog
 
 func _ready() -> void:
 	_load_source_code()

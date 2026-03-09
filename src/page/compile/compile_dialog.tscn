@@ -8,21 +8,20 @@
 [ext_resource type="Texture2D" uid="uid://bv1fd6m6p2lke" path="res://asset/icon/browser.svg" id="6_f0kqr"]
 [ext_resource type="Texture2D" uid="uid://plrt3pfpp3fu" path="res://asset/icon/copy.svg" id="7_sptwo"]
 
-[node name="CompileDialog" type="ConfirmationDialog" unique_id=1749735415]
+[node name="CompileDialog" type="AcceptDialog" unique_id=1596048638]
 oversampling_override = 1.0
 title = "COMPILE_TARGET"
 position = Vector2i(0, 36)
-size = Vector2i(451, 158)
+size = Vector2i(451, 161)
 visible = true
 ok_button_text = "DIALOG_CONFIRM"
-cancel_button_text = "DIALOG_CANCEL"
 script = ExtResource("1_kko8o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=967369905]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 443.0
-offset_bottom = 109.0
+offset_bottom = 111.0
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=1433465889]
 layout_mode = 2
@@ -112,7 +111,6 @@ icon = ExtResource("7_sptwo")
 icon_alignment = 1
 expand_icon = true
 
-[connection signal="confirmed" from="." to="." method="_on_confirmed"]
 [connection signal="item_selected" from="VBoxContainer/GridContainer/PlatformOption" to="." method="_on_platform_option_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/GridContainer/ArchitectureOption" to="." method="_on_architecture_option_item_selected"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CopyButton" to="." method="_on_copy_button_pressed"]
