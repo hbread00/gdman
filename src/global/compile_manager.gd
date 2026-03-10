@@ -70,7 +70,8 @@ func _ready() -> void:
 			shell = SHELL_TYPE.MAC
 
 func open_terminal_to_dir(dir_path: String) -> void:
-	if shell == SHELL_TYPE.UNKNOWN:
+	if (shell == SHELL_TYPE.UNKNOWN
+		or shell == SHELL_TYPE.MAC): # 搞不明白Mac调出终端的方案
 		OS.shell_show_in_file_manager(dir_path)
 		return
 	match shell:
@@ -88,8 +89,6 @@ func open_terminal_to_dir(dir_path: String) -> void:
 			OS.create_process("xfce4-terminal", ["--working-directory=%s" % dir_path], true)
 		SHELL_TYPE.LINUX_LXQT:
 			OS.create_process("qterminal", ["--workdir", dir_path], true)
-		SHELL_TYPE.MAC:
-			OS.create_process("osascript", ["-e", "tell application \"Terminal\" to do script \"cd \"%s\"\"" % dir_path], true)
 
 func get_python_version() -> String:
 	# python3 --version
