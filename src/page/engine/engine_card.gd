@@ -48,7 +48,7 @@ func _handle_component() -> void:
 
 func _on_delete_button_pressed() -> void:
 	App.remove_file(dir_path)
-	queue_free()
+	EngineManager.load_engines()
 
 
 func _on_run_button_pressed() -> void:

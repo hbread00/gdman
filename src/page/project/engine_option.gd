@@ -14,6 +14,7 @@ func select_id(engine_id: String) -> void:
 	select(-1)
 
 func load_engine() -> void:
+	select(-1)
 	clear()
 	var engine_ids: Array = EngineManager.local_engines.keys()
 	engine_ids.sort()

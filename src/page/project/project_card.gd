@@ -50,9 +50,9 @@ func _ready() -> void:
 		var tag_node: Control = PROJECT_TAG.instantiate()
 		tag_node.text = tag
 		tag_container.add_child(tag_node)
-	engine_option.select_id(prefer_engine_id)
 	editor_button.disabled = Config.external_editor_path == ""
-	engine_button.disabled = engine_option.get_selected_id() == -1
+	EngineManager.engines_loaded.connect(_load_engines)
+	_load_engines()
 	App.small_update.connect(_small_update)
 	Config.config_updated.connect(_config_update)
 	_handle_component()
@@ -82,7 +82,12 @@ func _handle_component() -> void:
 	App.fix_button_width(path_button)
 	App.fix_button_width(editor_button)
 	App.fix_button_width(engine_button)
-	
+
+func _load_engines() -> void:
+	engine_option.load_engine()
+	engine_option.select_id(prefer_engine_id)
+	engine_button.disabled = engine_option.get_selected_id() == -1
+
 func _get_project_version(config: ConfigFile) -> String:
 	var feature: PackedStringArray = config.get_value("application", "config/features", ["unknown"])
 	return feature[0]
