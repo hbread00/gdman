@@ -125,7 +125,28 @@ func id_to_engine_info(engine_id: String) -> EngineInfo:
 	engine_info.name = "".join(name_array)
 	_cache_engine_info[engine_id] = engine_info
 	return engine_info
-	
+
+func id_to_engine_sort_value(engine_id: String) -> int:
+	var info: EngineInfo = id_to_engine_info(engine_id)
+	if info == null:
+		return -1
+	# 算为数字方便排序使用，越新的版本数值越大
+	# major: 两位
+	# minor: 两位
+	# patch: 两位
+	# flavor: 一位，flavor枚举越新数值应越大，所以用9减去flavor值
+	# build: 两位
+	# dotnet: 一位，dotnet版本视为比标准版本旧，所以为dotnet时数值应较小
+	var dotnet_value: int = 0 if info.is_dotnet else 1
+	return (
+		dotnet_value +
+		info.build * 10 +
+		(9 - info.flavor) * 1000 +
+		info.patch_version * 10000 +
+		info.minor_version * 1000000 +
+		info.major_version * 10000000
+	)
+
 func _get_executable_path(architecture_engine_dir: String, dir_name: String,
 	architecture: String) -> String:
 	# 发布包目录层级不固定，递归查找符合目标架构后缀的文件

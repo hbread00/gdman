@@ -1,6 +1,6 @@
 extends PanelContainer
 
-const DOTNET: CompressedTexture2D = preload("uid://b5cuh2fee8rn5")
+const DOTNET: CompressedTexture2D = preload("uid://dfgbgdrbcpnri")
 
 var engine_id: String = ""
 var dir_path: String = ""

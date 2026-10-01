@@ -1,15 +1,10 @@
 extends PanelContainer
 
-const DOTNET: CompressedTexture2D = preload("uid://b5cuh2fee8rn5")
-
 signal download(engine_id: String)
 
 var engine_id: String = ""
-
 var is_stable: bool = false
-var is_dotnet: bool = false
 
-@onready var source_icon: TextureRect = $MarginContainer/HBoxContainer/SourceIcon
 @onready var name_label: Label = $MarginContainer/HBoxContainer/NameLabel
 @onready var id_label: Label = $MarginContainer/HBoxContainer/IDLabel
 @onready var unstable_icon: TextureRect = $MarginContainer/HBoxContainer/MarginContainer/UnstableIcon
@@ -18,6 +13,7 @@ var is_dotnet: bool = false
 func _ready() -> void:
 	unstable_icon.hide()
 	if engine_id == "":
+		queue_free()
 		return
 	var info: EngineManager.EngineInfo = EngineManager.id_to_engine_info(engine_id)
 	name_label.text = info.name
@@ -25,20 +21,13 @@ func _ready() -> void:
 	is_stable = info.flavor == EngineManager.EngineFlavor.STABLE
 	if not is_stable:
 		unstable_icon.show()
-	is_dotnet = info.is_dotnet
-	if is_dotnet:
-		source_icon.texture = DOTNET
 	download_button.tooltip_text = tr("SOURCE_CARD_DOWNLOAD_HINT") % engine_id
 	Config.config_updated.connect(_config_update)
 	_handle_component()
-	_switch_display()
 
-func _switch_display() -> void:
-	var match_type: bool = ((DownloadManager.display_standard and not is_dotnet)
-			or (DownloadManager.display_dotnet and is_dotnet))
-	var match_stability: bool = ((DownloadManager.display_stable and is_stable)
-		or (DownloadManager.display_unstable and not is_stable))
-	visible = match_type and match_stability
+func switch_display(show_stable: bool, show_unstable: bool) -> void:
+	visible = ((show_stable and is_stable)
+		or (show_unstable and not is_stable))
 
 func _config_update(config_name: String) -> void:
 	match config_name:

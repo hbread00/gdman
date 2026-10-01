@@ -28,25 +28,13 @@ const LOCAL_MANIFEST_VERSION_PATH: String = "user://.manifest/version" # 本地�
 const REMOTE_MANIFEST_URL: String = "https://raw.githubusercontent.com/hbread00/gdman-source/main/%s.json" # 远程下载地址清单 URL
 const REMOTE_MANIFEST_VERSION_URL: String = "https://api.github.com/repos/hbread00/gdman-source/git/ref/heads/main" # 远程下载地址清单版本 URL
 
-signal source_loaded()
-signal source_updated()
+signal manifest_loaded()
+signal manifest_updated()
 
 # 程序中动态生成的下载地址清单
-const PROGRAM_MANIFEST_TEMPLATE: Dictionary = {
-	"x.y": {
-		"x.y.z-stable": {
-			"standard": {
-				"godot": "godot_url",
-				"github": "github_url"
-			},
-			"dotnet": {
-				"godot": "godot_url",
-				"github": "github_url"
-			}
-		}
-	}
-} # 程序中动态生成的下载地址清单模板
 var manifest: Dictionary = {}
+
+# 正在下载的任务
 var downloading_task: Dictionary[String, bool] = {}
 
 var is_requesting_remote_manifest: bool = false # 正在请求远程清单，防止重复请求
@@ -54,8 +42,6 @@ var remoting_manifest_requests: Dictionary[String, HTTPRequest] = {}
 var remote_version: String = ""
 var remote_manifest: Dictionary[String, String] = {}
 
-var display_standard: bool = true
-var display_dotnet: bool = false
 var display_stable: bool = true
 var display_unstable: bool = false
 
@@ -100,7 +86,7 @@ func load_manifest() -> void:
 				var dotnet_url: String = version_data[BUILD_DOTNET].get(arch, "")
 				if dotnet_url != "":
 					_add_source_to_manifest(base_version, id, BUILD_DOTNET, provider_name, dotnet_url)
-	source_loaded.emit()
+	manifest_loaded.emit(manifest)
 
 # 往程序清单中添加来源的下载地址
 func _add_source_to_manifest(base_version: String, id: String, build_type: String, provider: String, url: String) -> void:
@@ -115,11 +101,15 @@ func _add_source_to_manifest(base_version: String, id: String, build_type: Strin
 	manifest[base_version][id][build_type][provider] = url
 
 # 获取指定版本和来源的下载地址
-func get_download_url_by_id(engine_id: String, provider: String) -> String:
+func get_download_url(engine_id: String, provider: String) -> String:
 	var engine_info: EngineManager.EngineInfo = EngineManager.id_to_engine_info(engine_id)
 	var handled_id: String = engine_id.replace("-dotnet", "")
 	var build_type: String = BUILD_STANDARD if not engine_info.is_dotnet else BUILD_DOTNET
-	return manifest.get(engine_info.base_version, {}).get(handled_id, {}).get(build_type, {}).get(provider, "")
+	return manifest.get(
+		"%d.%d" % [engine_info.major_version, engine_info.minor_version], {}).get(
+		handled_id, {}).get(
+		build_type, {}).get(
+		provider, "")
 
 # 请求远程清单
 # 步骤
@@ -220,3 +210,4 @@ func _store_remote_manifest_to_local() -> void:
 		file.store_string(remote_manifest.get(provider_name, ""))
 		file.close()
 	is_requesting_remote_manifest = false
+	manifest_updated.emit()

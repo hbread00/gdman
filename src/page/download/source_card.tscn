@@ -38,7 +38,7 @@ vertical_alignment = 1
 [node name="IDLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1549217442]
 modulate = Color(1, 1, 1, 0.6)
 layout_mode = 2
-text = "0.0.0-stable-dotnet"
+text = "0.0.0-stable"
 vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=341143519]

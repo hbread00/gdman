@@ -34,6 +34,3 @@ export_presets.cfg
 *.app
 *.x86_64
 *.x86_32
-
-# LLM Wiki
-llm-wiki/
