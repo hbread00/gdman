@@ -21,7 +21,7 @@ const BUILD_STANDARD: String = "standard"
 const BUILD_DOTNET: String = "dotnet"
 
 const PROVIDERS: Array[String] = ["godot", "github"] # 提供下载地址清单的来源
-const BUILT_IN_MANIFEST_PATH: String = "res://src/global/source/%s.json" # 项目内置的下载地址清单路径
+const BUILT_IN_MANIFEST_PATH: String = "res://src/global/manifest/%s.json" # 项目内置的下载地址清单路径
 const LOCAL_MANIFEST_DIR: String = "user://.manifest" # 本地下载地址清单的目录
 const LOCAL_MANIFEST_PATH: String = "user://.manifest/%s.json" # 本地下载地址清单路径
 const LOCAL_MANIFEST_VERSION_PATH: String = "user://.manifest/version" # 本地下载地址清单版本路径
