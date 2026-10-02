@@ -17,7 +17,7 @@ const SETTING_ICON: CompressedTexture2D = preload("uid://mgdysp5iuh4l")
 
 
 # 当前页面的标题词条，切换语言时重新取译文
-var title_key: String = ""
+var current_title: String = ""
 
 func _ready() -> void:
 	Config.config_updated.connect(_config_updated)
@@ -26,14 +26,14 @@ func _ready() -> void:
 func _config_updated(config_name: String) -> void:
 	match config_name:
 		"language":
-			title_label.text = tr(title_key)
+			title_label.text = tr(current_title)
 
 
 func switch_page(page_index: int, page_icon: CompressedTexture2D, page_title: String, nav_button: Button) -> void:
 	page_container.current_tab = page_index
 	icon_rect.texture = page_icon
-	title_key = page_title
-	title_label.text = tr(title_key)
+	current_title = page_title
+	title_label.text = tr(current_title)
 	# 使其它导航按钮可用
 	project_nav.disabled = false
 	engine_nav.disabled = false
