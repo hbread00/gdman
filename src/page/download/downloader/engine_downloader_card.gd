@@ -15,7 +15,7 @@ func _handle_data() -> bool:
 	download_path = _download_dir.path_join("%s.zip" % download_task_id)
 	# 解压目标为引擎目录下的 架构/引擎 子目录
 	target_dir_path = ProjectSettings.globalize_path(
-		EngineManager.get_architecture_engine_dir(
+		EngineManager.get_engine_dir(
 		architecture).path_join(engine_id))
 	return true
 

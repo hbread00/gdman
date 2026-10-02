@@ -28,7 +28,6 @@ func _on_dotnet_check_toggled(_toggled_on: bool) -> void:
 	var engine_id: String = last_engine_id
 	if dotnet_check.button_pressed:
 		engine_id += "-dotnet"
-	print(engine_id)
 	source_option.set_item_disabled(GODOT_SOURCE_INDEX, DownloadManager.get_download_url(engine_id, "godot") == "")
 	source_option.set_item_disabled(GITHUB_SOURCE_INDEX, DownloadManager.get_download_url(engine_id, "github") == "")
 	source_option.select(-1)
