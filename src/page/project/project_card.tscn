@@ -110,8 +110,9 @@ size_flags_horizontal = 3
 text = "path"
 editable = false
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1754088780]
+[node name="Pass" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=864133630]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="EditorButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1047668864]
 layout_mode = 2

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://wst25oki1eps" path="res://src/page/download/download_page.gd" id="1_0gws8"]
 [ext_resource type="PackedScene" uid="uid://dhppyf1y4otgk" path="res://src/page/download/download_dialog.tscn" id="3_ajk1a"]
-[ext_resource type="Texture2D" uid="uid://ddqhbrd1han2p" path="res://asset/icon/download.svg" id="3_qrc2e"]
 
 [node name="DownloadPage" type="VBoxContainer" unique_id=589209203]
 anchors_preset = 15
@@ -19,21 +18,6 @@ script = ExtResource("1_0gws8")
 initial_position = 2
 visible = false
 ok_button_text = "DIALOG_CONFIRM"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=992429299]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1630641383]
-layout_mode = 2
-texture = ExtResource("3_qrc2e")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="HBoxContainer" unique_id=2006014479]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "TITLE_DOWNLOAD"
 
 [node name="OptionContainer" type="HBoxContainer" parent="." unique_id=877426337]
 layout_mode = 2
@@ -56,8 +40,8 @@ size_flags_horizontal = 3
 [node name="UpdatePromptButton" type="LinkButton" parent="OptionContainer" unique_id=1049523697]
 visible = false
 layout_mode = 2
+disabled = true
 text = "DOWNLOAD_UPDATE_PROMPT"
-uri = "https://github.com/hbread00/gdman-source"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=888305415]
 layout_mode = 2
@@ -112,3 +96,4 @@ size_flags_vertical = 3
 [connection signal="download" from="DownloadDialog" to="." method="_on_download_dialog_download"]
 [connection signal="toggled" from="OptionContainer/StableCheck" to="." method="_on_stable_check_toggled"]
 [connection signal="toggled" from="OptionContainer/UnstableCheck" to="." method="_on_unstable_check_toggled"]
+[connection signal="pressed" from="OptionContainer/UpdatePromptButton" to="." method="_on_update_prompt_button_pressed"]

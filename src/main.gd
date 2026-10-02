@@ -1,114 +1,55 @@
 extends ColorRect
 
-const ENGINE_PAGE_PATH: String = "res://src/page/engine/engine_page.tscn"
-const COMPILE_PAGE_PATH: String = "res://src/page/compile/compile_page.tscn"
-const DOWNLOAD_PAGE_PATH: String = "res://src/page/download/download_page.tscn"
-const SETTING_PAGE_PATH: String = "res://src/page/setting/setting_page.tscn"
-const PAGE_PATH_LIST: Array[String] = [
-	ENGINE_PAGE_PATH,
-	COMPILE_PAGE_PATH,
-	DOWNLOAD_PAGE_PATH,
-	SETTING_PAGE_PATH,
-]
+const PROJECT_ICON: CompressedTexture2D = preload("uid://bsia01kbmakd0")
+const ENGINE_ICON: CompressedTexture2D = preload("uid://ccmwlrli63fhi")
+const DOWNLOAD_ICON: CompressedTexture2D = preload("uid://ddqhbrd1han2p")
+const SETTING_ICON: CompressedTexture2D = preload("uid://mgdysp5iuh4l")
 
-@onready var side_bar: VBoxContainer = $MarginContainer/HBoxContainer/SideBar
-@onready var page_container: TabContainer = $MarginContainer/HBoxContainer/PageContainer
 
-@onready var project_nav: Button = $MarginContainer/HBoxContainer/SideBar/ProjectNav
-@onready var engine_nav: Button = $MarginContainer/HBoxContainer/SideBar/EngineNav
-@onready var compile_nav: Button = $MarginContainer/HBoxContainer/SideBar/CompileNav
-@onready var download_nav: Button = $MarginContainer/HBoxContainer/SideBar/DownloadNav
-@onready var setting_nav: Button = $MarginContainer/HBoxContainer/SideBar/SettingNav
+@onready var project_nav: Button = $MarginContainer/HBoxContainer/SideBar/TopContainer/ProjectNav
+@onready var engine_nav: Button = $MarginContainer/HBoxContainer/SideBar/TopContainer/EngineNav
+@onready var download_nav: Button = $MarginContainer/HBoxContainer/SideBar/TopContainer/DownloadNav
+@onready var setting_nav: Button = $MarginContainer/HBoxContainer/SideBar/BottomContainer/SettingNav
 
-var page_request: Array[String] = [] # 异步页面加载队列
-var pending_tab: int = -1
-var pending_nav: Button = null
+@onready var icon_rect: TextureRect = $MarginContainer/HBoxContainer/MainContainer/TitleContainer/IconRect
+@onready var title_label: Label = $MarginContainer/HBoxContainer/MainContainer/TitleContainer/TitleLabel
+@onready var page_container: TabContainer = $MarginContainer/HBoxContainer/MainContainer/PageContainer
+
+
+# 当前页面的标题词条，切换语言时重新取译文
+var title_key: String = ""
 
 func _ready() -> void:
-	set_process(false)
-	project_nav.disabled = true
-	_load_page()
+	Config.config_updated.connect(_config_updated)
+	switch_page(0, PROJECT_ICON, "TITLE_PROJECT", project_nav)
 
-func _process(_delta: float) -> void:
-	if page_request.is_empty():
-		set_process(false)
-		return
-	# 只消费队首，保证页面添加顺序与导航索引一致
-	var page_path: String = page_request[0]
-	var load_status: int = ResourceLoader.load_threaded_get_status(page_path)
-	match load_status:
-		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-			return
-		ResourceLoader.THREAD_LOAD_LOADED:
-			var page_resource: Resource = ResourceLoader.load_threaded_get(page_path)
-			if not (page_resource is PackedScene):
-				_handle_page_load_failure(page_path, ResourceLoader.THREAD_LOAD_FAILED)
-				return
-			page_request.remove_at(0)
-			_add_page(page_resource as PackedScene)
-			if page_request.is_empty():
-				set_process(false)
-		ResourceLoader.THREAD_LOAD_FAILED, ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
-			_handle_page_load_failure(page_path, load_status)
+func _config_updated(config_name: String) -> void:
+	match config_name:
+		"language":
+			title_label.text = tr(title_key)
 
-func _load_page() -> void:
-	page_request.clear()
-	for page_path: String in PAGE_PATH_LIST:
-		var error: Error = ResourceLoader.load_threaded_request(page_path)
-		if error != OK:
-			_handle_page_load_failure(page_path, error)
-			return
-		page_request.append(page_path)
-	set_process(not page_request.is_empty())
 
-func _add_page(page_scene: PackedScene) -> void:
-	var page: Control = page_scene.instantiate()
-	page_container.add_child(page)
-	_switch_pending_page()
-
-func _handle_page_load_failure(page_path: String, error: int) -> void:
-	push_error("页面资源加载失败：%s（错误码：%d）" % [page_path, error])
-	page_request.clear()
-	pending_tab = -1
-	pending_nav = null
-	set_process(false)
-
-func _disable_nav(nav: Button) -> void:
-	for nav_item: Control in side_bar.get_children():
-		if nav_item is Button:
-			nav_item.disabled = false
-	nav.disabled = true
-
-func _request_page(tab: int, nav: Button) -> void:
-	# 目标页面可能仍在异步加载，先保存用户的导航意图
-	pending_tab = tab
-	pending_nav = nav
-	_switch_pending_page()
-
-func _switch_pending_page() -> void:
-	if pending_nav == null or pending_tab < 0:
-		return
-	if pending_tab >= page_container.get_child_count():
-		return
-	page_container.current_tab = pending_tab
-	_disable_nav(pending_nav)
-	pending_tab = -1
-	pending_nav = null
+func switch_page(page_index: int, page_icon: CompressedTexture2D, page_title: String, nav_button: Button) -> void:
+	page_container.current_tab = page_index
+	icon_rect.texture = page_icon
+	title_key = page_title
+	title_label.text = tr(title_key)
+	# 使其它导航按钮可用
+	project_nav.disabled = false
+	engine_nav.disabled = false
+	download_nav.disabled = false
+	setting_nav.disabled = false
+	nav_button.set_deferred("disabled", true)
 
 func _on_project_nav_pressed() -> void:
-	_request_page(0, project_nav)
+	switch_page(0, PROJECT_ICON, "TITLE_PROJECT", project_nav)
 
 
 func _on_engine_nav_pressed() -> void:
-	_request_page(1, engine_nav)
-
-func _on_compile_nav_pressed() -> void:
-	_request_page(2, compile_nav)
-
+	switch_page(1, ENGINE_ICON, "TITLE_ENGINE", engine_nav)
 
 func _on_download_nav_pressed() -> void:
-	_request_page(3, download_nav)
-
+	switch_page(2, DOWNLOAD_ICON, "TITLE_DOWNLOAD", download_nav)
 
 func _on_setting_nav_pressed() -> void:
-	_request_page(4, setting_nav)
+	switch_page(3, SETTING_ICON, "TITLE_SETTING", setting_nav)

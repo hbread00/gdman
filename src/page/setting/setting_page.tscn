@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://dt41w75686fay"]
 
-[ext_resource type="Texture2D" uid="uid://mgdysp5iuh4l" path="res://asset/icon/setting.svg" id="1_afo07"]
 [ext_resource type="PackedScene" uid="uid://c8n57o2oio2qi" path="res://src/page/setting/normal_container.tscn" id="3_31xfx"]
-[ext_resource type="PackedScene" uid="uid://0f770t4bh788" path="res://src/page/setting/compile_container.tscn" id="3_sdvru"]
 [ext_resource type="PackedScene" uid="uid://cf6h8pgs5mbfn" path="res://src/page/setting/license_container.tscn" id="4_31xfx"]
 
 [node name="SettingPage" type="VBoxContainer" unique_id=458143825]
@@ -12,21 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
-
-[node name="TitleContainer" type="HBoxContainer" parent="." unique_id=1191291194]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="TitleIcon" type="TextureRect" parent="TitleContainer" unique_id=1557801069]
-layout_mode = 2
-texture = ExtResource("1_afo07")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="TitleLabel" type="Label" parent="TitleContainer" unique_id=533075563]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "TITLE_SETTING"
 
 [node name="MainContainer" type="HBoxContainer" parent="." unique_id=1910175746]
 layout_mode = 2
@@ -54,24 +37,6 @@ theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 12
 
 [node name="NormalContainer" parent="MainContainer/ScrollContainer/VBoxContainer/NormalPanel/MarginContainer" unique_id=990227793 instance=ExtResource("3_31xfx")]
-layout_mode = 2
-
-[node name="CompileLabel" type="Label" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=1299482309]
-layout_mode = 2
-text = "SETTING_TYPE_COMPILE"
-
-[node name="CompilePanel" type="PanelContainer" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=2126652150]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="MainContainer/ScrollContainer/VBoxContainer/CompilePanel" unique_id=789007418]
-layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 12
-
-[node name="CompileContainer" parent="MainContainer/ScrollContainer/VBoxContainer/CompilePanel/MarginContainer" unique_id=143289572 instance=ExtResource("3_sdvru")]
 layout_mode = 2
 
 [node name="AboutLabel" type="Label" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=777107451]

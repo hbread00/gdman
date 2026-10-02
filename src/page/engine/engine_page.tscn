@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cwn383vbptm1q"]
 
 [ext_resource type="Script" uid="uid://ci4ad3t5xmvox" path="res://src/page/engine/engine_page.gd" id="1_2a3wf"]
-[ext_resource type="Texture2D" uid="uid://ccmwlrli63fhi" path="res://asset/icon/engine.svg" id="2_ulk4p"]
 
 [node name="EnginePage" type="VBoxContainer" unique_id=1313993800]
 anchors_preset = 15
@@ -11,21 +10,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
 script = ExtResource("1_2a3wf")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=92740677]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer2" unique_id=985972921]
-layout_mode = 2
-texture = ExtResource("2_ulk4p")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="HBoxContainer2" unique_id=563384693]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "TITLE_ENGINE"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=992382484]
 layout_mode = 2
@@ -44,7 +28,5 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="CardContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer/MarginContainer" unique_id=107316722]
+[node name="CardContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer/MarginContainer" unique_id=1081160529]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
