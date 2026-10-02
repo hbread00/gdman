@@ -9,9 +9,8 @@ const PROJECT_CARD: PackedScene = preload("uid://cphby36r2gwsb")
 var project_card_request: Array[String] = []
 
 func _ready() -> void:
-	set_process(false)
 	_load_project()
-	
+
 	_handle_component()
 	Config.config_updated.connect(_config_update)
 
@@ -43,7 +42,7 @@ func _config_update(config_name: String) -> void:
 	match config_name:
 		"language":
 			_handle_component()
-			
+
 func _handle_component() -> void:
 	App.fix_button_width(import_button)
 

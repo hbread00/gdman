@@ -10,11 +10,10 @@ const SOURCE_CARD: PackedScene = preload("uid://cvhkrjsovo0lf")
 var source_card_request: Array = []
 
 func _ready() -> void:
-	set_process(false)
 	_load_source_card()
 
 func _process(_delta: float) -> void:
-	if source_card_request.size() <= 0:
+	if source_card_request.is_empty():
 		set_process(false)
 		loaded.emit.call_deferred()
 	else:

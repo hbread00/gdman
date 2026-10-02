@@ -5,7 +5,6 @@ const DOTNET: CompressedTexture2D = preload("uid://dfgbgdrbcpnri")
 var engine_id: String = ""
 var dir_path: String = ""
 var executable_path: String = ""
-var is_stable: bool = false
 var is_dotnet: bool = false
 
 @onready var engine_icon: TextureRect = $MarginContainer/VBoxContainer/HBoxContainer/EngineIcon
@@ -25,13 +24,13 @@ func _ready() -> void:
 	version_label.text = "%d.%d" % [engine_info.major_version, engine_info.minor_version]
 	if engine_info.is_dotnet:
 		engine_icon.texture = DOTNET
-	is_stable = engine_info.flavor == EngineManager.EngineFlavor.STABLE
+	var is_stable: bool = engine_info.flavor == EngineManager.EngineFlavor.STABLE
 	is_dotnet = engine_info.is_dotnet
 	unstable_icon.visible = not is_stable
 	run_button.disabled = executable_path == ""
 	Config.config_updated.connect(_config_updated)
 	App.fix_button_width(run_button)
-	
+
 func _config_updated(config_name: String) -> void:
 	match config_name:
 		"language":

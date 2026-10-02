@@ -76,7 +76,6 @@ func _failed(info: String = "") -> void:
 		App.remove_file(download_path)
 	if FileAccess.file_exists(cache_path):
 		App.remove_file(cache_path)
-	
 
 func _on_timer_timeout() -> void:
 	var total: int = http_request.get_body_size()
@@ -84,8 +83,7 @@ func _on_timer_timeout() -> void:
 		return
 	progress_bar.set_value_no_signal(
 		float(http_request.get_downloaded_bytes()) / float(total) * 99)
-	
-	
+
 func _on_http_request_request_completed(result: int, response_code: int, _headers: PackedStringArray, _body: PackedByteArray) -> void:
 	timer.stop()
 	cancel_button.disabled = true
@@ -129,7 +127,6 @@ func _on_extracted() -> void:
 
 func _succeeded() -> void:
 	pass
-	
 
 func _on_cancel_button_pressed() -> void:
 	http_request.cancel_request()
@@ -148,10 +145,3 @@ func _on_close_button_pressed() -> void:
 func encode_id(raw_id: String) -> String:
 	# 转为 Base64（文本编码），避免任务 ID 中的字符污染缓存文件名
 	return Marshalls.utf8_to_base64(raw_id)
-
-func decode_id(encoded_id: String) -> String:
-	# 从缓存文件名恢复原始任务 ID
-	return Marshalls.base64_to_utf8(encoded_id)
-
-func _pass() -> void:
-	extracted.emit()

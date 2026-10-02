@@ -7,12 +7,11 @@ const ENGINE_CARD: PackedScene = preload("uid://bu4qc2q2pjb0t")
 var engine_id_request: Array[String] = []
 
 func _ready() -> void:
-	set_process(false)
 	_load_engine()
 	EngineManager.engines_loaded.connect(_load_engine)
 
 func _process(_delta: float) -> void:
-	if engine_id_request.size() <= 0:
+	if engine_id_request.is_empty():
 		set_process(false)
 	else:
 		# 每帧只创建一张卡片，避免大量节点同时实例化
@@ -33,6 +32,3 @@ func _add_engine_card(engine_id: String) -> void:
 	card.dir_path = local_engine.dir_path
 	card.executable_path = local_engine.executable_path
 	card_container.add_child.call_deferred(card)
-
-func _on_card_spin_value_changed(value: float) -> void:
-	card_container.columns = int(value)

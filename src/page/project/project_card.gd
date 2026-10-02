@@ -125,7 +125,6 @@ func _scan_uid_path(target: String) -> void:
 		current_dir.list_dir_end()
 	# 工作线程不能操作界面，延迟回主线程应用结果
 	uid_path_resolved.emit.call_deferred(resource_path)
-	
 
 func _on_path_button_pressed() -> void:
 	OS.shell_show_in_file_manager(project_path)
