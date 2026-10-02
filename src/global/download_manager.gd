@@ -1,20 +1,5 @@
 extends Node
 
-const MANIFEST_TEMPLATE: Dictionary = {
-	"x.y": {
-		"x.y.z-stable": {
-			"standard": {
-				"foo": "fool_url",
-				"bar": "bar_url"
-			},
-			"dotnet": {
-				"foo": "fool_url",
-				"bar": "bar_url"
-			}
-		}
-	}
-} # 源模板，用于参考
-
 const DOWNLOAD_DIR: String = "user://.download" # 下载文件保存目录
 # 构建类型，Godot有标准和 DotNet 两种构建类型
 const BUILD_STANDARD: String = "standard"
@@ -25,8 +10,9 @@ const BUILT_IN_MANIFEST_PATH: String = "res://src/global/manifest/%s.json" # 项
 const LOCAL_MANIFEST_DIR: String = "user://.manifest" # 本地下载地址清单的目录
 const LOCAL_MANIFEST_PATH: String = "user://.manifest/%s.json" # 本地下载地址清单路径
 const LOCAL_MANIFEST_VERSION_PATH: String = "user://.manifest/version" # 本地下载地址清单版本路径
-const REMOTE_MANIFEST_URL: String = "https://raw.githubusercontent.com/hbread00/gdman-source/main/%s.json" # 远程下载地址清单 URL
-const REMOTE_MANIFEST_VERSION_URL: String = "https://api.github.com/repos/hbread00/gdman-source/git/ref/heads/main" # 远程下载地址清单版本 URL
+# 远程下载地址清单 URL，本项目 GitHub 仓库中的清单
+const REMOTE_MANIFEST_VERSION_URL: String = "https://api.github.com/repos/hbread00/gdman/git/ref/heads/main" # 版本
+const REMOTE_MANIFEST_URL: String = "https://raw.githubusercontent.com/hbread00/gdman/refs/heads/main/src/global/manifest/%s.json" # 清单
 
 signal manifest_loaded()
 signal manifest_updated()
@@ -41,9 +27,6 @@ var is_requesting_remote_manifest: bool = false # 正在请求远程清单，防
 var remoting_manifest_requests: Dictionary[String, HTTPRequest] = {}
 var remote_version: String = ""
 var remote_manifest: Dictionary[String, String] = {}
-
-var display_stable: bool = true
-var display_unstable: bool = false
 
 func _ready() -> void:
 	load_manifest()
@@ -196,7 +179,7 @@ func _on_manifest_request_completed(result: int, response_code: int, _headers: P
 		return
 	remote_manifest[request_name] = manifest_data
 	_store_remote_manifest_to_local()
-	
+
 # 远程数据存入本地清单
 func _store_remote_manifest_to_local() -> void:
 	# 因为远程清单请求可能有多个，所以需要等待所有请求完成后再写入本地清单

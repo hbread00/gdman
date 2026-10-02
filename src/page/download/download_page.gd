@@ -16,7 +16,6 @@ const ENGINE_DOWNLOADER_CARD: PackedScene = preload("uid://dqqd7c1vpwb5y")
 var version_container_request: Array = []
 
 func _ready() -> void:
-	set_process(false)
 	_load_version_container()
 	# 清单加载后，重新加载版本容器
 	DownloadManager.manifest_loaded.connect(_load_version_container)
@@ -24,12 +23,13 @@ func _ready() -> void:
 
 func _on_manifest_updated() -> void:
 	if is_visible_in_tree():
+		update_prompt_button.disabled = false
 		update_prompt_button.show()
 	else:
 		DownloadManager.load_manifest()
 
 func _process(_delta: float) -> void:
-	if version_container_request.size() <= 0:
+	if version_container_request.is_empty():
 		set_process(false)
 		_switch_display(stable_check.button_pressed, unstable_check.button_pressed)
 	else:
@@ -88,3 +88,8 @@ func _on_stable_check_toggled(_toggled_on: bool) -> void:
 
 func _on_unstable_check_toggled(_toggled_on: bool) -> void:
 	_switch_display(stable_check.button_pressed, unstable_check.button_pressed)
+
+func _on_update_prompt_button_pressed() -> void:
+	update_prompt_button.disabled = true
+	update_prompt_button.hide()
+	DownloadManager.load_manifest()
