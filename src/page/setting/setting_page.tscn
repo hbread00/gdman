@@ -11,48 +11,44 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
 
-[node name="MainContainer" type="HBoxContainer" parent="." unique_id=1910175746]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer" unique_id=100671604]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=100671604]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/ScrollContainer" unique_id=1301815618]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1301815618]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NormalPanel" type="PanelContainer" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=1682270879]
+[node name="NormalPanel" type="PanelContainer" parent="ScrollContainer/VBoxContainer" unique_id=1682270879]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MainContainer/ScrollContainer/VBoxContainer/NormalPanel" unique_id=2083335441]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/NormalPanel" unique_id=2083335441]
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 12
 
-[node name="NormalContainer" parent="MainContainer/ScrollContainer/VBoxContainer/NormalPanel/MarginContainer" unique_id=990227793 instance=ExtResource("3_31xfx")]
+[node name="NormalContainer" parent="ScrollContainer/VBoxContainer/NormalPanel/MarginContainer" unique_id=990227793 instance=ExtResource("3_31xfx")]
 layout_mode = 2
 
-[node name="AboutLabel" type="Label" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=777107451]
+[node name="AboutLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=777107451]
 layout_mode = 2
 text = "SETTING_TYPE_ABOUT"
 
-[node name="AboutPanel" type="PanelContainer" parent="MainContainer/ScrollContainer/VBoxContainer" unique_id=2131377467]
+[node name="AboutPanel" type="PanelContainer" parent="ScrollContainer/VBoxContainer" unique_id=2131377467]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MainContainer/ScrollContainer/VBoxContainer/AboutPanel" unique_id=792575991]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/AboutPanel" unique_id=792575991]
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 12
 
-[node name="LicenseContainer" parent="MainContainer/ScrollContainer/VBoxContainer/AboutPanel/MarginContainer" unique_id=1277865361 instance=ExtResource("4_31xfx")]
+[node name="LicenseContainer" parent="ScrollContainer/VBoxContainer/AboutPanel/MarginContainer" unique_id=1277865361 instance=ExtResource("4_31xfx")]
 layout_mode = 2
