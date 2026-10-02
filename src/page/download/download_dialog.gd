@@ -16,6 +16,7 @@ func display(engine_id: String) -> void:
 		# 相同版本复用上次测速和来源选择结果
 		popup_centered()
 		return
+	source_option.select(-1)
 	last_engine_id = engine_id
 	title = tr("DOWNLOAD_DIALOG_TITLE") % engine_id
 	dotnet_check.button_pressed = false

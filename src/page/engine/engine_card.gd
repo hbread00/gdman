@@ -38,12 +38,8 @@ func _config_updated(config_name: String) -> void:
 
 func _on_delete_button_pressed() -> void:
 	App.remove_file(dir_path)
-	EngineManager.local_engines.erase(engine_id)
-	for idx: int in EngineManager.local_engine_ids.size():
-		if EngineManager.local_engine_ids[idx] == engine_id:
-			EngineManager.local_engine_ids.remove_at(idx)
-			break
-	queue_free()
+	# 很多页面都需要重新加载，所以不能只在这里移除
+	EngineManager.load_engines()
 
 func _on_run_button_pressed() -> void:
 	# 在 Unix 平台上，可执行文件需要具有可执行权限
