@@ -14,9 +14,6 @@ BUTTON_DOWNLOAD,Download,下载,下載
 ,,,
 DIALOG_CONFIRM,Confirm,确认,確認
 DIALOG_CANCEL,Cancel,取消,取消
-DIALOG_CLOSE,Close,关闭,關閉
-,,,
-DOWNLOAD_CUSTOM_URL,Custom URL,自定义URL,自定義URL
 ,,,
 PROJECT_IMPORT,Import,导入,導入
 PROJECT_IMPORT_HINT,Import new project,导入新的项目,導入新的項目
@@ -28,17 +25,10 @@ PROJECT_CARD_DOTNET_HINT,.NET Project,该项目是.NET项目,該項目是.NET項
 PROJECT_CARD_PATH_HINT,Show in File Manager,打开项目所在目录,打開項目所在目錄
 PROJECT_CARD_REMOVE_HINT,Remove\n*Directory will be kept,移除项目\n*不会删除项目目录,移除項目\n*不會刪除項目目錄
 ,,,
-ENGINE_CHECK_STANDARD,Standard,标准版,標準版
-ENGINE_CHECK_DOTNET,.NET,.NET版,.NET版
-ENGINE_CHECK_STABLE,Stable,稳定版,穩定版
-ENGINE_CHECK_UNSTABLE,Unstable,不稳定版,不穩定版
 ENGINE_CARD_UNSTABLE_HINT,"Unstable(RC, Beta, Alpha, Dev, etc.)",不稳定版（RC，Beta，Alpha，Dev等）,不穩定版（RC，Beta，Alpha，Dev等）
 ENGINE_CARD_RUN_HINT,Launch,启动,啟動
 ENGINE_CARD_DELETE_HINT,Delete\n*Deletes engine directory,删除\n*会同时删除引擎目录,刪除\n*會同時刪除引擎目錄
-ENGINE_CARD_PATH_HINT,Open folder,打开引擎所在目录,打開引擎所在目錄
 ,,,
-DOWNLOAD_CHECK_STANDARD,Standard,标准版,標準版
-DOWNLOAD_CHECK_DOTNET,.NET,.NET版,.NET版
 DOWNLOAD_CHECK_STABLE,Stable,稳定版,穩定版
 DOWNLOAD_CHECK_UNSTABLE,Unstable,不稳定版,不穩定版
 DOWNLOAD_UPDATE_PROMPT,Download source updated. Restart to apply!,下载源有更新，重启以应用！,下載源有更新，重啟以應用！
@@ -63,14 +53,11 @@ SETTING_DELETE_DOWNLOAD,Clean Download Archieve,删除下载文件,刪除下載�
 SETTING_DELETE_DOWNLOAD_HINT,Delete temporary files after extraction,下载并提取引擎后，删除产生的临时文件,下載並提取引擎後，刪除產生的臨時文件
 SETTING_EDITOR,External Editor,外部编辑器,外部編輯器
 SETTING_EDITOR_HINT,"Project editor executable\n*Typically .exe on Windows, .app on MacOS",相关文件会用指定的编辑器打开\n*在Windows通常是.exe，在MacOS通常是.app,相關文件會用指定的編輯器打開\n*在Windows通常是.exe，在MacOS通常是.app
-SETTING_EDITOR_OPEN,Select Editor,选择编辑器,選擇編輯器
 SETTING_HIDE_PATH,Hide Path,隐藏路径,隱藏路徑
 SETTING_HIDE_PATH_HINT,Hide path in cards\n*Full path shown on hover,隐藏卡片中的路径显示\n*在悬浮时仍会显示完整路径,隱藏卡片中的路徑顯示\n*在懸浮時仍會顯示完整路徑
 SETTING_USER_PATH,User Directory,用户目录,用戶目錄
 SETTING_USER_PATH_HINT,Local data directory,GDMan在本机用户使用的目录,GDMan在本機用戶使用的目錄
 SETTING_LICENSE,License,开源协议,開源協議
-SETTING_REMOTE_SOURCE,Remote Update Source,在线更新源,在線更新源
-SETTING_REMOTE_SOURCE_HINT,Fetch latest engine download URL from online repository at startup,启动时从在线仓库获取最新的引擎下载地址,啟動時從在線倉庫獲取最新的引擎下載地址
 SETTING_TYPE_COMPILE,Compile,编译,編譯
 SETTING_TYPE_ABOUT,About,关于,關於
 SETTING_COMPILE_TOOL,Tool,工具,工具
@@ -78,11 +65,9 @@ SETTING_COMPILE_VERSION,Version,版本,版本
 SETTING_COMPILE_CUSTOM,Custom,自定义,自定義
 SETTING_COMPILE_REFRESH,Refresh,刷新,刷新
 ,,,
-COMPILE_DOWNLOAD,Download Code,下载源码,下載源碼
 COMPILE_CARD_BIN,Artifact,产物,產物
 COMPILE_CARD_CUSTOM,Custom,自定义,自定義
 COMPILE_CARD_COMPILE,Build,编译,編譯
-COMPILE_DOWNLOAD_FILE_NAME,Source Directory Name,存放源码的目录名,存放源碼的目錄名
 COMPILE_DEFAULT,Default,默认,默認
 COMPILE_PLATFORM,Target Platform,目标平台,目標平台
 COMPILE_ARCHITECTURE,Target Architecture,目标架构,目標架構
