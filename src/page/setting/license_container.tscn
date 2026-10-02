@@ -6,30 +6,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 8
 
 [node name="ProjectLinkButton" type="LinkButton" parent="." unique_id=2059924326]
 layout_mode = 2
 text = "https://github.com/hbread00/gdman"
 uri = "https://github.com/hbread00/gdman"
 
-[node name="LicenseContainer" type="FoldableContainer" parent="." unique_id=448383479]
+[node name="GDMan" type="FoldableContainer" parent="." unique_id=2046562922]
 layout_mode = 2
-folded = true
-title = "SETTING_LICENSE"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LicenseContainer" unique_id=1317028812]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 1
-
-[node name="GDMan" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=2046562922]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
 folded = true
 title = "GDMan"
 
-[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/GDMan" unique_id=20301081]
+[node name="MarginContainer" type="MarginContainer" parent="GDMan" unique_id=20301081]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -37,10 +25,16 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/GDMan/MarginContainer" unique_id=248138831]
+[node name="RichTextLabel" type="RichTextLabel" parent="GDMan/MarginContainer" unique_id=223734078]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Apache License
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
+text = "
+                                 Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -240,15 +234,20 @@ text = "Apache License
    distributed under the License is distributed on an \"AS IS\" BASIS,
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
-   limitations under the License."
+   limitations under the License.
+"
+fit_content = true
+scroll_active = false
+context_menu_enabled = true
+threaded = true
+selection_enabled = true
 
-[node name="Godot" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=394247180]
+[node name="Godot" type="FoldableContainer" parent="." unique_id=394247180]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
 folded = true
 title = "Godot"
 
-[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/Godot" unique_id=399728050]
+[node name="MarginContainer" type="MarginContainer" parent="Godot" unique_id=399728050]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -256,9 +255,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/Godot/MarginContainer" unique_id=1725479935]
+[node name="RichTextLabel" type="RichTextLabel" parent="Godot/MarginContainer" unique_id=1535135405]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
 text = "Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).
 Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
 
@@ -279,14 +283,17 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
+fit_content = true
+scroll_active = false
+threaded = true
+selection_enabled = true
 
-[node name="GodotLogo" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=1879562387]
+[node name="GodotLogo" type="FoldableContainer" parent="." unique_id=1879562387]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
 folded = true
 title = "Godot Logo"
 
-[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/GodotLogo" unique_id=799647263]
+[node name="MarginContainer" type="MarginContainer" parent="GodotLogo" unique_id=799647263]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -294,22 +301,31 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/GodotLogo/MarginContainer" unique_id=1462347081]
+[node name="RichTextLabel" type="RichTextLabel" parent="GodotLogo/MarginContainer" unique_id=1947696795]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
 text = "Godot Engine Logo
 Copyright (c) 2017 Andrea Calabró
 
 This work is licensed under the Creative Commons Attribution 4.0 International
-license (CC BY 4.0 International): https://creativecommons.org/licenses/by/4.0/"
+license (CC BY 4.0 International): https://creativecommons.org/licenses/by/4.0/
+"
+fit_content = true
+scroll_active = false
+threaded = true
+selection_enabled = true
 
-[node name="GoogleMDIcon" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=1661123560]
+[node name="GoogleMDIcon" type="FoldableContainer" parent="." unique_id=1661123560]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
 folded = true
 title = "Google Material Design Icons"
 
-[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/GoogleMDIcon" unique_id=462676721]
+[node name="MarginContainer" type="MarginContainer" parent="GoogleMDIcon" unique_id=462676721]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -317,10 +333,16 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/GoogleMDIcon/MarginContainer" unique_id=1759358307]
+[node name="RichTextLabel" type="RichTextLabel" parent="GoogleMDIcon/MarginContainer" unique_id=501659566]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "                                 Apache License
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
+text = "
+                                 Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -521,14 +543,17 @@ text = "                                 Apache License
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License."
+fit_content = true
+scroll_active = false
+threaded = true
+selection_enabled = true
 
-[node name="PictogrammersMDIcon" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=1219603350]
+[node name="PictogrammersMDIcon" type="FoldableContainer" parent="." unique_id=1219603350]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
 folded = true
 title = "Pictogrammers Material Design Icons"
 
-[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/PictogrammersMDIcon" unique_id=1727462995]
+[node name="MarginContainer" type="MarginContainer" parent="PictogrammersMDIcon" unique_id=1727462995]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -536,9 +561,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/PictogrammersMDIcon/MarginContainer" unique_id=1266851942]
+[node name="RichTextLabel" type="RichTextLabel" parent="PictogrammersMDIcon/MarginContainer" unique_id=783704734]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
 text = "Pictogrammers Free License
 --------------------------
 
@@ -561,14 +591,17 @@ licenses or are distributed under the Apache 2.0 license.
 
 # Code: MIT (https://opensource.org/licenses/MIT)
 The MIT license applies to all non-font and non-icon files."
+fit_content = true
+scroll_active = false
+threaded = true
+selection_enabled = true
 
-[node name="DotNETLogo" type="FoldableContainer" parent="LicenseContainer/VBoxContainer" unique_id=2076052863]
+[node name="DotNETLogo" type="FoldableContainer" parent="." unique_id=2076052863]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
 folded = true
 title = ".NET Logo"
 
-[node name="MarginContainer" type="MarginContainer" parent="LicenseContainer/VBoxContainer/DotNETLogo" unique_id=1452445937]
+[node name="MarginContainer" type="MarginContainer" parent="DotNETLogo" unique_id=1452445937]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -576,9 +609,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="LicenseContainer/VBoxContainer/DotNETLogo/MarginContainer" unique_id=1610170716]
+[node name="RichTextLabel" type="RichTextLabel" parent="DotNETLogo/MarginContainer" unique_id=766001207]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
 text = "CC0 1.0 Universal
 
 Statement of Purpose
@@ -695,4 +733,9 @@ Affirmer's express Statement of Purpose.
 
 For more information, please see
 <http://creativecommons.org/publicdomain/zero/1.0/>
+
 "
+fit_content = true
+scroll_active = false
+threaded = true
+selection_enabled = true

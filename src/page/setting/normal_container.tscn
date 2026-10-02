@@ -97,7 +97,7 @@ size_flags_horizontal = 3
 caret_blink = true
 
 [node name="EditorSelectButton" type="Button" parent="EditorContainer" unique_id=1907847299]
-custom_minimum_size = Vector2(25, 0)
+custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 icon = ExtResource("1_ed4n3")
 expand_icon = true
@@ -129,7 +129,7 @@ text = "user://"
 editable = false
 
 [node name="UserPathButton" type="Button" parent="UserPathContainer" unique_id=1675907148]
-custom_minimum_size = Vector2(25, 0)
+custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 icon = ExtResource("2_822wv")
 expand_icon = true
