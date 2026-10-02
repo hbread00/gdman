@@ -13,6 +13,34 @@ const ARCHITECTURE: Array[String] = [
 	"macos",
 ]
 
+# 扫描文件时排除的文件列表
+const SCAN_EXCLUDED_FILE: Array[String] = [
+	".",
+	"..",
+	".git",
+	".svn",
+	".hg",
+	".vscode",
+	".idea",
+	".vs",
+	".godot",
+	"node_modules",
+	"vendor",
+	"target",
+	"out",
+	".gradle",
+	".cache",
+	"__pycache__",
+	".pytest_cache",
+	".mypy_cache",
+	".tox",
+	".venv",
+	"build",
+	"dist",
+	"bin",
+	".mono",
+]
+
 var url_regex: RegEx = RegEx.new()
 
 func _ready() -> void:
@@ -79,14 +107,14 @@ func architecture_to_executable_suffix(architecture: String) -> String:
 		"macos":
 			return ".app"
 		"linux_x86":
-			return "x86_32"
+			return ".x86_32"
 		"linux_x64":
-			return "x86_64"
+			return ".x86_64"
 		"linux_arm32":
-			return "arm32"
+			return ".arm32"
 		"linux_arm64":
-			return "arm64"
-	return "foo" # 上游仅应传入 ARCHITECTURE 中的有效值
+			return ".arm64"
+	return "" # 上游仅应传入 ARCHITECTURE 中的有效值
 
 # 不同语言会导致按钮的文本宽度不同，因此需要根据文本和图标的宽度来设置按钮的最小宽度
 func fix_button_width(button: Button) -> void:
