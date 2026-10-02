@@ -17,28 +17,29 @@ const ARCHITECTURE: Array[String] = [
 const SCAN_EXCLUDED_FILE: Array[String] = [
 	".",
 	"..",
-	".git",
-	".svn",
-	".hg",
-	".vscode",
-	".idea",
-	".vs",
-	".godot",
-	"node_modules",
-	"vendor",
-	"target",
-	"out",
-	".gradle",
 	".cache",
-	"__pycache__",
-	".pytest_cache",
+	".git",
+	".godot",
+	".gradle",
+	".hg",
+	".idea",
+	".mono",
 	".mypy_cache",
+	".pytest_cache",
+	".svn",
 	".tox",
 	".venv",
+	".vs",
+	".vscode",
+	"__pycache__",
+	".DS_Store",
+	"bin",
 	"build",
 	"dist",
-	"bin",
-	".mono",
+	"node_modules",
+	"out",
+	"target",
+	"vendor"
 ]
 
 var url_regex: RegEx = RegEx.new()
@@ -53,21 +54,29 @@ func _ready() -> void:
 func _set_windowed() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
 	var window_sizes: Array[Vector2i] = [
-		Vector2i(3840, 2400), # 4K UHD
-		Vector2i(3200, 2000), # QHD+
-		Vector2i(2560, 1600), # QHD
-		Vector2i(2048, 1280), # QWXGA
-		Vector2i(1920, 1200), # Full HD
-		Vector2i(1600, 1000), # HD+
-		Vector2i(1366, 768), # FWXGA
-		Vector2i(1280, 800), # HD
-		Vector2i(1024, 640), # WSVGA
-		Vector2i(960, 600), # qHD
-		Vector2i(640, 400), # nHD
+		Vector2i(3200, 2400), # QUXGA
+		Vector2i(2800, 2100), # QSXGA+
+		Vector2i(2560, 1920), # QSXGA-
+		Vector2i(2048, 1536), # QXGA
+		Vector2i(2000, 1500), # Early QXGA
+		Vector2i(1920, 1440), # Fullscreen 2K
+		Vector2i(1600, 1200), # UXGA
+		Vector2i(1536, 1152), # QPAL
+		Vector2i(1440, 1080), # HDV 1080i
+		Vector2i(1400, 1050), # SXGA+
+		Vector2i(1280, 960), # SXGA-
+		Vector2i(1152, 864), # XGA+
+		Vector2i(1024, 768), # XGA
+		Vector2i(1000, 750), # Early XGA
+		Vector2i(800, 600), # SVGA
+		Vector2i(768, 576), # PAL
+		Vector2i(640, 480), # VGA
 	]
+	var screen_size: Vector2i = DisplayServer.screen_get_size(DisplayServer.SCREEN_OF_MAIN_WINDOW)
 	for idx: int in window_sizes.size():
-		if window_sizes[idx] < DisplayServer.screen_get_size():
-			DisplayServer.window_set_size(window_sizes[mini(idx + 1, window_sizes.size() - 1)])
+		if window_sizes[idx].x <= screen_size.x and window_sizes[idx].y <= screen_size.y:
+			DisplayServer.window_set_size(
+				window_sizes[mini(idx + 1, window_sizes.size() - 1)])
 			break
 	get_window().move_to_center.call_deferred()
 
