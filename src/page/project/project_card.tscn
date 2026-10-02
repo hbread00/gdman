@@ -50,6 +50,7 @@ text_overrun_behavior = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=810747881]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="VersionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1745847180]
 layout_mode = 2
@@ -69,15 +70,15 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 12
 text = "1970/1/1-0:0:0"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1326523705]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=861265741]
 layout_mode = 2
-horizontal_scroll_mode = 0
+size_flags_horizontal = 3
 
 [node name="TagContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer" unique_id=1635525355]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 2
+columns = 8
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2129595725]
 layout_mode = 2
@@ -85,18 +86,11 @@ layout_mode = 2
 [node name="RemoveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=449926311]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
+size_flags_horizontal = 8
 tooltip_text = "PROJECT_CARD_REMOVE_HINT"
 icon = ExtResource("8_sr25u")
 icon_alignment = 1
 expand_icon = true
-
-[node name="PathLine" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=2142027203]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 12
-text = "path/to/project"
-placeholder_text = "path/to/project"
-editable = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1704252676]
 layout_mode = 2
@@ -110,9 +104,14 @@ text = "BUTTON_PATH"
 icon = ExtResource("7_2b60s")
 expand_icon = true
 
-[node name="Pass" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=463433483]
+[node name="PathLine" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=164664238]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "path"
+editable = false
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1754088780]
+layout_mode = 2
 
 [node name="EditorButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1047668864]
 layout_mode = 2
@@ -122,7 +121,7 @@ text = "PROJECT_CARD_EDITOR"
 icon = ExtResource("8_2b60s")
 expand_icon = true
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1754088780]
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=578761748]
 layout_mode = 2
 
 [node name="EngineOption" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1720390930 instance=ExtResource("5_62uvt")]

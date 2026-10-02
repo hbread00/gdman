@@ -73,15 +73,6 @@ text = "SETTING_HIDE_PATH"
 [node name="HidePathCheck" type="CheckButton" parent="." unique_id=1897241196]
 layout_mode = 2
 
-[node name="RemoteSourceLabel" type="Label" parent="." unique_id=224411427]
-layout_mode = 2
-tooltip_text = "SETTING_REMOTE_SOURCE_HINT"
-mouse_filter = 1
-text = "SETTING_REMOTE_SOURCE"
-
-[node name="RemoteSourceCheck" type="CheckButton" parent="." unique_id=315496632]
-layout_mode = 2
-
 [node name="DeleteDownloadLabel" type="Label" parent="." unique_id=966936371]
 layout_mode = 2
 tooltip_text = "SETTING_DELETE_DOWNLOAD_HINT"
@@ -151,7 +142,6 @@ expand_icon = true
 [connection signal="item_selected" from="LanguageOption" to="." method="_on_language_option_item_selected"]
 [connection signal="item_selected" from="ArchitectureOption" to="." method="_on_architecture_option_item_selected"]
 [connection signal="toggled" from="HidePathCheck" to="." method="_on_hide_path_check_toggled"]
-[connection signal="toggled" from="RemoteSourceCheck" to="." method="_on_remote_source_check_toggled"]
 [connection signal="toggled" from="DeleteDownloadCheck" to="." method="_on_delete_download_check_toggled"]
 [connection signal="text_submitted" from="EditorContainer/EditorPathLine" to="." method="_on_editor_path_line_text_submitted"]
 [connection signal="pressed" from="EditorContainer/EditorSelectButton" to="." method="_on_editor_select_button_pressed"]

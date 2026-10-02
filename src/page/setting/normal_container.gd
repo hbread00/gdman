@@ -3,7 +3,6 @@ extends GridContainer
 @onready var version_name_label: Label = $VersionNameLabel
 @onready var language_option: OptionButton = $LanguageOption
 @onready var architecture_option: OptionButton = $ArchitectureOption
-@onready var remote_source_check: CheckButton = $RemoteSourceCheck
 @onready var delete_download_check: CheckButton = $DeleteDownloadCheck
 @onready var editor_path_line: LineEdit = $EditorContainer/EditorPathLine
 @onready var editor_file_dialog: FileDialog = $EditorContainer/EditorSelectButton/EditorFileDialog
