@@ -3,10 +3,9 @@ extends GridContainer
 @onready var version_name_label: Label = $VersionNameLabel
 @onready var language_option: OptionButton = $LanguageOption
 @onready var architecture_option: OptionButton = $ArchitectureOption
-@onready var delete_download_check: CheckButton = $DeleteDownloadCheck
+@onready var cache_save_spin: SpinBox = $CacheSaveContainer/CacheSaveSpin
 @onready var editor_path_line: LineEdit = $EditorContainer/EditorPathLine
 @onready var editor_file_dialog: FileDialog = $EditorContainer/EditorSelectButton/EditorFileDialog
-@onready var hide_path_check: CheckButton = $HidePathCheck
 @onready var user_path_line: LineEdit = $UserPathContainer/UserPathLine
 
 func _ready() -> void:
@@ -29,10 +28,9 @@ func _ready() -> void:
 		if architecture_option.get_item_text(i) == Config.architecture:
 			architecture_option.select(i)
 			break
-	delete_download_check.button_pressed = Config.delete_download_file
+	cache_save_spin.set_value_no_signal(Config.cache_save_days)
 	editor_path_line.text = Config.external_editor_path
 	editor_path_line.tooltip_text = Config.external_editor_path
-	hide_path_check.button_pressed = Config.hide_path
 	version_name_label.text = ProjectSettings.get_setting("application/config/version", "unknown")
 	user_path_line.text = ProjectSettings.globalize_path("user://")
 	user_path_line.tooltip_text = ProjectSettings.globalize_path("user://")
@@ -65,8 +63,8 @@ func _on_architecture_option_item_selected(index: int) -> void:
 	else:
 		Config.architecture = architecture_option.get_item_text(index)
 
-func _on_delete_download_check_toggled(toggled_on: bool) -> void:
-	Config.delete_download_file = toggled_on
+func _on_cache_save_spin_value_changed(value: float) -> void:
+	Config.cache_save_days = int(value)
 
 func _on_editor_path_line_text_submitted(new_text: String) -> void:
 	Config.external_editor_path = new_text
@@ -81,9 +79,6 @@ func _on_editor_select_button_pressed() -> void:
 			"Linux":
 				editor_file_dialog.current_dir = "/usr/bin/"
 	editor_file_dialog.popup_centered()
-
-func _on_hide_path_check_toggled(toggled_on: bool) -> void:
-	Config.hide_path = toggled_on
 
 func _on_user_path_button_pressed() -> void:
 	OS.shell_show_in_file_manager(ProjectSettings.globalize_path("user://"))

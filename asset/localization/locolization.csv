@@ -29,7 +29,7 @@ ENGINE_CARD_DELETE_HINT,Delete\n*Deletes engine directory,删除\n*会同时删�
 ,,,
 DOWNLOAD_CHECK_STABLE,Stable,稳定版,穩定版
 DOWNLOAD_CHECK_UNSTABLE,Unstable,不稳定版,不穩定版
-DOWNLOAD_UPDATE_PROMPT,Download source updated. Restart to apply!,下载源有更新，重启以应用！,下載源有更新，重啟以應用！
+DOWNLOAD_UPDATE_PROMPT,Download source updated!,下载源有更新！,下載源有更新！
 SOURCE_CARD_UNSTABLE_HINT,"Unstable(RC, Beta, Alpha, Dev, etc.)",不稳定版（RC，Beta，Alpha，Dev等）,不穩定版（RC，Beta，Alpha，Dev等）
 SOURCE_CARD_DOWNLOAD_HINT,Download %s,下载%s,下載%s
 DOWNLOAD_DIALOG_TITLE,Download %s,下载%s,下載%s
@@ -47,12 +47,10 @@ SETTING_LANGUAGE,Language,语言,語言
 SETTING_LANGUAGE_HINT,Auto-detects system language,为自动时，会根据系统语言判断,為自動時，會根據系統語言判斷
 SETTING_ARCHITECTURE,Architecture,系统架构,系統架構
 SETTING_ARCHITECTURE_HINT,Auto-detects architecture\n*Do not change unless you know what you are doing,为自动时，会自动判断系统架构\n*请勿修改此项，除非你知道自己在做什么,為自動時，會自動判斷系統架構\n*請勿修改此項，除非你知道自己在做什麼
-SETTING_DELETE_DOWNLOAD,Clean Download Archieve,删除下载文件,刪除下載文件
-SETTING_DELETE_DOWNLOAD_HINT,Delete temporary files after extraction,下载并提取引擎后，删除产生的临时文件,下載並提取引擎後，刪除產生的臨時文件
+SETTING_CACHE_SAVE,Cache Retention Days,缓存保留天数,緩存保留天數
+SETTING_CACHE_SAVE_HINT,Cache files older than this will be cleaned up,超过该天数的缓存文件会被清理,超過該天數的緩存文件會被清理
 SETTING_EDITOR,External Editor,外部编辑器,外部編輯器
 SETTING_EDITOR_HINT,"Project editor executable\n*Typically .exe on Windows, .app on MacOS",相关文件会用指定的编辑器打开\n*在Windows通常是.exe，在MacOS通常是.app,相關文件會用指定的編輯器打開\n*在Windows通常是.exe，在MacOS通常是.app
-SETTING_HIDE_PATH,Hide Path,隐藏路径,隱藏路徑
-SETTING_HIDE_PATH_HINT,Hide path in cards\n*Full path shown on hover,隐藏卡片中的路径显示\n*在悬浮时仍会显示完整路径,隱藏卡片中的路徑顯示\n*在懸浮時仍會顯示完整路徑
 SETTING_USER_PATH,User Directory,用户目录,用戶目錄
 SETTING_USER_PATH_HINT,Local data directory,GDMan在本机用户使用的目录,GDMan在本機用戶使用的目錄
 SETTING_LICENSE,License,开源协议,開源協議

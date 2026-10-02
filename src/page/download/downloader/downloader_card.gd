@@ -119,9 +119,6 @@ func _on_extracted() -> void:
 	DownloadManager.downloading_task.erase(download_task_id)
 	progress_bar.set_value_no_signal(100)
 	info_label.text = tr("DOWNLOADER_COMPLETE")
-	if (Config.delete_download_file
-		and FileAccess.file_exists(download_path)):
-		App.remove_file(download_path)
 	close_button.disabled = false
 	_succeeded()
 

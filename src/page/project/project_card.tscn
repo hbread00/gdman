@@ -107,12 +107,12 @@ expand_icon = true
 [node name="PathLine" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=164664238]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 text = "path"
 editable = false
 
-[node name="Pass" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=864133630]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=48518071]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="EditorButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1047668864]
 layout_mode = 2

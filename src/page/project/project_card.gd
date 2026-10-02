@@ -32,8 +32,8 @@ func _ready() -> void:
 	version_label.text = config.get_value("application", "config/features", ["unknown"])[0]
 	dotnet_icon.visible = config.has_section("dotnet")
 	refresh_project_time()
+	App.small_update.connect(refresh_project_time)
 	uid_path_resolved.connect(_set_project_icon)
-	path_line.secret = Config.hide_path
 	path_line.text = project_path
 	path_line.tooltip_text = project_path
 	for tag: String in config.get_value("application", "config/tags", []):
@@ -61,8 +61,6 @@ func refresh_project_time() -> void:
 
 func _config_update(config_name: String) -> void:
 	match config_name:
-		"hide_path":
-			path_line.secret = Config.hide_path
 		"external_editor_path":
 			editor_button.disabled = Config.external_editor_path == ""
 		"language":

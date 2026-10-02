@@ -25,13 +25,13 @@ var architecture: String = "auto":
 		store_config.call_deferred()
 		config_updated.emit("architecture")
 
-var delete_download_file: bool = false:
+var cache_save_days: int = 7:
 	set(v):
-		delete_download_file = v
+		cache_save_days = v
 		if _is_loading_config:
 			return
 		store_config.call_deferred()
-		config_updated.emit("delete_download_file")
+		config_updated.emit("cache_save_days")
 
 var external_editor_path: String = "":
 	set(v):
@@ -40,14 +40,6 @@ var external_editor_path: String = "":
 			return
 		store_config.call_deferred()
 		config_updated.emit("external_editor_path")
-
-var hide_path: bool = false:
-	set(v):
-		hide_path = v
-		if _is_loading_config:
-			return
-		store_config.call_deferred()
-		config_updated.emit("hide_path")
 
 func _ready() -> void:
 	load_config()
@@ -82,9 +74,8 @@ func store_config() -> void:
 	var config: ConfigFile = ConfigFile.new()
 	config.set_value("general", "language", language)
 	config.set_value("general", "architecture", architecture)
-	config.set_value("general", "delete_download_file", delete_download_file)
+	config.set_value("general", "cache_save_days", cache_save_days)
 	config.set_value("general", "external_editor_path", external_editor_path)
-	config.set_value("general", "hide_path", hide_path)
 	config.save(CONFIG_PATH)
 
 # 加载配置
@@ -97,9 +88,8 @@ func load_config() -> void:
 	_is_loading_config = true
 	language = config.get_value("general", "language", "auto")
 	architecture = config.get_value("general", "architecture", "auto")
-	delete_download_file = config.get_value("general", "delete_download_file", false)
+	cache_save_days = config.get_value("general", "cache_save_days", 7)
 	external_editor_path = config.get_value("general", "external_editor_path", "")
-	hide_path = config.get_value("general", "hide_path", false)
 	_is_loading_config = false
 	_set_language()
 

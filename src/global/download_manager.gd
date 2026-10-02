@@ -32,6 +32,7 @@ func _ready() -> void:
 	load_manifest()
 	Config.config_updated.connect(_config_update)
 	_request_remote_manifest()
+	_remove_cache()
 
 func _config_update(config_name: String) -> void:
 	match config_name:
@@ -69,7 +70,7 @@ func load_manifest() -> void:
 				var dotnet_url: String = version_data[BUILD_DOTNET].get(arch, "")
 				if dotnet_url != "":
 					_add_source_to_manifest(base_version, id, BUILD_DOTNET, provider_name, dotnet_url)
-	manifest_loaded.emit(manifest)
+	manifest_loaded.emit()
 
 # 往程序清单中添加来源的下载地址
 func _add_source_to_manifest(base_version: String, id: String, build_type: String, provider: String, url: String) -> void:
@@ -194,3 +195,10 @@ func _store_remote_manifest_to_local() -> void:
 		file.close()
 	is_requesting_remote_manifest = false
 	manifest_updated.emit()
+
+# 移除过期的缓存文件
+func _remove_cache() -> void:
+	var max_cache_time: int = int(Time.get_unix_time_from_system()) - Config.cache_save_days * 24 * 60 * 60
+	for file_name: String in DirAccess.get_files_at(DOWNLOAD_DIR):
+		if FileAccess.get_modified_time(DOWNLOAD_DIR.path_join(file_name)) < max_cache_time:
+			App.remove_file(DOWNLOAD_DIR.path_join(file_name))
