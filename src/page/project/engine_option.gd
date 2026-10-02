@@ -14,9 +14,13 @@ func select_id(engine_id: String) -> void:
 	select(-1)
 
 func load_engine() -> void:
+	disabled = true
 	select(-1)
 	clear()
 	var engine_ids: Array = EngineManager.local_engine_ids.duplicate()
+	if engine_ids.is_empty():
+		return
 	engine_ids.reverse()
 	for engine_id: String in engine_ids:
 		add_item(engine_id)
+	disabled = false
