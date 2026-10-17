@@ -102,7 +102,8 @@ func _get_executable_path(dir_path: String, architecture: String) -> String:
 				# 为目录，加入待扫描目录列表
 				# MacOS的.app也是目录，所以需要单独排除
 				if current_dir.current_is_dir() and not (
-					architecture == "macos" and file_name.ends_with(".app")
+					(architecture == "macos_x64" or architecture == "macos_arm64")
+					and file_name.ends_with(".app")
 				):
 					# 跳过符号链接
 					if current_dir.is_link(file_name):

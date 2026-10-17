@@ -10,7 +10,8 @@ const ARCHITECTURE: Array[String] = [
 	"linux_x64",
 	"linux_arm32",
 	"linux_arm64",
-	"macos",
+	"macos_x64",
+	"macos_arm64"
 ]
 
 # 扫描文件时排除的文件列表
@@ -92,7 +93,11 @@ func get_architecture() -> String:
 				"arm64":
 					return "windows_arm64"
 		"macOS":
-			return "macos"
+			match Engine.get_architecture_name():
+				"x86_64":
+					return "macos_x64"
+				"arm64":
+					return "macos_arm64"
 		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
 			match Engine.get_architecture_name():
 				"x86_32":
@@ -113,7 +118,7 @@ func architecture_to_executable_suffix(architecture: String) -> String:
 	match architecture:
 		"windows_x86", "windows_x64", "windows_arm64":
 			return ".exe"
-		"macos":
+		"macos_x64", "macos_arm64":
 			return ".app"
 		"linux_x86":
 			return ".x86_32"
