@@ -4541,8 +4541,7 @@
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.3.4-stable/Godot_v3.3.4-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.4-stable/Godot_v3.3.4-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.4-stable/Godot_v3.3.4-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.3.4-stable/Godot_v3.3.4-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.4-stable/Godot_v3.3.4-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4557,8 +4556,7 @@
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.3.3-stable/Godot_v3.3.3-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.3-stable/Godot_v3.3.3-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.3-stable/Godot_v3.3.3-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.3.3-stable/Godot_v3.3.3-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.3-stable/Godot_v3.3.3-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4573,8 +4571,7 @@
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.3.2-stable/Godot_v3.3.2-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.2-stable/Godot_v3.3.2-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.2-stable/Godot_v3.3.2-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.3.2-stable/Godot_v3.3.2-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.2-stable/Godot_v3.3.2-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4589,8 +4586,7 @@
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.3.1-stable/Godot_v3.3.1-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.1-stable/Godot_v3.3.1-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.1-stable/Godot_v3.3.1-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.3.1-stable/Godot_v3.3.1-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3.1-stable/Godot_v3.3.1-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4605,8 +4601,7 @@
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.3-stable/Godot_v3.3-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3-stable/Godot_v3.3-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3-stable/Godot_v3.3-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.3-stable/Godot_v3.3-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.3-stable/Godot_v3.3-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4615,14 +4610,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_osx.64.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.3-stable/Godot_v3.2.3-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4631,14 +4624,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.2.2-stable/Godot_v3.2.2-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.2-stable/Godot_v3.2.2-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.2-stable/Godot_v3.2.2-stable_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.2.2-stable/Godot_v3.2.2-stable_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.2-stable/Godot_v3.2.2-stable_osx.64.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.2.2-stable/Godot_v3.2.2-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.2-stable/Godot_v3.2.2-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.2-stable/Godot_v3.2.2-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.2.2-stable/Godot_v3.2.2-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.2-stable/Godot_v3.2.2-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4647,14 +4638,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.2.1-stable/Godot_v3.2.1-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.1-stable/Godot_v3.2.1-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.1-stable/Godot_v3.2.1-stable_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.2.1-stable/Godot_v3.2.1-stable_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.1-stable/Godot_v3.2.1-stable_osx.64.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.2.1-stable/Godot_v3.2.1-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.1-stable/Godot_v3.2.1-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.1-stable/Godot_v3.2.1-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.2.1-stable/Godot_v3.2.1-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2.1-stable/Godot_v3.2.1-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4663,14 +4652,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.2-stable/Godot_v3.2-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2-stable/Godot_v3.2-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2-stable/Godot_v3.2-stable_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.2-stable/Godot_v3.2-stable_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2-stable/Godot_v3.2-stable_osx.64.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.2-stable/Godot_v3.2-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2-stable/Godot_v3.2-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2-stable/Godot_v3.2-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.2-stable/Godot_v3.2-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.2-stable/Godot_v3.2-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4679,14 +4666,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.1.2-stable/Godot_v3.1.2-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.2-stable/Godot_v3.1.2-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.2-stable/Godot_v3.1.2-stable_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.1.2-stable/Godot_v3.1.2-stable_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.2-stable/Godot_v3.1.2-stable_osx.64.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.1.2-stable/Godot_v3.1.2-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.2-stable/Godot_v3.1.2-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.2-stable/Godot_v3.1.2-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.1.2-stable/Godot_v3.1.2-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.2-stable/Godot_v3.1.2-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4695,14 +4680,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.1.1-stable/Godot_v3.1.1-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.1-stable/Godot_v3.1.1-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.1-stable/Godot_v3.1.1-stable_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.1.1-stable/Godot_v3.1.1-stable_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.1-stable/Godot_v3.1.1-stable_osx.64.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.1.1-stable/Godot_v3.1.1-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.1-stable/Godot_v3.1.1-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.1-stable/Godot_v3.1.1-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.1.1-stable/Godot_v3.1.1-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1.1-stable/Godot_v3.1.1-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4711,14 +4694,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.1-stable/Godot_v3.1-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1-stable/Godot_v3.1-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1-stable/Godot_v3.1-stable_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.1-stable/Godot_v3.1-stable_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1-stable/Godot_v3.1-stable_osx.64.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.1-stable/Godot_v3.1-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1-stable/Godot_v3.1-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1-stable/Godot_v3.1-stable_mono_osx.64.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.1-stable/Godot_v3.1-stable_mono_osx.64.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.1-stable/Godot_v3.1-stable_mono_osx.64.zip"
         }
     },
     {
@@ -4727,14 +4708,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.6-stable/Godot_v3.0.6-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.6-stable/Godot_v3.0.6-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.6-stable/Godot_v3.0.6-stable_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0.6-stable/Godot_v3.0.6-stable_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.6-stable/Godot_v3.0.6-stable_osx.fat.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.6-stable/Godot_v3.0.6-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.6-stable/Godot_v3.0.6-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.6-stable/Godot_v3.0.6-stable_mono_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0.6-stable/Godot_v3.0.6-stable_mono_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.6-stable/Godot_v3.0.6-stable_mono_osx.fat.zip"
         }
     },
     {
@@ -4743,14 +4722,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.5-stable/Godot_v3.0.5-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.5-stable/Godot_v3.0.5-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.5-stable/Godot_v3.0.5-stable_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0.5-stable/Godot_v3.0.5-stable_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.5-stable/Godot_v3.0.5-stable_osx.fat.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.5-stable/Godot_v3.0.5-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.5-stable/Godot_v3.0.5-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.5-stable/Godot_v3.0.5-stable_mono_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0.5-stable/Godot_v3.0.5-stable_mono_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.5-stable/Godot_v3.0.5-stable_mono_osx.fat.zip"
         }
     },
     {
@@ -4759,14 +4736,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.4-stable/Godot_v3.0.4-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.4-stable/Godot_v3.0.4-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.4-stable/Godot_v3.0.4-stable_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0.4-stable/Godot_v3.0.4-stable_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.4-stable/Godot_v3.0.4-stable_osx.fat.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.4-stable/Godot_v3.0.4-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.4-stable/Godot_v3.0.4-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.4-stable/Godot_v3.0.4-stable_mono_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0.4-stable/Godot_v3.0.4-stable_mono_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.4-stable/Godot_v3.0.4-stable_mono_osx.fat.zip"
         }
     },
     {
@@ -4775,14 +4750,12 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.3-stable/Godot_v3.0.3-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.3-stable/Godot_v3.0.3-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.3-stable/Godot_v3.0.3-stable_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0.3-stable/Godot_v3.0.3-stable_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.3-stable/Godot_v3.0.3-stable_osx.fat.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.3-stable/Godot_v3.0.3-stable_mono_win32.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.3-stable/Godot_v3.0.3-stable_mono_win64.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.3-stable/Godot_v3.0.3-stable_mono_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0.3-stable/Godot_v3.0.3-stable_mono_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.3-stable/Godot_v3.0.3-stable_mono_osx.fat.zip"
         }
     },
     {
@@ -4791,8 +4764,7 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.2-stable/Godot_v3.0.2-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.2-stable/Godot_v3.0.2-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.2-stable/Godot_v3.0.2-stable_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0.2-stable/Godot_v3.0.2-stable_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.2-stable/Godot_v3.0.2-stable_osx.fat.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.2-stable/Godot_v3.0.2-stable_mono_win32.zip",
@@ -4805,8 +4777,7 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.1-stable/Godot_v3.0.1-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.1-stable/Godot_v3.0.1-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.1-stable/Godot_v3.0.1-stable_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0.1-stable/Godot_v3.0.1-stable_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0.1-stable/Godot_v3.0.1-stable_osx.fat.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0.1-stable/Godot_v3.0.1-stable_mono_win32.zip",
@@ -4819,8 +4790,7 @@
         "standard": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0-stable/Godot_v3.0-stable_win32.exe.zip",
             "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0-stable/Godot_v3.0-stable_win64.exe.zip",
-            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0-stable/Godot_v3.0-stable_osx.fat.zip",
-            "macos_arm64": "https://github.com/godotengine/godot-builds/releases/download/3.0-stable/Godot_v3.0-stable_osx.fat.zip"
+            "macos_x64": "https://github.com/godotengine/godot-builds/releases/download/3.0-stable/Godot_v3.0-stable_osx.fat.zip"
         },
         "dotnet": {
             "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/3.0-stable/Godot_v3.0-stable_mono_win32.zip",
