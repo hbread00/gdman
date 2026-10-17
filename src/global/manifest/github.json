@@ -1,5 +1,29 @@
 [
     {
+        "id": "4.8-beta1",
+        "base_version": "4.8",
+        "standard": {
+            "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_win32.exe.zip",
+            "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_win64.exe.zip",
+            "windows_arm64": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_windows_arm64.exe.zip",
+            "linux_x86": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_linux.x86_32.zip",
+            "linux_x64": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_linux.x86_64.zip",
+            "linux_arm32": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_linux.arm32.zip",
+            "linux_arm64": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_linux.arm64.zip",
+            "macos": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_macos.arm64.zip"
+        },
+        "dotnet": {
+            "windows_x86": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_mono_win32.zip",
+            "windows_x64": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_mono_win64.zip",
+            "windows_arm64": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_mono_windows_arm64.zip",
+            "linux_x86": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_mono_linux_x86_32.zip",
+            "linux_x64": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_mono_linux_x86_64.zip",
+            "linux_arm32": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_mono_linux_arm32.zip",
+            "linux_arm64": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_mono_linux_arm64.zip",
+            "macos": "https://github.com/godotengine/godot-builds/releases/download/4.8-beta1/Godot_v4.8-beta1_mono_macos.arm64.zip"
+        }
+    },
+    {
         "id": "4.8-dev7",
         "base_version": "4.8",
         "standard": {
