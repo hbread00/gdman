@@ -28,10 +28,10 @@ func _ready() -> void:
 	is_dotnet = engine_info.is_dotnet
 	unstable_icon.visible = not is_stable
 	run_button.disabled = executable_path == ""
-	Config.config_updated.connect(_config_updated)
+	Config.config_updated.connect(_config_update)
 	App.fix_button_width(run_button)
 
-func _config_updated(config_name: String) -> void:
+func _config_update(config_name: String) -> void:
 	match config_name:
 		"language":
 			App.fix_button_width(run_button)

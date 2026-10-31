@@ -20,10 +20,10 @@ const SETTING_ICON: CompressedTexture2D = preload("uid://mgdysp5iuh4l")
 var current_title: String = ""
 
 func _ready() -> void:
-	Config.config_updated.connect(_config_updated)
+	Config.config_updated.connect(_config_update)
 	switch_page(0, PROJECT_ICON, "TITLE_PROJECT", project_nav)
 
-func _config_updated(config_name: String) -> void:
+func _config_update(config_name: String) -> void:
 	match config_name:
 		"language":
 			title_label.text = tr(current_title)
