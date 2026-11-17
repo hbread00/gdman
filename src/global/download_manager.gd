@@ -199,6 +199,8 @@ func _store_remote_manifest_to_local() -> void:
 # 移除过期的缓存文件
 func _remove_cache() -> void:
 	var max_cache_time: int = int(Time.get_unix_time_from_system()) - Config.cache_save_days * 24 * 60 * 60
+	if not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(DOWNLOAD_DIR)):
+		return
 	for file_name: String in DirAccess.get_files_at(DOWNLOAD_DIR):
 		if FileAccess.get_modified_time(DOWNLOAD_DIR.path_join(file_name)) < max_cache_time:
 			App.remove_file(DOWNLOAD_DIR.path_join(file_name))

@@ -12,10 +12,11 @@ config_version=5
 
 config/name="GDMan"
 config/version="0.5.0"
-run/main_scene="uid://btxvmrjs2fqfi"
+run/main_scene="uid://dmiue5pfs4v37"
 config/custom_user_dir_name="gdman"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 run/low_processor_mode=true
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="uid://c008wo367tn7h"
 
@@ -34,7 +35,7 @@ gdscript/warnings/untyped_declaration=1
 [display]
 
 window/size/viewport_width=800
-window/size/viewport_height=600
+window/size/viewport_height=500
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

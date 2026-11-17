@@ -55,23 +55,15 @@ func _ready() -> void:
 func _set_windowed() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
 	var window_sizes: Array[Vector2i] = [
-		Vector2i(3200, 2400), # QUXGA
-		Vector2i(2800, 2100), # QSXGA+
-		Vector2i(2560, 1920), # QSXGA-
-		Vector2i(2048, 1536), # QXGA
-		Vector2i(2000, 1500), # Early QXGA
-		Vector2i(1920, 1440), # Fullscreen 2K
-		Vector2i(1600, 1200), # UXGA
-		Vector2i(1536, 1152), # QPAL
-		Vector2i(1440, 1080), # HDV 1080i
-		Vector2i(1400, 1050), # SXGA+
-		Vector2i(1280, 960), # SXGA-
-		Vector2i(1152, 864), # XGA+
-		Vector2i(1024, 768), # XGA
-		Vector2i(1000, 750), # Early XGA
-		Vector2i(800, 600), # SVGA
-		Vector2i(768, 576), # PAL
-		Vector2i(640, 480), # VGA
+		Vector2i(3840, 2400), # WQUXGA
+		Vector2i(2880, 1800), # WQXGA+
+		Vector2i(2560, 1600), # WQXGA
+		Vector2i(1920, 1200), # WUXGA
+		Vector2i(1680, 1050), # WSXGA+
+		Vector2i(1440, 900), # WXGA+
+		Vector2i(1280, 800), # WXGA
+		Vector2i(800, 600), # 默认
+		Vector2i(150, 64) # 最小
 	]
 	var screen_size: Vector2i = DisplayServer.screen_get_size(DisplayServer.SCREEN_OF_MAIN_WINDOW)
 	for idx: int in window_sizes.size():
